@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { useState, useEffect } from 'react';
 import api from '../services/api';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 
 interface Item {
@@ -83,6 +84,10 @@ const Carrinho: React.FC = () => {
     }
 
     return (
+        <>
+        <Head>
+            <title>Cadastro</title>
+        </Head>
         <Flex flexDir='column'>
             <Header />
             <Flex flexDirection='column'>
@@ -98,15 +103,15 @@ const Carrinho: React.FC = () => {
                 borderRadius='md'
                 mt={6}
                 p={6}
-            >
+                >
                 <FormControl
                     flexGrow={1}
-
-                >
+                    
+                    >
                     <FormLabel
                         htmlFor="matricula"
                         fontSize={['sm', 'md']}
-                    >
+                        >
                         Matrícula
                         </FormLabel>
 
@@ -115,19 +120,19 @@ const Carrinho: React.FC = () => {
                         type="text"
                         id="matricula"
                         aria-describedby="matricula"
-
+                        
                         focusBorderColor='green.300'
                         borderRadius='sm'
                         _hover={{ borderColor: 'green.300' }}
-
+                        
                         isRequired
                         maxLength={8}
                         value={matricula}
                         onChange={handleMatricula}
-
+                        
                         onBlur={handleLoadData}
-
-                    />
+                        
+                        />
                         <InputRightElement width={["4.25rem", "4.75rem"]} mr={2}>
                             <Button 
                             isDisabled={digitando}
@@ -148,29 +153,29 @@ const Carrinho: React.FC = () => {
 
                 <FormControl
                     flexGrow={1}
-
-                >
+                    
+                    >
                     <FormLabel
                         htmlFor="nome"
                         fontSize={['sm', 'md']}
-                    >
+                        >
                         Nome completo
                         </FormLabel>
                     <Input
                         type="text"
                         id="nome"
                         aria-describedby="nome-completo"
-
+                        
                         focusBorderColor='green.300'
                         borderRadius='sm'
                         _hover={{ borderColor: 'green.300' }}
-
+                        
                         value={nome}
                         onChange={handleNome}
-
+                        
                         isDisabled={loading? true : false}
-
-                    />
+                        
+                        />
                 </FormControl>
                 <Flex>
 
@@ -182,68 +187,68 @@ const Carrinho: React.FC = () => {
                         <FormLabel
                             htmlFor="email"
                             fontSize={['sm', 'md']}
-                        >
+                            >
                             Email
                             </FormLabel>
                         <Input
                             type="email"
                             id="email"
                             aria-describedby="email"
-
+                            
                             focusBorderColor='green.300'
                             borderRadius='sm'
                             _hover={{ borderColor: 'green.300' }}
-
+                            
                             value={email}
                             onChange={handleEmail}
-
+                            
                             isDisabled={loading? true : false}
-                        />
+                            />
                     </FormControl>
                     <FormControl flexGrow={1} mx={[0, 4]}>
                         <FormLabel
                             htmlFor="birth"
                             fontSize={['sm', 'md']}
-                        >
+                            >
                             Data de nascimento
                             </FormLabel>
                         <Input
                             type="date"
                             id="birth"
                             aria-describedby="birth"
-
+                            
                             focusBorderColor='green.300'
                             borderRadius='sm'
                             _hover={{ borderColor: 'green.300' }}
                             value={birth}
                             onChange={handleBirth}
-
+                            
                             isDisabled={loading? true : false}
-                        />
+                            />
                     </FormControl>
                     <FormControl
                         flexGrow={1}
-                    >
+                        >
                         <FormLabel
                             htmlFor="turma"
                             fontSize={['sm', 'md']}
-                        >
+                            >
                             Turma
                         </FormLabel>
                         <NumberInput>
                         <NumberInputField 
                             type="number" 
                             id='turma' 
-
+                            
                             focusBorderColor='green.300'
                             borderRadius='sm'
                             _hover={{ borderColor: 'green.300' }}
-
+                            
                             value={turma}
                             onChange={handleTurma}
                             maxLength={2} 
                             isDisabled={loading? true : false}
-                        /> 
+                            /> 
                             {/* <-- "type" here */}
 
                         
@@ -256,20 +261,20 @@ const Carrinho: React.FC = () => {
                         <FormLabel
                             htmlFor="senha"
                             fontSize={['sm', 'md']}
-                        >
+                            >
                             Senha
                             </FormLabel>
                         <Input
                             type="password"
                             id="senha"
                             aria-describedby="senha"
-
+                            
                             focusBorderColor='green.300'
                             borderRadius='sm'
                             _hover={{ borderColor: 'green.300' }}
                             value={senha}
                             onChange={handleSenha}
-                        />
+                            />
 
                     </FormControl>
                     <Box w={4} />
@@ -277,20 +282,20 @@ const Carrinho: React.FC = () => {
                         <FormLabel
                             htmlFor="senha_again"
                             fontSize={['sm', 'md']}
-                        >
+                            >
                             Senha (novamente)
                             </FormLabel>
                         <Input
                             type="password"
                             id="senha_again"
                             aria-describedby="senha_again"
-
+                            
                             focusBorderColor='green.300'
                             borderRadius='sm'
                             _hover={{ borderColor: 'green.300' }}
                             value={senhaAgain}
                             onChange={handleSenhaAgain}
-                        />
+                            />
 
                     </FormControl>
                 </Flex>
@@ -300,7 +305,7 @@ const Carrinho: React.FC = () => {
                 mt={6}
                 justifyContent='center'
                 alignSelf='center'
-            >
+                >
                     <Button
                         h='45px'
                         w='100%'
@@ -309,15 +314,16 @@ const Carrinho: React.FC = () => {
                         color='#fff'
                         _hover={{ backgroundColor: 'green.600' }}
                         fontSize={['xs', 'sm', 'base']}
-
+                        
                         isDisabled={loading? true : false}
                         onClick={() => alert('ok')}
-                    >
+                        >
                         Finalizar cadastro
                     </Button>
             </Flex>
 
         </Flex>
+    </>
     );
 }
 

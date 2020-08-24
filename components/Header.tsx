@@ -128,7 +128,11 @@ const Header: React.FC = () => {
                                 :
                                 <>
                                 <Link href='/login'><a><MenuItem>Login</MenuItem></a></Link>
-                                <MenuItem>Cadastro</MenuItem>
+                                <Link href='/cadastro'>
+                                    <a>
+                                        <MenuItem>Cadastro</MenuItem>
+                                    </a>
+                                </Link>
                                 </>
                             }
                         </MenuGroup>

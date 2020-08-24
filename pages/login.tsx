@@ -7,6 +7,7 @@ import { Heading, Box, Flex, Image, Input, Button, Text, InputGroup, InputLeftEl
 
 import { MdPerson, MdLock } from "react-icons/md";
 import { authenticate, isAuthenticated } from '../services/auth';
+import Head from 'next/head';
 
 export default function Login() {
     const router = useRouter()
@@ -45,6 +46,9 @@ export default function Login() {
 
     return (
         <>
+            <Head>
+                <title>Login</title>
+            </Head>
             <Flex
                 flexWrap='wrap'
                 height='100vh'

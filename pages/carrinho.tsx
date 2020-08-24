@@ -8,6 +8,7 @@ import { useState, useRef, useEffect } from 'react';
 import api from '../services/api';
 import { useRouter } from 'next/router';
 import { isAuthenticated } from '../services/auth';
+import Head from 'next/head';
 
 
 
@@ -35,6 +36,10 @@ const Carrinho: React.FC = () => {
     
 
     return (
+        <>
+        <Head>
+            <title>Carrinho</title>
+        </Head>
         <Flex flexDir='column'>
             <Header />
             <Flex flexDirection='column'>
@@ -51,29 +56,29 @@ const Carrinho: React.FC = () => {
                 borderRadius='md'
                 mt={6}
                 p={6}
-            >
+                >
                 {
-                cart.data.carrinho 
-                &&
+                    cart.data.carrinho 
+                    &&
                     cart.data.carrinho.map((item: {
                         pk: number;
                         quantity: number;
                         item: string;
                         final_price: number;
                     }) => (
-                            <Flex
-                                key={item.pk}
-                                flexGrow={1}
-                                fontSize={['xs', 'sm']}
-                                borderBottom='1px'
-                                borderColor='#ededed'
-                                borderRadius='sm'
-                            >
+                        <Flex
+                        key={item.pk}
+                        flexGrow={1}
+                        fontSize={['xs', 'sm']}
+                        borderBottom='1px'
+                        borderColor='#ededed'
+                        borderRadius='sm'
+                        >
                                 <Flex
                                     h='45px'
                                     alignItems='center'
                                     justifyContent='center'
-                                >
+                                    >
 
                                     <Box
                                         as={AiOutlineDelete}
@@ -82,8 +87,8 @@ const Carrinho: React.FC = () => {
                                         color='green.300'
                                         onClick={() => removeFromCart(item.pk)}
                                         cursor='pointer'
-
-                                    />
+                                        
+                                        />
 
                                 </Flex>
                                 <Flex
@@ -92,10 +97,10 @@ const Carrinho: React.FC = () => {
                                     w={['45px', '90px']}
                                     justifyContent='flex-end'
                                     pr={2}
-                                >
+                                    >
                                     <Text
                                         fontWeight='thin'
-                                    >
+                                        >
                                         {item.quantity}x
 
                                 </Text>
@@ -104,7 +109,7 @@ const Carrinho: React.FC = () => {
                                     h='45px'
                                     alignItems='center'
                                     flexGrow={1}
-                                >
+                                    >
                                     <Text>
                                         {item.item}
                                     </Text>
@@ -114,7 +119,7 @@ const Carrinho: React.FC = () => {
                                     alignItems='center'
                                     justifyContent='flex-end'
                                     mr={4}
-                                >
+                                    >
 
                                     50
                             </Flex>
@@ -125,19 +130,19 @@ const Carrinho: React.FC = () => {
                                     alignItems='center'
                                     justifyContent='flex-end'
                                     fontWeight='bold'
-
-                                >
+                                    
+                                    >
                                     R${item.final_price}</Flex>
                             </Flex>
                         ))
-                }
+                    }
 
                 <Flex
                     mt={4}
                     flexGrow={1}
                     justifyContent='flex-end'
                     alignItems='flex-end'
-                >
+                    >
                     <Text fontSize='normal' fontWeight='thin'>TOTAL</Text>
                     <Text fontSize='lg' ml={4} fontWeight='bold' color='green.600'>R${cart.data?.total}</Text>
                 </Flex>
@@ -148,7 +153,7 @@ const Carrinho: React.FC = () => {
                 mt={6}
                 justifyContent='flex-end'
                 alignSelf='center'
-            >
+                >
                 <Link href='/loja'>
                     <Button
                         h='45px'
@@ -157,7 +162,7 @@ const Carrinho: React.FC = () => {
                         color='#fff'
                         _hover={{ backgroundColor: 'green.600' }}
                         fontSize={['xs', 'sm', 'base']}
-                    >
+                        >
                         Continuar comprando
                     </Button>
                 </Link>
@@ -170,13 +175,14 @@ const Carrinho: React.FC = () => {
                     color='#fff'
                     _hover={{ backgroundColor: 'green.600' }}
                     fontSize={['xs', 'sm', 'base']}
-
-                >
+                    
+                    >
                     Finalizar pedido
                         <Box as={AiOutlineArrowRight} size={6} />
                 </Button>
             </Flex>
         </Flex>
+                    </>
     );
 }
 
