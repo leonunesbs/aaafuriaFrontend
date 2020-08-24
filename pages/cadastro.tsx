@@ -72,7 +72,7 @@ const Carrinho: React.FC = () => {
     
     const handleLoadData = async () => {
         setLoading(true)
-        const response: any = await api.get(`http://aaafuria.herokuapp.com/api/get-socio-data/${matricula}`)
+        const response: any = await api.get(`https://aaafuria.herokuapp.com/api/get-socio-data/${matricula}`)
         if (response.data) {
             setNome(response.data.nome_completo.toUpperCase())
             setEmail(response.data.email)
