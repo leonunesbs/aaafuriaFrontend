@@ -16,7 +16,7 @@ function Loja() {
     const { data }: any = useFetch('product-list/')
 
     if (!data) {
-        return <p>Carregando...</p>
+        return <Flex color='green.300' h='100vh' w='100%' alignItems='center' justifyContent='center'><Spinner size='xl' /></Flex>
     }
 
     async function handleAddToCart(pk: number) {
