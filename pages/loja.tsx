@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Header from '../components/Header';
-import { Heading, Box, Image, Badge, Flex, Button, Stack } from '@chakra-ui/core';
+import { Heading, Box, Image, Badge, Flex, Button, Stack, Spinner } from '@chakra-ui/core';
 import { useFetch } from '../hooks/useFetch';
 import api from '../services/api';
 import { useRouter } from 'next/router';
