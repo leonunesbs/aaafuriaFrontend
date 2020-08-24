@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { Heading, Flex, Button, Spinner, FormControl, FormLabel, Input, FormHelperText, Box, InputGroup, InputRightElement, } from "@chakra-ui/core"
-import Header from '../../components/Header';
+import { Heading, Flex, Button, FormControl, FormLabel, Input, FormHelperText, Box, InputGroup, InputRightElement, } from "@chakra-ui/core"
+import Header from '../components/Header';
 
 import { useState, useEffect } from 'react';
-import api from '../../services/api';
+import api from '../services/api';
 import { useRouter } from 'next/router';
 
 
