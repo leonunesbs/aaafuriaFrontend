@@ -14,7 +14,7 @@ const ProductDetail = () => {
     const router = useRouter()
     const { id } = router.query
 
-    const { data }: any = useFetch<Item[]>(`product-detail/${id}/`)
+    const { data }: any = useFetch(`product-detail/${id}/`)
     console.log(data)
     if (!data) {
         return <p>Carregando...</p>

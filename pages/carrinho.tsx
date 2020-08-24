@@ -20,7 +20,7 @@ const Carrinho: React.FC = () => {
     const router = useRouter()
     const [error, setError] = useState('')
 
-    const cart: { data: any } = useFetch<Item[]>('carrinho/')
+    const cart: { data: any } = useFetch('carrinho/')
     
     if (!cart.data) {
         return <Flex color='green.300' h='100vh' w='100%' alignItems='center' justifyContent='center'><Spinner size='xl' /></Flex>

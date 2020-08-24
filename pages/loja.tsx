@@ -7,17 +7,14 @@ import api from '../services/api';
 import { useRouter } from 'next/router';
 import { isAuthenticated } from '../services/auth';
 
-interface Item {
-    pk: number;
-    title: string;
-    price: number;
-}
+
 
 function Loja() {
     const router = useRouter()
 
 
-    const { data } = useFetch<Item[]>('product-list/')
+    const { data }: any = useFetch('product-list/')
+
     if (!data) {
         return <p>Carregando...</p>
     }
@@ -39,7 +36,7 @@ function Loja() {
             <Heading textAlign='center' mt={16} mb={6} size={'xl'} color='green.600'>Loja</Heading>
             <Flex mx={2} justify='center'>
                 <Stack isInline justify='center' flexWrap='wrap'>
-                    {data.map(item => (
+                    {data?.map((item:any) => (
                         <Box key={item.pk} maxW="420px" minW='30px' borderWidth="1px" borderRadius="md" mb={2} overflow=" hidden">
                             <Image src='/Body.png' alt='body' />
 
