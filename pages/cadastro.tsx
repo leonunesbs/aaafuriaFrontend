@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Heading, Flex, Button, FormControl, FormLabel, Input, FormHelperText, Box, InputGroup, InputRightElement, NumberInput, NumberInputField, } from "@chakra-ui/core"
+import { Heading, Flex, Button, FormControl, FormLabel, Input, FormHelperText, Box, InputGroup, InputRightElement, NumberInput, NumberInputField, useToast, } from "@chakra-ui/core"
 import Header from '../components/Header';
 
 import { useState, useEffect } from 'react';
@@ -52,7 +52,7 @@ const Carrinho: React.FC = () => {
 
     const [digitando, setDigitando] = useState(true)
 
-
+    const toast = useToast()
     
     
     // useEffect(() => {
@@ -81,6 +81,13 @@ const Carrinho: React.FC = () => {
             setBirth(response.data.data_de_nascimento)
         }
         setLoading(false)
+        toast({
+            title: "Sócio Fúria!",
+            description: "Recuperamos alguns dos seus dados pra facilitar",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+        })
     }
 
     return (
