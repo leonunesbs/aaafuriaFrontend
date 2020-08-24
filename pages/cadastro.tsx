@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Heading, Flex, Button, FormControl, FormLabel, Input, FormHelperText, Box, InputGroup, InputRightElement, } from "@chakra-ui/core"
+import { Heading, Flex, Button, FormControl, FormLabel, Input, FormHelperText, Box, InputGroup, InputRightElement, NumberInput, NumberInputField, } from "@chakra-ui/core"
 import Header from '../components/Header';
 
 import { useState, useEffect } from 'react';
@@ -230,10 +230,10 @@ const Carrinho: React.FC = () => {
                         >
                             Turma
                         </FormLabel>
-                        <Input
-                            type="text"
-                            id="turma"
-                            aria-describedby="turma"
+                        <NumberInput>
+                        <NumberInputField 
+                            type="number" 
+                            id='turma' 
 
                             focusBorderColor='green.300'
                             borderRadius='sm'
@@ -241,10 +241,14 @@ const Carrinho: React.FC = () => {
 
                             value={turma}
                             onChange={handleTurma}
-                            maxLength={2}
-
+                            maxLength={2} 
                             isDisabled={loading? true : false}
-                        />
+                        /> 
+                            {/* <-- "type" here */}
+
+                        
+                        </NumberInput>
+                        
                     </FormControl>
                 </Flex>
                 <Flex mt={4}>
@@ -306,6 +310,8 @@ const Carrinho: React.FC = () => {
                         color='#fff'
                         _hover={{ backgroundColor: 'green.600' }}
                         fontSize={['xs', 'sm', 'base']}
+
+                        isDisabled={loading? true : false}
                     >
                         Finalizar cadastro
                     </Button>
