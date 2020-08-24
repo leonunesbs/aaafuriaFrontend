@@ -301,7 +301,6 @@ const Carrinho: React.FC = () => {
                 justifyContent='center'
                 alignSelf='center'
             >
-                <Link href='/loja'>
                     <Button
                         h='45px'
                         w='100%'
@@ -312,10 +311,10 @@ const Carrinho: React.FC = () => {
                         fontSize={['xs', 'sm', 'base']}
 
                         isDisabled={loading? true : false}
+                        onClick={() => alert('ok')}
                     >
                         Finalizar cadastro
                     </Button>
-                </Link>
             </Flex>
 
         </Flex>
