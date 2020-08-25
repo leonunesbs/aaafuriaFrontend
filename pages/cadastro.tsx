@@ -33,6 +33,7 @@ const Carrinho: React.FC = () => {
     const [nome, setNome] = useState('')
     const handleNome = (event: any) => setNome((event.target.value).toUpperCase())
 
+
     const [email, setEmail] = useState('')
     const handleEmail = (event: any) => setEmail(event.target.value)
 
@@ -75,19 +76,37 @@ const Carrinho: React.FC = () => {
         setLoading(true)
         const response: any = await api.get(`https://aaafuria.herokuapp.com/api/get-socio-data/${matricula}`)
         if (response.data) {
-            setNome(response.data.nome_completo.toUpperCase())
+            setNome(response.data.nome_completo && (response.data.nome_completo.toUpperCase()))
             setEmail(response.data.email)
             setTurma(response.data.turma)
             setBirth(response.data.data_de_nascimento)
         }
         setLoading(false)
-        toast({
-            title: "Sócio Fúria!",
-            description: "Recuperamos alguns dos seus dados pra facilitar",
-            status: "success",
-            duration: 5000,
-            isClosable: true,
+
+        if (response.data.nome_completo != ''){
+
+            toast({
+                title: "Sócio Fúria!",
+                description: "Recuperamos alguns dos seus dados pra facilitar seu cadastro",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+            })
+        }
+    }
+
+    const handleSubmit = async () => {
+        setLoading(true)
+        const response = await api.post('cadastro/', {
+            'nome': nome,
+            'email': email,
+            'matricula': matricula,
+            'turma': turma,
+            'senha': senha,
+            'senha_again': senhaAgain
         })
+        console.log(response.data)
+        setLoading(false)
     }
 
     return (
@@ -136,8 +155,8 @@ const Carrinho: React.FC = () => {
                         maxLength={8}
                         value={matricula}
                         onChange={handleMatricula}
-                        
-                        onBlur={handleLoadData}
+
+                        isDisabled={loading? true : false}
                         
                         />
                         <InputRightElement width={["4.25rem", "4.75rem"]} mr={2}>
@@ -158,20 +177,17 @@ const Carrinho: React.FC = () => {
                     
                 </FormControl>
 
-                <FormControl
-                    flexGrow={1}
-                    
-                    >
+                <FormControl flexGrow={1}>
                     <FormLabel
                         htmlFor="nome"
                         fontSize={['sm', 'md']}
                         >
-                        Nome completo
+                        Nome
                         </FormLabel>
                     <Input
                         type="text"
                         id="nome"
-                        aria-describedby="nome-completo"
+                        aria-describedby="nome"
                         
                         focusBorderColor='green.300'
                         borderRadius='sm'
@@ -184,11 +200,8 @@ const Carrinho: React.FC = () => {
                         
                         />
                 </FormControl>
-                <Flex>
-
-
-                </Flex>
-
+                
+                
                 <Flex flexWrap='wrap'>
                     <FormControl flexGrow={1}>
                         <FormLabel
@@ -281,6 +294,8 @@ const Carrinho: React.FC = () => {
                             _hover={{ borderColor: 'green.300' }}
                             value={senha}
                             onChange={handleSenha}
+
+                            isDisabled={loading? true : false}
                             />
 
                     </FormControl>
@@ -302,6 +317,8 @@ const Carrinho: React.FC = () => {
                             _hover={{ borderColor: 'green.300' }}
                             value={senhaAgain}
                             onChange={handleSenhaAgain}
+
+                            isDisabled={loading? true : false}
                             />
 
                     </FormControl>
@@ -322,8 +339,8 @@ const Carrinho: React.FC = () => {
                         _hover={{ backgroundColor: 'green.600' }}
                         fontSize={['xs', 'sm', 'base']}
                         
-                        isDisabled={loading? true : false}
-                        onClick={() => alert('ok')}
+                        isLoading={loading? true : false}
+                        onClick={handleSubmit}
                         >
                         Finalizar cadastro
                     </Button>

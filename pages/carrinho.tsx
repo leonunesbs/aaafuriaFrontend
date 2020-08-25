@@ -19,18 +19,18 @@ interface Item {
 
 const Carrinho: React.FC = () => {
     const router = useRouter()
-    const [error, setError] = useState('')
 
     const cart: { data: any } = useFetch('carrinho/')
     
     if (!cart.data) {
         return <Flex color='green.300' h='100vh' w='100%' alignItems='center' justifyContent='center'><Spinner size='xl' /></Flex>
     }
+    
     !isAuthenticated() && router.push('/login')
 
     async function removeFromCart(pk: number) {
         router.reload()
-        await api.get(`remove-from-cart/${pk}`)
+        await api.post(`remove-from-cart/`, { pk: pk })
     }
 
     
@@ -58,9 +58,9 @@ const Carrinho: React.FC = () => {
                 p={6}
                 >
                 {
-                    cart.data.carrinho 
+                    cart.data.produtos
                     &&
-                    cart.data.carrinho.map((item: {
+                    cart.data.produtos.map((item: {
                         pk: number;
                         quantity: number;
                         item: string;

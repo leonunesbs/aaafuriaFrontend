@@ -6,6 +6,7 @@ import { useFetch } from '../hooks/useFetch';
 import api from '../services/api';
 import { useRouter } from 'next/router';
 import { isAuthenticated } from '../services/auth';
+import Head from 'next/head';
 
 
 
@@ -21,8 +22,7 @@ function Loja() {
 
     async function handleAddToCart(pk: number) {
         if (isAuthenticated()) {
-            const response: any = await api.get(`add-to-cart/${pk}`)
-            
+            await api.post('add-to-cart/', {pk: pk})
             router.push('/carrinho')
         } else {
             alert('Você não está logado.')
@@ -32,6 +32,9 @@ function Loja() {
 
     return (
         <>
+            <Head>
+                <title>Loja</title>
+            </Head>
             <Header />
             <Heading textAlign='center' mt={16} mb={6} size={'xl'} color='green.600'>Loja</Heading>
             <Flex mx={2} justify='center'>

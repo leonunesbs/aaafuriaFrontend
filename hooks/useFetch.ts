@@ -15,7 +15,8 @@ export function useFetch(url: string, interval?: number) {
 
         },
         {
-            refreshInterval: int
+            refreshInterval: int,
+            
         }
     )
 
