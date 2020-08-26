@@ -183,7 +183,7 @@ const Carrinho: React.FC = () => {
                     color='#fff'
                     _hover={{ backgroundColor: 'green.600' }}
                     fontSize={['xs', 'sm', 'base']}
-                    
+                    onClick={() => router.push('/checkout')}
                     >
                     Finalizar pedido
                         <Box as={AiOutlineArrowRight} size={6} />

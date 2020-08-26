@@ -1,7 +1,7 @@
 import { create, ApisauceConfig, ApisauceInstance } from 'apisauce';
 
 const api: ApisauceInstance = create({
-    baseURL: 'http://127.0.0.1:8000/api/'
+    baseURL: 'https://aaafuriav2.herokuapp.com/api/'
 
 })
 
