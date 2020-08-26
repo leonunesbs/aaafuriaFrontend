@@ -108,6 +108,7 @@ const Checkout: React.FC = () => {
                                     flexGrow={1}
                                     alignItems='center'
                                     justifyContent='flex-end'
+                                    ml={2}
                                     mr={4}
                                     >
 
