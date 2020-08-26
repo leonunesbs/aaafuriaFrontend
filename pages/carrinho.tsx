@@ -9,6 +9,7 @@ import api from '../services/api';
 import { useRouter } from 'next/router';
 import { isAuthenticated } from '../services/auth';
 import Head from 'next/head';
+import { route } from 'next/dist/next-server/server/router';
 
 
 
@@ -19,9 +20,12 @@ interface Item {
 
 const Carrinho: React.FC = () => {
     const router = useRouter()
+    const [produtos, setProdutos] = useState([])
 
-    const cart: { data: any } = useFetch('carrinho/')
+    const cart: { data: any } = useFetch('carrinho/', 5000)
     
+    useEffect(() => {setProdutos(cart.data && cart.data.produtos)})
+
     if (!cart.data) {
         return <Flex color='green.300' h='100vh' w='100%' alignItems='center' justifyContent='center'><Spinner size='xl' /></Flex>
     }
@@ -29,11 +33,16 @@ const Carrinho: React.FC = () => {
     !isAuthenticated() && router.push('/login')
 
     async function removeFromCart(pk: number) {
-        router.reload()
         await api.post(`remove-from-cart/`, { pk: pk })
+        produtos.forEach((element, index, array) => {
+            if (element.pk == pk) {
+                array.splice(index, 1)
+                setProdutos(array)
+            }
+        })
+        setProdutos([{pk: 0}])
     }
 
-    
 
     return (
         <>
@@ -58,13 +67,12 @@ const Carrinho: React.FC = () => {
                 p={6}
                 >
                 {
-                    cart.data.produtos
-                    &&
-                    cart.data.produtos.map((item: {
+                    produtos?.map((item: {
                         pk: number;
                         quantity: number;
                         item: string;
                         final_price: number;
+                        size: string;
                     }) => (
                         <Flex
                         key={item.pk}
@@ -121,7 +129,7 @@ const Carrinho: React.FC = () => {
                                     mr={4}
                                     >
 
-                                    50
+                                    {item.size}
                             </Flex>
 
                                 <Flex
