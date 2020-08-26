@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import api from '../services/api';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { isAuthenticated } from '../services/auth';
 
 
 interface Item {
@@ -64,6 +65,8 @@ const Carrinho: React.FC = () => {
     //     }
     // }, [birth])
     
+    useEffect(() => {!isAuthenticated() && router.push('/login')}, [])
+    
     useEffect(() => {
         if (matricula.length == 8) 
             setDigitando(false)
@@ -71,6 +74,17 @@ const Carrinho: React.FC = () => {
             setDigitando(true)
 
     }, [matricula])
+
+    useEffect(() => {
+        if (matricula.length == 8) 
+            setDigitando(false)
+        else 
+            setDigitando(true)
+
+    }, [])
+
+
+
     
     const handleLoadData = async () => {
         setLoading(true)

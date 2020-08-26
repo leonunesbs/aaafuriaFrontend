@@ -25,12 +25,13 @@ const Carrinho: React.FC = () => {
     const cart: { data: any } = useFetch('carrinho/', 10000)
     
     useEffect(() => {setProdutos(cart.data && cart.data.produtos)})
+    useEffect(() => {!isAuthenticated() && router.push('/login')}, [])
 
     if (!cart.data) {
         return <Flex color='green.300' h='100vh' w='100%' alignItems='center' justifyContent='center'><Spinner size='xl' /></Flex>
     }
     
-    !isAuthenticated() && router.push('/login')
+    
 
     async function removeFromCart(pk: number) {
         await api.post(`remove-from-cart/`, { pk: pk })
