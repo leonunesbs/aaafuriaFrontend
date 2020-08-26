@@ -22,7 +22,7 @@ const Carrinho: React.FC = () => {
     const router = useRouter()
     const [produtos, setProdutos] = useState([])
 
-    const cart: { data: any } = useFetch('carrinho/', 5000)
+    const cart: { data: any } = useFetch('carrinho/', 10000)
     
     useEffect(() => {setProdutos(cart.data && cart.data.produtos)})
 
