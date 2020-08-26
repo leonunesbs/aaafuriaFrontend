@@ -89,7 +89,7 @@ const Carrinho: React.FC = () => {
                 title: "Sócio Fúria!",
                 description: "Recuperamos alguns dos seus dados pra facilitar seu cadastro",
                 status: "success",
-                duration: 5000,
+                duration: 9000,
                 isClosable: true,
             })
         }
@@ -169,6 +169,7 @@ const Carrinho: React.FC = () => {
                             color='#fff' 
                             onClick={handleLoadData}
                             fontSize={['xs', 'sm']}
+                            isLoading={loading? true : false}
                             >
                             {'Recuperar'}
                             </Button>
