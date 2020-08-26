@@ -79,12 +79,17 @@ const Header: React.FC = () => {
             </Flex>
 
             <Flex minW='150px' w='80%' justifyContent='center'>
+                <Link href='/'>
+                    <a>
                         <Image
                             alt='logo_branco'
                             src='logo_dark.png'
                             alignSelf='center'
                             p={6}
                         />
+                    </a>
+                </Link>
+                        
             </Flex>
 
             <Flex maxW='20%'>
