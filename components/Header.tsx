@@ -14,19 +14,16 @@ const Header: React.FC = () => {
     const [isAuth, setIsAuth] = useState(null)
 
     useEffect(() => {
-        async function isAuth() {
-            if (await isAuthenticated()) {
+        async function auth() {
+            if (isAuthenticated()) {
                 return setIsAuth(true)
             } else {
                 return setIsAuth(false)
             }
         }
-        isAuth()
+        auth()
     }, [])
 
-    function redirectHome() {
-        router.push('/')
-    }
 
     return (
         <Flex
@@ -82,16 +79,12 @@ const Header: React.FC = () => {
             </Flex>
 
             <Flex minW='150px' w='80%' justifyContent='center'>
-                <Link href='/'>
-                    <a>
                         <Image
                             alt='logo_branco'
                             src='logo_dark.png'
                             alignSelf='center'
                             p={6}
                         />
-                    </a>
-                </Link>
             </Flex>
 
             <Flex maxW='20%'>
