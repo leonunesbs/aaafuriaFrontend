@@ -111,7 +111,7 @@ const Carrinho: React.FC = () => {
 
     const handleSubmit = async () => {
         setLoading(true)
-        const response = await api.post('cadastro/', {
+        const response: any = await api.post('cadastro/', {
             'nome': nome,
             'email': email,
             'matricula': matricula,
@@ -119,7 +119,11 @@ const Carrinho: React.FC = () => {
             'senha': senha,
             'senha_again': senhaAgain
         })
-        console.log(response.data)
+
+        if (response.ok) {
+            localStorage.setItem('Token', response.data.token)
+            router.push('/loja')
+        }
         setLoading(false)
     }
 
