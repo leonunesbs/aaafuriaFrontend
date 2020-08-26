@@ -65,7 +65,7 @@ const Carrinho: React.FC = () => {
     //     }
     // }, [birth])
     
-    useEffect(() => {!isAuthenticated() && router.push('/login')}, [])
+    useEffect(() => {isAuthenticated() && router.push('/')}, [])
     
     useEffect(() => {
         if (matricula.length == 8) 
