@@ -60,6 +60,11 @@ const Header: React.FC = () => {
     auth()
   }, [])
 
+  const handleLogout = () => {
+    logout()
+    router.push('/login')
+  }
+
   return (
     <Flex
       backgroundColor="green.600"
@@ -146,7 +151,7 @@ const Header: React.FC = () => {
                   <MenuButton
                     color="#fff"
                     backgroundColor="gray.600"
-                    onClick={() => logout()}
+                    onClick={handleLogout}
                   >
                     Sair
                   </MenuButton>
@@ -159,13 +164,6 @@ const Header: React.FC = () => {
                     onClick={() => router.push('/login')}
                   >
                     Entrar
-                  </MenuButton>
-                  <MenuButton
-                    color="#fff"
-                    backgroundColor="gray.600"
-                    onClick={() => router.push('/cadastro')}
-                  >
-                    Cadastre-se
                   </MenuButton>
                 </>
               )}

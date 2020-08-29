@@ -104,6 +104,7 @@ export default function Login() {
 
     if (response.ok != '') {
       toast({
+        position: 'top',
         title: 'Sócio Fúria!',
         description:
           'Recuperamos alguns dos seus dados pra facilitar seu cadastro',
@@ -161,7 +162,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Login</title>
+        <title>Login - @aaafuria</title>
       </Head>
       <Flex
         flexWrap="wrap"
@@ -263,7 +264,9 @@ export default function Login() {
           </Text>
 
           <Flex alignSelf="center" fontSize="sm">
-            <Text color="gray.300">Não consegue acessar? </Text>
+            <Text color="gray.300">
+              Não tem cadastro ou consegue acessar? Clique
+            </Text>
             <Text
               ref={btnRef}
               color="gray.300"
@@ -271,7 +274,7 @@ export default function Login() {
               onClick={onOpen}
               cursor="pointer"
             >
-              <b>Cadastre-se</b>
+              <b>aqui</b>.
             </Text>
           </Flex>
 

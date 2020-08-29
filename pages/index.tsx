@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>A.A.A. Fúria</title>
+        <title>Início - @aaafuria</title>
       </Head>
       <Header />
       <Heading>Hello World!</Heading>

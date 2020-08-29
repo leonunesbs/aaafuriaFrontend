@@ -17,6 +17,7 @@ import { useFetch } from '../hooks/useFetch'
 import { isAuthenticated } from '../config/auth'
 import { useRouter } from 'next/router'
 import api from '../services/api'
+import Head from 'next/head'
 
 const Checkout: React.FC = () => {
   const router = useRouter()
@@ -45,6 +46,9 @@ const Checkout: React.FC = () => {
 
   return (
     <>
+      <Head>
+        <title>Checkout - @aaafuria</title>
+      </Head>
       <Header />
       <Heading textAlign="center" mt={16} mb={6} size={'xl'} color="green.600">
         Finalizar pedido

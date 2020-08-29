@@ -39,6 +39,7 @@ const Carrinho: React.FC = () => {
   useEffect(() => {
     if (router.query.message) {
       toast({
+        position: 'top',
         title: `${router.query.message}`,
         status: 'success',
         duration: 2000,
@@ -75,7 +76,7 @@ const Carrinho: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Carrinho</title>
+        <title>Carrinho - @aaafuria</title>
       </Head>
       <Flex flexDir="column">
         <Header />

@@ -69,6 +69,7 @@ function Loja() {
         })
       } else {
         toast({
+          position: 'top',
           title: 'Erro!',
           description: `${response.data.error}. (${response.data.item})`,
           status: 'error',
@@ -84,7 +85,7 @@ function Loja() {
   return (
     <>
       <Head>
-        <title>Loja</title>
+        <title>Loja - @aaafuria</title>
       </Head>
       <Header />
       <Heading textAlign="center" mt={16} mb={6} size={'xl'} color="green.600">
