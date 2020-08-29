@@ -4,6 +4,7 @@ import { Heading, Link } from '@chakra-ui/core'
 import { logout } from '../config/auth'
 import Header from '../components/Header'
 import Head from 'next/head'
+import Footer from '../components/Footer'
 
 export default function Home() {
   const router = useRouter()
@@ -20,6 +21,7 @@ export default function Home() {
       <Header />
       <Heading>Hello World!</Heading>
       <Link onClick={handleLogout}>Sair</Link>
+      <Footer />
     </>
   )
 }

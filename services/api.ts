@@ -1,4 +1,4 @@
-import { create, ApisauceConfig, ApisauceInstance } from 'apisauce'
+import { create, ApisauceInstance } from 'apisauce'
 
 const api: ApisauceInstance = create({
   baseURL: 'https://aaafuriav2.herokuapp.com/api/',

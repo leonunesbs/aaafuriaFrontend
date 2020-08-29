@@ -47,6 +47,8 @@ const Header: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
 
+  const [user, setUser]: any = useState({})
+
   const [isAuth, setIsAuth] = useState(null)
 
   useEffect(() => {
@@ -58,6 +60,11 @@ const Header: React.FC = () => {
       }
     }
     auth()
+  }, [])
+
+  useEffect(() => {
+    const u = localStorage.getItem('User')
+    setUser(JSON.parse(u))
   }, [])
 
   const handleLogout = () => {
@@ -133,7 +140,11 @@ const Header: React.FC = () => {
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
-            <DrawerHeader>Olá!</DrawerHeader>
+            {user ? (
+              <DrawerHeader>Olá, {user.username}!</DrawerHeader>
+            ) : (
+              <DrawerHeader>Olá!</DrawerHeader>
+            )}
 
             <DrawerBody>
               <MenuButton onClick={() => router.push('/carrinho')}>
@@ -170,7 +181,7 @@ const Header: React.FC = () => {
               )}
             </DrawerBody>
 
-            <DrawerFooter>Footer</DrawerFooter>
+            <DrawerFooter>@aaafuria</DrawerFooter>
           </DrawerContent>
         </Drawer>
       </Flex>
