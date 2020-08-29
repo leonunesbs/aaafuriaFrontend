@@ -21,7 +21,7 @@ import { isAuthenticated, logout } from '../config/auth'
 import { useRouter } from 'next/router'
 
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { AiOutlineShopping } from 'react-icons/ai'
+import { AiOutlineShopping, AiOutlineShoppingCart } from 'react-icons/ai'
 
 function MenuButton({ children, ...rest }) {
   return (
@@ -137,6 +137,7 @@ const Header: React.FC = () => {
 
             <DrawerBody>
               <MenuButton onClick={() => router.push('/carrinho')}>
+                <Box as={AiOutlineShoppingCart} mr={2} />
                 Carrinho
               </MenuButton>
               <MenuButton onClick={() => router.push('/pedidos')}>

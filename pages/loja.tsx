@@ -69,7 +69,7 @@ function Loja() {
         })
       } else {
         toast({
-          position: 'top',
+          position: 'bottom',
           title: 'Erro!',
           description: `${response.data.error}. (${response.data.item})`,
           status: 'error',

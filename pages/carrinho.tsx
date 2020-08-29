@@ -39,7 +39,7 @@ const Carrinho: React.FC = () => {
   useEffect(() => {
     if (router.query.message) {
       toast({
-        position: 'top',
+        position: 'bottom',
         title: `${router.query.message}`,
         status: 'success',
         duration: 2000,
