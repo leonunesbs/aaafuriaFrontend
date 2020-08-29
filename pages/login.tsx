@@ -41,7 +41,8 @@ export default function Login() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
 
-  const [error, setError] = useState('')
+  const [errorLogin, setErrorLogin] = useState(null)
+  const [error, setError] = useState(null)
 
   // Login
   const [matriculaLogin, setMatriculaLogin] = useState('')
@@ -88,7 +89,7 @@ export default function Login() {
   }, [])
 
   const handleLoadData = async () => {
-    setLoadingLogin(true)
+    setLoading(true)
     const response: any = await api.get(
       `https://aaafuria.herokuapp.com/api/get-socio-data/${matricula}`
     )
@@ -100,7 +101,7 @@ export default function Login() {
       setTurma(response.data.turma)
       setBirth(response.data.data_de_nascimento)
     }
-    setLoadingLogin(false)
+    setLoading(false)
 
     if (response.ok != '') {
       toast({
@@ -109,13 +110,14 @@ export default function Login() {
         description:
           'Recuperamos alguns dos seus dados pra facilitar seu cadastro',
         status: 'success',
-        duration: 9000,
+        duration: 3000,
         isClosable: true,
       })
     }
   }
 
   const handleSubmit = async () => {
+    setError(null)
     setLoading(true)
     const response: any = await api.post('cadastro/', {
       nome: nome,
@@ -127,9 +129,11 @@ export default function Login() {
     })
 
     if (response.ok) {
-      localStorage.setItem('Token', response.data.token)
-      router.push('/loja')
+      if (response.data.token) {
+        localStorage.setItem('Token', response.data.token)
+      }
     }
+    setError(response.data.error)
     setLoading(false)
   }
   // FIM CADASTRO
@@ -138,12 +142,12 @@ export default function Login() {
 
   async function handleLogin() {
     setLoadingLogin(true)
-    setError(null)
+    setErrorLogin(null)
     const response: any = await authenticate(matriculaLogin, senhaLogin)
     if (response.ok) {
       router.push('/')
     } else {
-      setError(response.data.error)
+      setErrorLogin(response.data.error)
     }
     setLoadingLogin(false)
   }
@@ -260,13 +264,11 @@ export default function Login() {
             mt={1}
             fontSize="sm"
           >
-            {error}
+            {errorLogin}
           </Text>
 
           <Flex alignSelf="center" fontSize="sm">
-            <Text color="gray.300">
-              Não tem cadastro ou consegue acessar? Clique
-            </Text>
+            <Text color="gray.300">Não consegue acessar? Clique</Text>
             <Text
               ref={btnRef}
               color="gray.300"
@@ -326,7 +328,7 @@ export default function Login() {
                           borderRadius="sm"
                           color="#fff"
                           fontSize={['xs', 'sm']}
-                          isLoading={loadingLogin ? true : false}
+                          isLoading={loading ? true : false}
                           onClick={handleLoadData}
                           isDisabled={digitando}
                         >
@@ -347,7 +349,7 @@ export default function Login() {
                       focusBorderColor="green.300"
                       borderRadius="sm"
                       _hover={{ borderColor: 'green.300' }}
-                      isDisabled={loadingLogin ? true : false}
+                      isDisabled={loading ? true : false}
                       value={nome}
                       onChange={handleNome}
                     />
@@ -365,7 +367,7 @@ export default function Login() {
                         focusBorderColor="green.300"
                         borderRadius="sm"
                         _hover={{ borderColor: 'green.300' }}
-                        isDisabled={loadingLogin ? true : false}
+                        isDisabled={loading ? true : false}
                         value={email}
                         onChange={handleEmail}
                       />
@@ -381,7 +383,7 @@ export default function Login() {
                         focusBorderColor="green.300"
                         borderRadius="sm"
                         _hover={{ borderColor: 'green.300' }}
-                        isDisabled={loadingLogin ? true : false}
+                        isDisabled={loading ? true : false}
                         value={birth}
                         onChange={handleBirth}
                       />
@@ -398,7 +400,7 @@ export default function Login() {
                           borderRadius="sm"
                           _hover={{ borderColor: 'green.300' }}
                           maxLength={2}
-                          isDisabled={loadingLogin ? true : false}
+                          isDisabled={loading ? true : false}
                           value={turma}
                           onChange={handleTurma}
                         />
@@ -419,7 +421,7 @@ export default function Login() {
                         _hover={{ borderColor: 'green.300' }}
                         value={senha}
                         onChange={handleSenha}
-                        isDisabled={loadingLogin ? true : false}
+                        isDisabled={loading ? true : false}
                       />
                     </FormControl>
                     <Box w={4} />
@@ -434,13 +436,24 @@ export default function Login() {
                         focusBorderColor="green.300"
                         borderRadius="sm"
                         _hover={{ borderColor: 'green.300' }}
-                        isDisabled={loadingLogin ? true : false}
+                        isDisabled={loading ? true : false}
                         value={senhaAgain}
                         onChange={handleSenhaAgain}
                       />
                     </FormControl>
                   </Flex>
                 </Flex>
+                {error != '' && (
+                  <Text
+                    textAlign="center"
+                    color="green.600"
+                    fontWeight="bold"
+                    mt={1}
+                    fontSize="sm"
+                  >
+                    {error}
+                  </Text>
+                )}
                 <Flex mt={6} justifyContent="center" alignSelf="center">
                   <Button
                     h="45px"
@@ -450,7 +463,7 @@ export default function Login() {
                     color="#fff"
                     _hover={{ backgroundColor: 'green.600' }}
                     fontSize={['xs', 'sm', 'base']}
-                    isLoading={loadingLogin ? true : false}
+                    isLoading={loading ? true : false}
                     onClick={handleSubmit}
                   >
                     Finalizar cadastro
