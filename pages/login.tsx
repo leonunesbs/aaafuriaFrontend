@@ -278,6 +278,7 @@ export default function Login() {
           <Drawer
             isOpen={isOpen}
             placement="bottom"
+            size="full"
             onClose={onClose}
             finalFocusRef={btnRef}
           >
@@ -293,8 +294,7 @@ export default function Login() {
                   flexDir="column"
                   borderWidth={1}
                   borderRadius="md"
-                  mt={6}
-                  p={6}
+                  p={4}
                 >
                   <FormControl flexGrow={1}>
                     <FormLabel htmlFor="matricula" fontSize={['sm', 'md']}>
@@ -454,10 +454,6 @@ export default function Login() {
                   </Button>
                 </Flex>
               </DrawerBody>
-
-              <DrawerFooter>
-                <Box mt={6}></Box>
-              </DrawerFooter>
             </DrawerContent>
           </Drawer>
         </Flex>
