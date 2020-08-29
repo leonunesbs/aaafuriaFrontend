@@ -39,11 +39,11 @@ interface Sócio {
 const Carrinho: React.FC = () => {
   const router = useRouter()
 
-  const [birth, setBirth] = useState('')
-  const handleBirth = (event: any) => setBirth(event.target.value)
-
   const [nome, setNome] = useState('')
   const handleNome = (event: any) => setNome(event.target.value.toUpperCase())
+
+  const [birth, setBirth] = useState('')
+  const handleBirth = (event: any) => setBirth(event.target.value)
 
   const [email, setEmail] = useState('')
   const handleEmail = (event: any) => setEmail(event.target.value)

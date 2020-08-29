@@ -155,12 +155,14 @@ const Header: React.FC = () => {
                 <>
                   <MenuButton
                     color="#fff"
+                    backgroundColor="gray.600"
                     onClick={() => router.push('/login')}
                   >
                     Entrar
                   </MenuButton>
                   <MenuButton
                     color="#fff"
+                    backgroundColor="gray.600"
                     onClick={() => router.push('/cadastro')}
                   >
                     Cadastre-se
