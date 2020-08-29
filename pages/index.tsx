@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
 
-import { Heading, Link } from '@chakra-ui/core';
-import { logout } from '../services/auth';
-import Header from '../components/Header';
-import Head from 'next/head';
+import { Heading, Link } from '@chakra-ui/core'
+import { logout } from '../config/auth'
+import Header from '../components/Header'
+import Head from 'next/head'
 
 export default function Home() {
   const router = useRouter()

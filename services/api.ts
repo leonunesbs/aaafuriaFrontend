@@ -1,16 +1,15 @@
-import { create, ApisauceConfig, ApisauceInstance } from 'apisauce';
+import { create, ApisauceConfig, ApisauceInstance } from 'apisauce'
 
 const api: ApisauceInstance = create({
-    baseURL: 'https://aaafuriav2.herokuapp.com/api/'
-
+  baseURL: 'http://localhost:8000/api/',
 })
 
-api.addAsyncRequestTransform(request => async () => {
-    const token = localStorage.getItem('Token')
+api.addAsyncRequestTransform((request) => async () => {
+  const token = localStorage.getItem('Token')
 
-    if (token) {
-        request.headers['Authorization'] = `Token ${token}`
-    }
+  if (token) {
+    request.headers['Authorization'] = `Token ${token}`
+  }
 })
 
 export default api
