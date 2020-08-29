@@ -11,6 +11,10 @@ class MyDocument extends Document<DocumentProps> {
     return (
       <Html lang="pt-br">
         <Head>
+          <meta
+            name="google-site-verification"
+            content="wisnFadn82Ndz9TMStMgCiRpbFSgVe4WmNl-kJHc1Uo"
+          />
           <link
             rel="apple-touch-icon"
             sizes="57x57"
