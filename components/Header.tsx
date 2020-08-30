@@ -126,7 +126,7 @@ const Header: React.FC = () => {
             <a>
               <Image
                 alt="logo_branco"
-                src="logo_dark.png"
+                src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/logo_dark.png"
                 alignSelf="center"
                 px={6}
                 py={4}
