@@ -191,7 +191,7 @@ export default function Login() {
             fontSize={['lg', '2xl', '3xl']}
             marginTop={15}
             textAlign={['center', 'left']}
-            color="gray.600"
+            color="gray.500"
           >
             Faça seu login na plataforma
           </Heading>

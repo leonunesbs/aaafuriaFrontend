@@ -4,14 +4,14 @@ import { Flex, Text, Box } from '@chakra-ui/core'
 const Footer: React.FC = () => {
   return (
     <>
-      <Box w="100%" h="8px" backgroundColor="gray.600" />
+      <Box w="100%" h="8px" backgroundColor="gray.500" />
       <Box w="100%" h="2px" backgroundColor="green.300" />
       <Flex
         w="100%"
         h="50px"
         flexDir="column"
         justify="center"
-        backgroundColor="gray.600"
+        backgroundColor="gray.500"
       >
         <Text
           color="gray.200"

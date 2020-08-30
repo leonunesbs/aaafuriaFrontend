@@ -30,7 +30,7 @@ function MenuButton({ children, ...rest }) {
       backgroundColor="green.600"
       borderRadius="sm"
       p={2}
-      mb={1}
+      my={1}
       color="#FFF"
       fontWeight="bold"
       _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
   return (
     <>
       <Flex
-        backgroundColor="gray.600"
+        backgroundColor="gray.500"
         alignItems="center"
         justifyContent="space-around"
         p={2}
@@ -84,20 +84,30 @@ const Header: React.FC = () => {
       >
         <Flex flexDir="column" w="20%" maxW="130px">
           <MenuButton
-            backgroundColor="green.300"
+            backgroundColor="gray.600"
             color="#fff"
             p={1}
+            h={['30px', '35px']}
             fontSize={['xs', 'sm', 'md']}
+            borderWidth="1px"
+            borderColor="green.300"
+            _hover={{ backgroundColor: 'green.300' }}
+            _active={{ backgroundColor: 'gray.700' }}
             fontWeight={['thin', 'normal', 'bold']}
           >
             Seja Sócio
           </MenuButton>
           <MenuButton
-            backgroundColor="green.600"
+            backgroundColor="gray.600"
             color="#fff"
             p={1}
+            h={['30px', '35px']}
+            borderWidth="1px"
+            borderColor="green.300"
             fontSize={['xs', 'sm', 'md']}
             fontWeight={['thin', 'normal', 'bold']}
+            _hover={{ backgroundColor: 'green.300' }}
+            _active={{ backgroundColor: 'gray.700' }}
             onClick={() => router.push('/loja')}
           >
             <Box as={AiOutlineShopping} />
@@ -112,7 +122,8 @@ const Header: React.FC = () => {
                 alt="logo_branco"
                 src="logo_dark.png"
                 alignSelf="center"
-                p={6}
+                px={6}
+                py={4}
               />
             </a>
           </Link>
@@ -123,7 +134,7 @@ const Header: React.FC = () => {
             ref={btnRef}
             as={Button}
             p={0}
-            backgroundColor="gray.600"
+            backgroundColor="gray.500"
             onClick={onOpen}
             borderRadius="sm"
             _hover={{ backgroundColor: 'green.600' }}
@@ -157,12 +168,12 @@ const Header: React.FC = () => {
                 <Divider />
                 {isAuth ? (
                   <>
-                    <MenuButton color="#fff" backgroundColor="gray.600">
+                    <MenuButton color="#fff" backgroundColor="gray.500">
                       Perfil
                     </MenuButton>
                     <MenuButton
                       color="#fff"
-                      backgroundColor="gray.600"
+                      backgroundColor="gray.500"
                       onClick={handleLogout}
                     >
                       Sair
@@ -172,7 +183,7 @@ const Header: React.FC = () => {
                   <>
                     <MenuButton
                       color="#fff"
-                      backgroundColor="gray.600"
+                      backgroundColor="gray.500"
                       onClick={() => router.push('/login')}
                     >
                       Entrar
@@ -187,7 +198,7 @@ const Header: React.FC = () => {
         </Flex>
       </Flex>
       <Box w="100%" h="2px" backgroundColor="green.300" />
-      <Box w="100%" h="8px" backgroundColor="gray.600" />
+      <Box w="100%" h="8px" backgroundColor="gray.500" />
     </>
   )
 }

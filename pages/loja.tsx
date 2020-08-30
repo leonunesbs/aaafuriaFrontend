@@ -144,7 +144,7 @@ function Loja() {
                       </Text>
                     </Flex>
                   ) : (
-                    <Text color="gray.600">R${item.price}</Text>
+                    <Text color="gray.500">R${item.price}</Text>
                   )}
                 </Box>
               </Flex>

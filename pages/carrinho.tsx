@@ -178,7 +178,7 @@ const Carrinho: React.FC = () => {
             <Button
               h="45px"
               borderRadius="sm"
-              backgroundColor="gray.600"
+              backgroundColor="gray.500"
               color="#fff"
               _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
               fontSize={['xs', 'sm', 'base']}
