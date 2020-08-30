@@ -18,6 +18,7 @@ import { isAuthenticated } from '../config/auth'
 import { useRouter } from 'next/router'
 import api from '../services/api'
 import Head from 'next/head'
+import Footer from '../components/Footer'
 
 const Checkout: React.FC = () => {
   const router = useRouter()
@@ -53,7 +54,7 @@ const Checkout: React.FC = () => {
       <Heading textAlign="center" mt={16} mb={6} size={'xl'} color="green.600">
         Finalizar pedido
       </Heading>
-      <Flex p={6} flexWrap="wrap">
+      <Flex p={6} flexWrap="wrap" mb={16}>
         <Flex
           flexGrow={1}
           borderColor="#ededed"
@@ -170,6 +171,7 @@ const Checkout: React.FC = () => {
           </Button>
         </Flex>
       </Flex>
+      <Footer />
     </>
   )
 }

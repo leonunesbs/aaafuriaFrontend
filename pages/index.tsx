@@ -33,19 +33,25 @@ export default function Home() {
           <Flex
             backgroundColor="rgba(0,0,0, 0.4)"
             borderRadius="md"
-            maxW={['100%', '60%']}
+            maxW={['100%', '50%']}
             ml={4}
+            mr={[0, 10]}
             px={10}
             py={16}
             flexDir="column"
           >
-            <Text fontSize="2xl" fontWeight="bold" color="#fff">
+            <Text
+              color="#fff"
+              fontSize={['2xl']}
+              fontWeight="bold"
+              lineHeight="45px"
+            >
               Venha fazer parte da maior do Nordeste!
             </Text>
             <Button
               borderRadius="sm"
               size="lg"
-              mt={4}
+              mt={6}
               backgroundColor="green.300"
               color="#fff"
               _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}

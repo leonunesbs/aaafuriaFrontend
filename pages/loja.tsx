@@ -92,7 +92,7 @@ function Loja() {
       <Heading textAlign="center" mt={16} mb={6} size={'xl'} color="green.600">
         Loja
       </Heading>
-      <Flex mx={2} justify="center" flexWrap="wrap">
+      <Flex mx={2} mb={16} justify="center" flexWrap="wrap">
         {produtos?.map((item) => (
           <Flex
             key={item.pk}

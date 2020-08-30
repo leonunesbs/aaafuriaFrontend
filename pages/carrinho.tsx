@@ -17,6 +17,7 @@ import api from '../services/api'
 import { useRouter } from 'next/router'
 import { isAuthenticated } from '../config/auth'
 import Head from 'next/head'
+import Footer from '../components/Footer'
 
 interface Item {
   carrinho: any
@@ -79,7 +80,7 @@ const Carrinho: React.FC = () => {
       <Head>
         <title>Carrinho - @aaafuria</title>
       </Head>
-      <Flex flexDir="column">
+      <Flex flexDir="column" mb={16}>
         <Header />
         <Flex flexDirection="column">
           <Heading textAlign="center" mt={16} size={'xl'} color="green.600">
@@ -98,7 +99,7 @@ const Carrinho: React.FC = () => {
           mt={6}
           p={6}
         >
-          {produtos.map(
+          {produtos?.map(
             (item: {
               pk: number
               quantity: number
@@ -201,6 +202,7 @@ const Carrinho: React.FC = () => {
           </Button>
         </Flex>
       </Flex>
+      <Footer />
     </>
   )
 }
