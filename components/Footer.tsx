@@ -1,20 +1,28 @@
 import React from 'react'
-import { Flex, Text } from '@chakra-ui/core'
+import { Flex, Text, Box } from '@chakra-ui/core'
 
 const Footer: React.FC = () => {
   return (
-    <Flex
-      w="100%"
-      h="50px"
-      mt={16}
-      flexDir="column"
-      justify="center"
-      backgroundColor="green.600"
-    >
-      <Text color="gray.300" fontWeight="thin" fontSize="sm" textAlign="center">
-        &copy; <b>A.A.A. Fúria 2020</b>. Diretoria de Marketing.
-      </Text>
-    </Flex>
+    <>
+      <Box w="100%" h="8px" backgroundColor="gray.600" />
+      <Box w="100%" h="2px" backgroundColor="green.300" />
+      <Flex
+        w="100%"
+        h="50px"
+        flexDir="column"
+        justify="center"
+        backgroundColor="gray.600"
+      >
+        <Text
+          color="gray.200"
+          fontWeight="thin"
+          fontSize="sm"
+          textAlign="center"
+        >
+          &copy; <b>A.A.A. Fúria 2020</b>. Diretoria de Marketing.
+        </Text>
+      </Flex>
+    </>
   )
 }
 

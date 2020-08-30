@@ -31,6 +31,7 @@ const Carrinho: React.FC = () => {
 
   useEffect(() => {
     setProdutos(cart.data && cart.data.produtos)
+    console.log(produtos)
   })
   useEffect(() => {
     !isAuthenticated() && router.push('/login')
@@ -97,7 +98,7 @@ const Carrinho: React.FC = () => {
           mt={6}
           p={6}
         >
-          {produtos?.map(
+          {produtos.map(
             (item: {
               pk: number
               quantity: number
