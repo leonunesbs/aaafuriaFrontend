@@ -91,6 +91,7 @@ class MyDocument extends Document<DocumentProps> {
             content="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/ms-icon-144x144.png"
           />
           <meta name="theme-color" content="#e9e9e9" />
+          <link rel="manifest" href="/manifest.json" />
           <link
             href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
             rel="preload"

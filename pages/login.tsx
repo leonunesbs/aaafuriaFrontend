@@ -183,7 +183,7 @@ export default function Login() {
           alignItems="flex-start"
         >
           <Image
-            src="/logo_light.svg"
+            src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/logo_light.svg"
             alt="logo_light"
             height="90px"
             onClick={() => router.push('/')}
@@ -217,6 +217,7 @@ export default function Login() {
               height="45px"
               borderRadius="sm"
               focusBorderColor="green.300"
+              isDisabled={loadingLogin}
             />
           </InputGroup>
           <InputGroup marginTop={2}>
@@ -231,6 +232,7 @@ export default function Login() {
               height="45px"
               borderRadius="sm"
               focusBorderColor="green.300"
+              isDisabled={loadingLogin}
             />
           </InputGroup>
           <Link href="#">
@@ -250,15 +252,16 @@ export default function Login() {
           <Button
             backgroundColor="green.300"
             isLoading={loadingLogin}
+            loadingText="Entrando..."
             height="45px"
             borderRadius="sm"
             marginTop={6}
             color="#fff"
-            _hover={{ backgroundColor: 'green.800' }}
+            _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
             onClick={handleLogin}
-            rightIcon={FiLogIn}
+            leftIcon={FiLogIn}
           >
-            ENTRAR
+            Entrar
           </Button>
           <Text
             alignSelf="center"
