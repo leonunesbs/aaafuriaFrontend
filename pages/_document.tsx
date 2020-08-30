@@ -11,6 +11,7 @@ class MyDocument extends Document<DocumentProps> {
     return (
       <Html lang="pt-br">
         <Head>
+          <meta charSet="utf-8" />
           <meta
             name="google-site-verification"
             content="wisnFadn82Ndz9TMStMgCiRpbFSgVe4WmNl-kJHc1Uo"
@@ -87,7 +88,11 @@ class MyDocument extends Document<DocumentProps> {
           <link rel="manifest" href="/manifest.json" />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-          <meta name="theme-color" content="#ffffff" />
+          <meta name="theme-color" content="#e9e9e9" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          ></meta>
           <link
             href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
             rel="stylesheet"
