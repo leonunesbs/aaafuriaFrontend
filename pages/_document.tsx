@@ -85,10 +85,6 @@ class MyDocument extends Document<DocumentProps> {
             sizes="16x16"
             href="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/favicon-16x16.png"
           />
-          <link
-            rel="manifest"
-            href="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/manifest.json"
-          />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta
             name="msapplication-TileImage"
