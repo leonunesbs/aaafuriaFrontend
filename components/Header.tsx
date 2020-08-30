@@ -134,10 +134,12 @@ const Header: React.FC = () => {
             ref={btnRef}
             as={Button}
             p={0}
-            backgroundColor="gray.500"
+            backgroundColor="gray.600"
+            borderWidth="1px"
+            borderColor="green.300"
             onClick={onOpen}
             borderRadius="sm"
-            _hover={{ backgroundColor: 'green.600' }}
+            _hover={{ backgroundColor: 'green.300' }}
             _active={{ backgroundColor: 'green.600' }}
           >
             <Box as={GiHamburgerMenu} size={6} m={0} p={0} color="#fff" />
