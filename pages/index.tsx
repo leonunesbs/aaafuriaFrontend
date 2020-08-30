@@ -21,7 +21,7 @@ export default function Home() {
       <Header />
       <Flex
         backgroundImage="linear-gradient(to bottom, rgba(0,173,52,0.2), rgba(2,42,6,0.95)),
-        url('home_background.jpg')"
+        url('https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/home_background.jpg')"
         backgroundPosition="25% 50%"
         backgroundSize="cover"
         backgroundRepeat="no-repeat"
