@@ -93,7 +93,10 @@ class MyDocument extends Document<DocumentProps> {
           <meta name="theme-color" content="#e9e9e9" />
           <link
             href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            as="font"
+            type="font/lato"
+            crossOrigin="anonymous"
           />
         </Head>
         <body>
