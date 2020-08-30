@@ -106,7 +106,7 @@ function Loja() {
             maxW="380px"
             overflow="hidden"
           >
-            <Image src={item.image} alt={item.item} />
+            <Image src={item.image} alt={item.item} maxW="380px" />
             <Flex p={2}>
               <Flex flexDir="column" flexGrow={1}>
                 <Box>

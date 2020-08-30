@@ -21,7 +21,13 @@ import { isAuthenticated, logout } from '../config/auth'
 import { useRouter } from 'next/router'
 
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { AiOutlineShopping, AiOutlineShoppingCart } from 'react-icons/ai'
+import { BsListCheck } from 'react-icons/bs'
+import { FiLogOut, FiLogIn } from 'react-icons/fi'
+import {
+  AiOutlineShopping,
+  AiOutlineShoppingCart,
+  AiOutlineDashboard,
+} from 'react-icons/ai'
 
 function MenuButton({ children, ...rest }) {
   return (
@@ -109,8 +115,8 @@ const Header: React.FC = () => {
             _hover={{ backgroundColor: 'green.300' }}
             _active={{ backgroundColor: 'gray.700' }}
             onClick={() => router.push('/loja')}
+            leftIcon={AiOutlineShopping}
           >
-            <Box as={AiOutlineShopping} />
             Loja
           </MenuButton>
         </Flex>
@@ -160,23 +166,35 @@ const Header: React.FC = () => {
               )}
 
               <DrawerBody>
-                <MenuButton onClick={() => router.push('/carrinho')}>
-                  <Box as={AiOutlineShoppingCart} mr={2} />
-                  Carrinho
-                </MenuButton>
-                <MenuButton onClick={() => router.push('/pedidos')}>
-                  Meus pedidos
-                </MenuButton>
-                <Divider />
                 {isAuth ? (
                   <>
-                    <MenuButton color="#fff" backgroundColor="gray.500">
-                      Perfil
+                    <MenuButton
+                      leftIcon={AiOutlineShoppingCart}
+                      onClick={() => router.push('/carrinho')}
+                    >
+                      Carrinho
+                    </MenuButton>
+                    <MenuButton
+                      leftIcon={BsListCheck}
+                      onClick={() => router.push('/pedidos')}
+                    >
+                      Meus pedidos
+                    </MenuButton>
+
+                    <Divider />
+                    <MenuButton
+                      leftIcon={AiOutlineDashboard}
+                      color="#fff"
+                      backgroundColor="gray.500"
+                      onClick={() => router.push('/user/dashboard')}
+                    >
+                      Painel
                     </MenuButton>
                     <MenuButton
                       color="#fff"
                       backgroundColor="gray.500"
                       onClick={handleLogout}
+                      leftIcon={FiLogOut}
                     >
                       Sair
                     </MenuButton>
@@ -187,6 +205,7 @@ const Header: React.FC = () => {
                       color="#fff"
                       backgroundColor="gray.500"
                       onClick={() => router.push('/login')}
+                      leftIcon={FiLogIn}
                     >
                       Entrar
                     </MenuButton>

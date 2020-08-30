@@ -30,9 +30,11 @@ import {
 } from '@chakra-ui/core'
 
 import { MdPerson, MdLock } from 'react-icons/md'
+import { FiLogIn } from 'react-icons/fi'
 import { authenticate, isAuthenticated } from '../config/auth'
 import Head from 'next/head'
 import api from '../services/api'
+import { AiOutlineLogin } from 'react-icons/ai'
 
 export default function Login() {
   const router = useRouter()
@@ -254,6 +256,7 @@ export default function Login() {
             color="#fff"
             _hover={{ backgroundColor: 'green.800' }}
             onClick={handleLogin}
+            rightIcon={FiLogIn}
           >
             ENTRAR
           </Button>
