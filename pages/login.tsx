@@ -372,7 +372,7 @@ export default function Login() {
                         onChange={handleEmail}
                       />
                     </FormControl>
-                    <FormControl flexGrow={1} mr={[0, 4]} ml={[2, 0, 4]}>
+                    <FormControl flexGrow={1} mr={[0, 4]} ml={[0, 4]}>
                       <FormLabel htmlFor="birth" fontSize={['sm', 'md']}>
                         Data de nascimento
                       </FormLabel>
