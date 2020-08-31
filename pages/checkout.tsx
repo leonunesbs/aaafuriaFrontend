@@ -211,13 +211,13 @@ const Checkout: React.FC = () => {
             <Flex></Flex>
             {formaPagamento == 'TR' && (
               <FormHelperText id="pagamento">
-                Santander [Agência: 4326, Conta: 01050635-9, Iago Antunes Macedo
-                de Souza, 025.449.773-02],
+                <b>Santander</b> [Agência: 4326, Conta: 01050635-9, Iago Antunes
+                Macedo de Souza, 025.449.773-02],
                 <br />
-                Branco do Brasil [Agência: 3507-6, Conta: 33266-6, Iago Antune
-                Macedo de Souza, 025.449.773-02]
+                <b>Branco do Brasil</b> [Agência: 3507-6, Conta: 33266-6, Iago
+                Antune Macedo de Souza, 025.449.773-02]
                 <br />
-                Caixa Econômica [Agência: 0728, Op: 13, Conta: 102903-7,
+                <b>Caixa Econômica</b> [Agência: 0728, Op: 13, Conta: 102903-7,
                 Albérico Santana S Amorim G]
               </FormHelperText>
             )}
