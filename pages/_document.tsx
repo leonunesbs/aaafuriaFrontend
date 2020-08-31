@@ -14,7 +14,7 @@ class MyDocument extends Document<DocumentProps> {
           <meta charSet="utf-8" />
           <meta
             name="google-site-verification"
-            content="wisnFadn82Ndz9TMStMgCiRpbFSgVe4WmNl-kJHc1Uo"
+            content="U7CpZMuHTQ3ejuTUoko1x_V6fZwoIj2lkfQ1XH3ZkBs"
           />
           <link
             rel="apple-touch-icon"
