@@ -72,8 +72,7 @@ const Dashboard: React.FC = () => {
           alignSelf="center"
           px={6}
           py={4}
-          maxH="80px"
-          flexShrink={0}
+          maxW="45%"
         />
         <Flex flexGrow={1} justifyContent="flex-end" alignItems="flex-end">
           <Stack isInline mr={4} mb={4}>
