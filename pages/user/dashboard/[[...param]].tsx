@@ -24,6 +24,7 @@ import { FiLogOut } from 'react-icons/fi'
 import { logout } from '../../../config/auth'
 import { BsListCheck } from 'react-icons/bs'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { useFetch } from '../../../hooks/useFetch'
 
 function MenuButton({ children, ...rest }) {
   return (
@@ -60,6 +61,8 @@ const Dashboard: React.FC = () => {
     logout()
     router.push('/login')
   }
+
+  const pedidos: any = useFetch('meus-pedidos/')
   return (
     <>
       <Flex backgroundColor="gray.500">
@@ -200,16 +203,22 @@ const Dashboard: React.FC = () => {
             Em breve
           </MenuButton>
         </Flex>
-        <Flex
-          flexDir="column"
-          flexGrow={1}
-          minW="60%"
-          p={4}
-          backgroundColor="gray.300"
-        >
+        <Flex flexDir="column" flexGrow={1} minW="60%" p={4}>
           {router.query.param == 'pedidos' && (
             <>
-              <Heading color="green.600">Meus pedidos</Heading>
+              <Heading
+                as="h1"
+                textAlign="center"
+                mt={4}
+                mb={6}
+                size={'xl'}
+                color="green.600"
+              >
+                Meus pedidos
+              </Heading>
+              {pedidos.data?.map((item) => (
+                <p>{item.status}</p>
+              ))}
             </>
           )}
           {router.query.param == 'perfil' && <p>Perfil</p>}
