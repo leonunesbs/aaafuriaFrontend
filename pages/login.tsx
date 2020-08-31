@@ -242,19 +242,6 @@ export default function Login() {
               isDisabled={loadingLogin}
             />
           </InputGroup>
-          <Link href="#">
-            <a>
-              <Text
-                alignSelf="flex-start"
-                fontSize="sm"
-                fontWeight="bold"
-                color="green.300"
-                marginTop={2}
-              >
-                Esqueci minha senha
-              </Text>
-            </a>
-          </Link>
 
           <Button
             backgroundColor="green.300"
@@ -281,7 +268,7 @@ export default function Login() {
           </Text>
 
           <Flex alignSelf="center" fontSize="sm">
-            <Text color="gray.300">Não consegue acessar? Clique</Text>
+            <Text color="gray.300">Não consegue acessar? </Text>
             <Text
               ref={btnRef}
               color="gray.300"
@@ -289,7 +276,7 @@ export default function Login() {
               onClick={onOpen}
               cursor="pointer"
             >
-              <b>aqui</b>.
+              <b>Clique aqui</b>.
             </Text>
           </Flex>
 
