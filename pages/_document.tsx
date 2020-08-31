@@ -13,6 +13,10 @@ class MyDocument extends Document<DocumentProps> {
         <Head>
           <meta charSet="utf-8" />
           <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          ></meta>
+          <meta
             name="google-site-verification"
             content="U7CpZMuHTQ3ejuTUoko1x_V6fZwoIj2lkfQ1XH3ZkBs"
           />

@@ -13,6 +13,10 @@ export default function Home() {
     <>
       <Head>
         <title>Início - @aaafuria</title>
+        <meta
+          name="description"
+          content="Página inicial da plataforma de Sócios @aaafuria"
+        ></meta>
       </Head>
       <Header />
       <Flex
