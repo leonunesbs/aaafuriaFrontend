@@ -121,7 +121,7 @@ const Header: React.FC = () => {
           </MenuButton>
         </Flex>
 
-        <Flex minW="150px" w="80%" justifyContent="center">
+        <Flex minW="150px" w="65%" justifyContent="center">
           <Link href="/">
             <a>
               <Image

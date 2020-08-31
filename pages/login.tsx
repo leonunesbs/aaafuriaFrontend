@@ -34,7 +34,6 @@ import { FiLogIn } from 'react-icons/fi'
 import { authenticate, isAuthenticated } from '../config/auth'
 import Head from 'next/head'
 import api from '../services/api'
-import { AiOutlineLogin } from 'react-icons/ai'
 
 export default function Login() {
   const router = useRouter()
@@ -128,12 +127,20 @@ export default function Login() {
       turma: turma,
       senha: senha,
       senha_again: senhaAgain,
+      data_de_nascimento: birth,
     })
 
     if (response.ok) {
       if (response.data.token) {
         localStorage.setItem('Token', response.data.token)
       }
+      toast({
+        position: 'bottom',
+        title: 'Seja bem vindo, Furioso!',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
     }
     setError(response.data.error)
     setLoading(false)

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
-import Header from '../../../components/Header'
 import {
   Box,
   Flex,
@@ -11,12 +10,20 @@ import {
   Tooltip,
   PseudoBox,
   Heading,
+  useDisclosure,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
 } from '@chakra-ui/core'
 import { AiOutlineHome, AiOutlineLogout } from 'react-icons/ai'
 import { FiLogOut } from 'react-icons/fi'
 import { logout } from '../../../config/auth'
-import { route } from 'next/dist/next-server/server/router'
 import { BsListCheck } from 'react-icons/bs'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 function MenuButton({ children, ...rest }) {
   return (
@@ -46,6 +53,8 @@ function MenuButton({ children, ...rest }) {
 
 const Dashboard: React.FC = () => {
   const router = useRouter()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef()
 
   const handleLogout = () => {
     logout()
@@ -59,7 +68,7 @@ const Dashboard: React.FC = () => {
           src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/logo_dark.png"
           alignSelf="center"
           px={6}
-          py={2}
+          py={4}
           maxH="80px"
         />
         <Flex flexGrow={1} justifyContent="flex-end" alignItems="flex-end">
@@ -96,6 +105,68 @@ const Dashboard: React.FC = () => {
             </Tooltip>
           </Stack>
         </Flex>
+      </Flex>
+      <Box w="100%" h="2px" backgroundColor="green.300" />
+      <Flex backgroundColor="gray.500" d={['flex', 'none']} p={2}>
+        <Button
+          ref={btnRef}
+          as={Button}
+          p={0}
+          backgroundColor="gray.600"
+          borderWidth="1px"
+          borderColor="green.300"
+          onClick={onOpen}
+          borderRadius="sm"
+          _hover={{ backgroundColor: 'green.300' }}
+          _active={{ backgroundColor: 'green.600' }}
+        >
+          <Box as={GiHamburgerMenu} size={6} m={0} p={0} color="#fff" />
+        </Button>
+        <Drawer
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          size="xs"
+          finalFocusRef={btnRef}
+        >
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader>Dashboard</DrawerHeader>
+            <DrawerBody>
+              <Flex flexDir="column">
+                <MenuButton
+                  isActive={router.query.param == 'pedidos' && true}
+                  onClick={() => {
+                    router.push(
+                      '/user/dashboard/[[...param]]',
+                      '/user/dashboard/pedidos'
+                    )
+                    onClose()
+                  }}
+                >
+                  <Box as={BsListCheck} mr={2} size={5} />
+                  Meus pedidos
+                </MenuButton>
+                <MenuButton
+                  isActive={router.query.param == 'perfil' && true}
+                  onClick={() => {
+                    router.push(
+                      '/user/dashboard/[[...param]]',
+                      '/user/dashboard/perfil'
+                    )
+                    onClose()
+                  }}
+                >
+                  <Box as={BsListCheck} mr={2} size={5} />
+                  Perfil
+                </MenuButton>
+              </Flex>
+            </DrawerBody>
+
+            <DrawerFooter>@aaafuria</DrawerFooter>
+          </DrawerContent>
+        </Drawer>
       </Flex>
       <Flex w="100%" minH="240px" borderTopColor="green.300" borderTopWidth={4}>
         <Flex
@@ -141,7 +212,7 @@ const Dashboard: React.FC = () => {
               <Heading color="green.600">Meus pedidos</Heading>
             </>
           )}
-          {router.query.param == 'teste2' && <p>teste2</p>}
+          {router.query.param == 'perfil' && <p>Perfil</p>}
         </Flex>
       </Flex>
     </>

@@ -27,12 +27,12 @@ const Carrinho: React.FC = () => {
   const toast = useToast()
   const router = useRouter()
   const [produtos, setProdutos] = useState([])
+  const [disabled, setDisabled] = useState(true)
 
   const cart: { data: any } = useFetch('carrinho/', 10000)
 
   useEffect(() => {
     setProdutos(cart.data && cart.data.produtos)
-    console.log(produtos)
   })
   useEffect(() => {
     !isAuthenticated() && router.push('/login')
@@ -49,6 +49,12 @@ const Carrinho: React.FC = () => {
       })
     }
   }, [])
+
+  useEffect(() => {
+    if (cart.data?.total > 0) {
+      setDisabled(false)
+    }
+  })
 
   if (!cart.data) {
     return (
@@ -83,7 +89,13 @@ const Carrinho: React.FC = () => {
       <Flex flexDir="column" mb={16}>
         <Header />
         <Flex flexDirection="column">
-          <Heading textAlign="center" mt={16} size={'xl'} color="green.600">
+          <Heading
+            as="h1"
+            textAlign="center"
+            mt={16}
+            size={'xl'}
+            color="green.600"
+          >
             Carrinho
           </Heading>
         </Flex>
@@ -196,6 +208,7 @@ const Carrinho: React.FC = () => {
             _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
             fontSize={['xs', 'sm', 'base']}
             onClick={() => router.push('/checkout')}
+            isDisabled={disabled}
           >
             Finalizar pedido
             <Box as={AiOutlineArrowRight} size={6} />

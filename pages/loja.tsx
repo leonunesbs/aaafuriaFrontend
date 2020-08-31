@@ -89,7 +89,14 @@ function Loja() {
         <title>Loja - @aaafuria</title>
       </Head>
       <Header />
-      <Heading textAlign="center" mt={16} mb={6} size={'xl'} color="green.600">
+      <Heading
+        as="h1"
+        textAlign="center"
+        mt={16}
+        mb={6}
+        size={'xl'}
+        color="green.600"
+      >
         Loja
       </Heading>
       <Flex mx={2} mb={16} justify="center" flexWrap="wrap">
