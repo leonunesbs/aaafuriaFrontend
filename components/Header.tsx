@@ -100,6 +100,7 @@ const Header: React.FC = () => {
             _hover={{ backgroundColor: 'green.300' }}
             _active={{ backgroundColor: 'gray.700' }}
             fontWeight={['thin', 'normal', 'bold']}
+            isDisabled
           >
             Seja Sócio
           </MenuButton>

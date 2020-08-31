@@ -9,10 +9,6 @@ import Footer from '../components/Footer'
 export default function Home() {
   const router = useRouter()
 
-  function handleLogout() {
-    logout()
-    router.push('/login')
-  }
   return (
     <>
       <Head>
@@ -55,6 +51,7 @@ export default function Home() {
               backgroundColor="green.300"
               color="#fff"
               _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
+              isDisabled
             >
               Seja Sócio
             </Button>
