@@ -171,11 +171,13 @@ function Loja() {
                       <option value="MBL">M BL</option>
                       <option value="GBL">G BL</option>
                       <option value="GGBL">GG BL</option>
+                      <option value="XGBL">EXGG BL</option>
                       <option value="PP">PP</option>
                       <option value="P">P</option>
                       <option value="M">M</option>
                       <option value="G">G</option>
                       <option value="GG">GG</option>
+                      <option value="EXGG">EXGG</option>
                     </Select>
                   )}
                 </Box>
