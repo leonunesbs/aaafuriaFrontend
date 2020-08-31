@@ -10,6 +10,8 @@ api.addAsyncRequestTransform((request) => async () => {
   if (token) {
     request.headers['Authorization'] = `Token ${token}`
   }
+
+  request.headers['Access-Control-Allow-Origin'] = 'https://aaafuria.com.br'
 })
 
 export default api
