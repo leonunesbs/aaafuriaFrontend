@@ -215,7 +215,7 @@ const Checkout: React.FC = () => {
                 Macedo de Souza, 025.449.773-02],
                 <br />
                 <b>Branco do Brasil</b> [Agência: 3507-6, Conta: 33266-6, Iago
-                Antune Macedo de Souza, 025.449.773-02]
+                Antune Macedo de Souza, 025.449.773-02],
                 <br />
                 <b>Caixa Econômica</b> [Agência: 0728, Op: 13, Conta: 102903-7,
                 Albérico Santana S Amorim G]
