@@ -26,6 +26,7 @@ import { BsListCheck } from 'react-icons/bs'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useFetch } from '../../../hooks/useFetch'
 import Head from 'next/head'
+import AdminGate from '../_adminGate'
 
 function MenuButton({ children, ...rest }) {
   return (
@@ -66,14 +67,15 @@ const Dashboard: React.FC = () => {
     !isAuthenticated() && router.push('/login')
   })
 
-  const pedidos: any = useFetch('meus-pedidos/')
+  const pedidos: any = useFetch('pedidos-admin/')
 
   if (!pedidos.data) {
     ;<p>Carregando...</p>
   }
+  console.log(pedidos.data)
 
   return (
-    <>
+    <AdminGate>
       <Head>
         <title>Dashboard - @aaafuria</title>
       </Head>
@@ -86,6 +88,9 @@ const Dashboard: React.FC = () => {
           py={4}
           maxW="45%"
         />
+        <Heading as="h1" alignSelf="center" color="green.300" size="sm">
+          Painel Administrativo
+        </Heading>
         <Flex flexGrow={1} justifyContent="flex-end" alignItems="flex-end">
           <Stack isInline mr={4} mb={4}>
             <Tooltip
@@ -158,9 +163,10 @@ const Dashboard: React.FC = () => {
                   }}
                 >
                   <Box as={BsListCheck} mr={2} size={5} />
-                  Meus pedidos
+                  Pedidos
                 </MenuButton>
                 <MenuButton
+                  isDisabled
                   isActive={router.query.param == 'perfil' && true}
                   onClick={() => {
                     router.push('[[...param]]', 'perfil')
@@ -195,7 +201,7 @@ const Dashboard: React.FC = () => {
             onClick={() => router.push('[[...param]]', 'pedidos')}
           >
             <Box as={BsListCheck} mr={2} size={5} />
-            Meus pedidos
+            Pedidos
           </MenuButton>
           <MenuButton isDisabled>
             {
@@ -215,7 +221,7 @@ const Dashboard: React.FC = () => {
                 size={'xl'}
                 color="green.600"
               >
-                Meus pedidos
+                Pedidos
               </Heading>
               <Flex
                 w="95%"
@@ -228,7 +234,7 @@ const Dashboard: React.FC = () => {
                 borderRadius="md"
                 mt={6}
                 p={4}
-                overflowX="scroll"
+                overflow="scroll"
               >
                 <Stack spacing={4}>
                   {pedidos.data?.map((item) => (
@@ -242,7 +248,10 @@ const Dashboard: React.FC = () => {
                       <Flex align="center" p={2}>
                         {item.pk}
                       </Flex>
-                      <Flex flexGrow={1} p={2} flexDir="column">
+                      <Flex align="center" p={2} minW="100px" overflow="hidden">
+                        {item.user.sócio.nome_completo}
+                      </Flex>
+                      <Flex flexGrow={1} p={2} minW="90px" flexDir="column">
                         {item.items.map((i) => (
                           <Text key={i.pk}>
                             {i.quantity}x {i.item}
@@ -271,7 +280,7 @@ const Dashboard: React.FC = () => {
           {router.query.param == 'perfil' && <p>Perfil</p>}
         </Flex>
       </Flex>
-    </>
+    </AdminGate>
   )
 }
 
