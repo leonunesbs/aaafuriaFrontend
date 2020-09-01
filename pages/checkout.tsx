@@ -162,6 +162,16 @@ const Checkout: React.FC = () => {
           isClosable: true,
         })
         router.push('/loja')
+      } else {
+        toast({
+          position: 'bottom',
+          title: 'Erro!',
+          description:
+            'Erro ao finalizar pedido. Entre em contato com um Diretor.',
+          status: 'error',
+          duration: 10000,
+          isClosable: true,
+        })
       }
     }
     setLoading(false)

@@ -19,7 +19,7 @@ import {
   DrawerBody,
   DrawerFooter,
 } from '@chakra-ui/core'
-import { AiOutlineHome, AiOutlineLogout } from 'react-icons/ai'
+import { AiOutlineHome } from 'react-icons/ai'
 import { FiLogOut } from 'react-icons/fi'
 import { logout } from '../../../config/auth'
 import { BsListCheck } from 'react-icons/bs'
@@ -63,6 +63,13 @@ const Dashboard: React.FC = () => {
   }
 
   const pedidos: any = useFetch('meus-pedidos/')
+
+  if (!pedidos.data) {
+    ;<p>Carregando...</p>
+  }
+
+  console.log(pedidos.data)
+
   return (
     <>
       <Flex backgroundColor="gray.500">
@@ -182,7 +189,7 @@ const Dashboard: React.FC = () => {
           backgroundColor="gray.500"
         >
           <Text textAlign="center" mb={16}>
-            Leonardo Nunes
+            A.A.A. Fúria
           </Text>
           <MenuButton
             isActive={router.query.param == 'pedidos' && true}
@@ -216,9 +223,55 @@ const Dashboard: React.FC = () => {
               >
                 Meus pedidos
               </Heading>
-              {pedidos.data?.map((item) => (
-                <p>{item.status}</p>
-              ))}
+              <Flex
+                w="95%"
+                mx="25%"
+                minH="240px"
+                alignSelf="center"
+                borderColor="#ededed"
+                borderWidth={1}
+                flexDir="column"
+                borderRadius="md"
+                mt={6}
+                p={4}
+                overflowX="scroll"
+              >
+                <Stack spacing={4}>
+                  {pedidos.data?.map((item) => (
+                    <Flex
+                      key={item.pk}
+                      flexGrow={1}
+                      borderBottom="1px"
+                      borderColor="#ededed"
+                      borderRadius="sm"
+                    >
+                      <Flex align="center" p={2}>
+                        {item.pk}
+                      </Flex>
+                      <Flex flexGrow={1} p={2} flexDir="column">
+                        {item.items.map((i) => (
+                          <Text key={i.pk}>
+                            {i.quantity}x {i.item}
+                          </Text>
+                        ))}
+                      </Flex>
+                      <Flex alignItems="center" p={2}>
+                        R${item.order_total}
+                      </Flex>
+                      <Flex alignItems="center" p={2}>
+                        {new Date(item.ordered_date).toLocaleDateString()}
+                      </Flex>
+
+                      <Flex alignItems="center" p={2}>
+                        {item.payment.gateway}
+                      </Flex>
+                      <Flex alignItems="center" p={2}>
+                        {item.status}
+                      </Flex>
+                    </Flex>
+                  ))}
+                </Stack>
+              </Flex>
             </>
           )}
           {router.query.param == 'perfil' && <p>Perfil</p>}

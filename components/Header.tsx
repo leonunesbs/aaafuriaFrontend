@@ -177,7 +177,7 @@ const Header: React.FC = () => {
                     </MenuButton>
                     <MenuButton
                       leftIcon={BsListCheck}
-                      onClick={() => router.push('/pedidos')}
+                      onClick={() => router.push('/user/dashboard/pedidos')}
                     >
                       Meus pedidos
                     </MenuButton>
