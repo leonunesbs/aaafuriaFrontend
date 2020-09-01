@@ -17,7 +17,9 @@ import {
   InputGroup,
   InputLeftElement,
   useToast,
+  Stack,
 } from '@chakra-ui/core'
+import { CgArrowsExchange } from 'react-icons/cg'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { useFetch } from '../hooks/useFetch'
 import { isAuthenticated } from '../config/auth'
@@ -28,6 +30,7 @@ import Footer from '../components/Footer'
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import CardSection from '../components/CardElement'
+import { BsCreditCard } from 'react-icons/bs'
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -196,19 +199,36 @@ const Checkout: React.FC = () => {
           </Heading>
 
           <FormControl isRequired isDisabled={loading}>
-            <RadioGroup
-              id="pagamento"
-              value={formaPagamento}
-              onChange={handlePagamento}
-            >
-              <Radio variantColor="green" value="TR">
+            <Stack isInline align="center" justify="center" flexWrap="wrap">
+              <Button
+                mb={2}
+                borderRadius="sm"
+                backgroundColor="gray.500"
+                color="green.300"
+                onClick={() => setPagamento('TR')}
+                isActive={formaPagamento == 'TR' ? true : false}
+                _active={{ backgroundColor: 'green.300', color: 'gray.500' }}
+                _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
+                _focus={{}}
+              >
+                <Box as={CgArrowsExchange} mr={1} size={5} />
                 Transferência
-              </Radio>
-              <Radio variantColor="green" isDisabled value="ST">
+              </Button>
+              <Button
+                mb={2}
+                borderRadius="sm"
+                backgroundColor="gray.500"
+                color="green.300"
+                onClick={() => setPagamento('ST')}
+                isDisabled
+                _active={{ backgroundColor: 'green.300', color: 'gray.500' }}
+                _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
+                _focus={{}}
+              >
+                <Box as={BsCreditCard} mr={2} size={4} />
                 Cartão de crédito
-              </Radio>
-            </RadioGroup>
-            <Flex></Flex>
+              </Button>
+            </Stack>
             {formaPagamento == 'TR' && (
               <FormHelperText id="pagamento">
                 <b>Santander</b> [Agência: 4326, Conta: 01050635-9, Iago Antunes
