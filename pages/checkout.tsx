@@ -204,7 +204,7 @@ const Checkout: React.FC = () => {
                 mb={2}
                 borderRadius="sm"
                 backgroundColor="gray.500"
-                color="green.300"
+                color="#fff"
                 onClick={() => setPagamento('TR')}
                 isActive={formaPagamento == 'TR' ? true : false}
                 _active={{ backgroundColor: 'green.300', color: 'gray.500' }}
@@ -218,7 +218,7 @@ const Checkout: React.FC = () => {
                 mb={2}
                 borderRadius="sm"
                 backgroundColor="gray.500"
-                color="green.300"
+                color="#fff"
                 onClick={() => setPagamento('ST')}
                 isDisabled
                 _active={{ backgroundColor: 'green.300', color: 'gray.500' }}
