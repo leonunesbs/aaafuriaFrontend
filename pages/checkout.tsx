@@ -233,7 +233,7 @@ const Checkout: React.FC = () => {
                 <Heading size="md" as="h4" mb={6} mt={6} color="green.600">
                   Dados da transferência
                 </Heading>
-                <FormControl as="fieldset" isDisabled={loading}>
+                <FormControl as="fieldset" isRequired isDisabled={loading}>
                   <FormLabel as="legend">Conta destino</FormLabel>
                   <RadioGroup
                     value={contaDestino}
@@ -250,7 +250,7 @@ const Checkout: React.FC = () => {
                     </Radio>
                   </RadioGroup>
                 </FormControl>
-                <FormControl mt={4} isDisabled={loading}>
+                <FormControl mt={4} isRequired isDisabled={loading}>
                   <FormLabel htmlFor="valor">Valor</FormLabel>
                   <InputGroup>
                     <InputLeftElement
@@ -267,7 +267,7 @@ const Checkout: React.FC = () => {
                     />
                   </InputGroup>
                 </FormControl>
-                <FormControl mt={4} isDisabled={loading}>
+                <FormControl mt={4} isRequired isDisabled={loading}>
                   <FormLabel as="legend">Comprovante</FormLabel>
                   <Input
                     focusBorderColor="green.600"
