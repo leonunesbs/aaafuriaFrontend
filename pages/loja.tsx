@@ -39,19 +39,19 @@ function Loja() {
     }
   }, [])
 
-  // if (!data) {
-  //   return (
-  //     <Flex
-  //       color="green.300"
-  //       h="100vh"
-  //       w="100%"
-  //       alignItems="center"
-  //       justifyContent="center"
-  //     >
-  //       <Spinner size="xl" />
-  //     </Flex>
-  //   )
-  // }
+  if (!data) {
+    return (
+      <Flex
+        color="green.300"
+        h="100vh"
+        w="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Spinner size="xl" />
+      </Flex>
+    )
+  }
 
   async function handleAddToCart(pk: number) {
     if (isAuthenticated()) {
@@ -95,7 +95,7 @@ function Loja() {
       >
         Loja
       </Heading>
-      <Skeleton isLoaded={data} m={6} h="480px">
+      <Skeleton isLoaded={data} h="480px">
         <Flex mx={2} mb={16} justify="center" flexWrap="wrap">
           {data?.map((item) => (
             <Flex
