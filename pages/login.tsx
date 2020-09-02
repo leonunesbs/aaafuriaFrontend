@@ -41,6 +41,7 @@ export default function Login() {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
+  const firstField = useRef()
 
   const [errorLogin, setErrorLogin] = useState(null)
   const [error, setError] = useState(null)
@@ -229,6 +230,7 @@ export default function Login() {
               borderRadius="sm"
               focusBorderColor="green.300"
               isDisabled={loadingLogin}
+              autoFocus
             />
           </InputGroup>
           <InputGroup marginTop={2}>
@@ -290,6 +292,7 @@ export default function Login() {
             size="full"
             onClose={onClose}
             finalFocusRef={btnRef}
+            initialFocusRef={firstField}
           >
             <DrawerOverlay />
             <DrawerContent>
@@ -312,6 +315,7 @@ export default function Login() {
 
                     <InputGroup size="md">
                       <Input
+                        ref={firstField}
                         type="text"
                         id="matrícula"
                         aria-describedby="matrícula"
