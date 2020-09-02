@@ -42,6 +42,7 @@ export default function Login() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
   const firstField = useRef()
+  const firstFieldLogin: any = useRef()
 
   const [errorLogin, setErrorLogin] = useState(null)
   const [error, setError] = useState(null)
@@ -88,6 +89,9 @@ export default function Login() {
   }, [matrícula])
 
   useEffect(() => {
+    if (firstFieldLogin.current) {
+      firstFieldLogin.current.focus()
+    }
     if (matrícula.length == 8) setDigitando(false)
     else setDigitando(true)
   }, [])
@@ -223,6 +227,7 @@ export default function Login() {
               children={<Box as={MdPerson} size={5} color="gray.300" />}
             />
             <Input
+              ref={firstFieldLogin}
               value={matrículaLogin}
               onChange={handleMatrículaLogin}
               placeholder="Matrícula"
@@ -230,7 +235,6 @@ export default function Login() {
               borderRadius="sm"
               focusBorderColor="green.300"
               isDisabled={loadingLogin}
-              autoFocus
             />
           </InputGroup>
           <InputGroup marginTop={2}>
