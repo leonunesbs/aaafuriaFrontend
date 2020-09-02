@@ -59,13 +59,15 @@ const Header: React.FC = () => {
 
   const [isAuth, setIsAuth] = useState(null)
 
-  async function getStaff() {
-    const response = await api.get('is-staff/')
-    if (!response.ok) {
-      setIsStaff(true)
+  useEffect(() => {
+    async function getStaff() {
+      const response = await api.get('is-staff/')
+      if (response.ok) {
+        setIsStaff(true)
+      }
     }
-  }
-  getStaff()
+    getStaff()
+  }, [])
 
   useEffect(() => {
     async function auth() {
