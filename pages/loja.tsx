@@ -95,7 +95,7 @@ function Loja() {
       >
         Loja
       </Heading>
-      <Skeleton isLoaded={data} m={6}>
+      <Skeleton isLoaded={data} m={6} h="480px">
         <Flex mx={2} mb={16} justify="center" flexWrap="wrap">
           {data?.map((item) => (
             <Flex
