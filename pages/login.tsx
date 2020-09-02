@@ -60,7 +60,7 @@ export default function Login() {
   const [birth, setBirth] = useState('')
   const handleBirth = (event: any) => setBirth(event.target.value)
 
-  const [isSócio, setIsSócio] = useState()
+  const [isSócio, setIsSócio] = useState(false)
 
   const [email, setEmail] = useState('')
   const handleEmail = (event: any) => setEmail(event.target.value)
