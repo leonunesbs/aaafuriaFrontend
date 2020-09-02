@@ -28,6 +28,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineDashboard,
 } from 'react-icons/ai'
+import api from '../services/api'
 
 function MenuButton({ children, ...rest }) {
   return (
@@ -54,8 +55,17 @@ const Header: React.FC = () => {
   const btnRef = useRef()
 
   const [user, setUser]: any = useState({})
+  const [isStaff, setIsStaff] = useState(false)
 
   const [isAuth, setIsAuth] = useState(null)
+
+  async function getStaff() {
+    const response = await api.get('is-staff/')
+    if (!response.ok) {
+      setIsStaff(true)
+    }
+  }
+  getStaff()
 
   useEffect(() => {
     async function auth() {
@@ -191,6 +201,16 @@ const Header: React.FC = () => {
                     >
                       Painel
                     </MenuButton>
+                    {isStaff && (
+                      <MenuButton
+                        leftIcon={AiOutlineDashboard}
+                        color="#fff"
+                        backgroundColor="gray.500"
+                        onClick={() => router.push('/admin/dashboard')}
+                      >
+                        Painel do Diretor
+                      </MenuButton>
+                    )}
                     <MenuButton
                       color="#fff"
                       backgroundColor="gray.500"
