@@ -18,6 +18,8 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
+  Badge,
+  Divider,
 } from '@chakra-ui/core'
 import { AiOutlineHome } from 'react-icons/ai'
 import { FiLogOut } from 'react-icons/fi'
@@ -50,6 +52,40 @@ function MenuButton({ children, ...rest }) {
         {children}
       </Flex>
     </Button>
+  )
+}
+
+function MeuPedidoCard({ data, item, user, ...rest }) {
+  return (
+    <Box key={item.pk} p={5} shadow="md" borderWidth="1px" {...rest}>
+      <Heading fontSize="xl">{data}</Heading>
+      <Flex align="center" mt={2}>
+        <Badge
+          variantColor={
+            (item.status == 'AGUARDANDO' && 'gray') ||
+            (item.status == 'PROCESSANDO' && 'orange') ||
+            (item.status == 'CONCLUIDO' && 'green') ||
+            (item.status == 'CANCELADO' && 'red')
+          }
+        >
+          {item.status}
+        </Badge>
+      </Flex>
+
+      <Divider />
+      <Flex>
+        <Flex flexDir="column" w="70%" maxH="100px" flexWrap="wrap">
+          {item.items.map((i) => (
+            <Text key={i.pk}>
+              {i.quantity}x {i.item} {i.size && ` - ${i.size}`}
+            </Text>
+          ))}
+        </Flex>
+        <Flex flexDir="column" w="50%" alignItems="flex-end">
+          <Text fontWeight="bold">R${item.order_total}</Text>
+        </Flex>
+      </Flex>
+    </Box>
   )
 }
 
@@ -231,38 +267,13 @@ const Dashboard: React.FC = () => {
                 overflowX="scroll"
               >
                 <Stack spacing={4}>
-                  {pedidos.data?.map((item) => (
-                    <Flex
+                  {pedidos.data?.map((item): any => (
+                    <MeuPedidoCard
                       key={item.pk}
-                      flexGrow={1}
-                      borderBottom="1px"
-                      borderColor="#ededed"
-                      borderRadius="sm"
-                    >
-                      <Flex align="center" p={2}>
-                        {item.pk}
-                      </Flex>
-                      <Flex flexGrow={1} p={2} flexDir="column">
-                        {item.items.map((i) => (
-                          <Text key={i.pk}>
-                            {i.quantity}x {i.item}
-                          </Text>
-                        ))}
-                      </Flex>
-                      <Flex alignItems="center" p={2}>
-                        R${item.order_total}
-                      </Flex>
-                      <Flex alignItems="center" p={2}>
-                        {new Date(item.ordered_date).toLocaleDateString()}
-                      </Flex>
-
-                      <Flex alignItems="center" p={2}>
-                        {item.payment.gateway}
-                      </Flex>
-                      <Flex alignItems="center" p={2}>
-                        {item.status}
-                      </Flex>
-                    </Flex>
+                      data={new Date(item.ordered_date).toLocaleDateString()}
+                      item={item}
+                      user={item.user}
+                    />
                   ))}
                 </Stack>
               </Flex>

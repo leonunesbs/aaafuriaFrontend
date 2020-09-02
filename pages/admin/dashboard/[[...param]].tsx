@@ -8,7 +8,6 @@ import {
   Button,
   Stack,
   Tooltip,
-  PseudoBox,
   Heading,
   useDisclosure,
   Drawer,
@@ -18,6 +17,8 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
+  Divider,
+  Badge,
 } from '@chakra-ui/core'
 import { AiOutlineHome } from 'react-icons/ai'
 import { FiLogOut } from 'react-icons/fi'
@@ -54,6 +55,40 @@ function MenuButton({ children, ...rest }) {
   )
 }
 
+function MeuPedidoCard({ data, item, user, ...rest }) {
+  return (
+    <Box key={item.pk} p={5} shadow="md" borderWidth="1px" {...rest}>
+      <Heading fontSize="xl">{user.sócio.nome_completo}</Heading>
+      <Flex align="center" mt={2}>
+        <Badge
+          variantColor={
+            (item.status == 'AGUARDANDO' && 'gray') ||
+            (item.status == 'PROCESSANDO' && 'orange') ||
+            (item.status == 'CONCLUIDO' && 'green') ||
+            (item.status == 'CANCELADO' && 'red')
+          }
+        >
+          {item.status}
+        </Badge>
+      </Flex>
+
+      <Divider />
+      <Flex>
+        <Flex flexDir="column" w="70%" maxH="100px" flexWrap="wrap">
+          {item.items.map((i) => (
+            <Text key={i.pk}>
+              {i.quantity}x {i.item} {i.size && ` - ${i.size}`}
+            </Text>
+          ))}
+        </Flex>
+        <Flex flexDir="column" w="50%" alignItems="flex-end">
+          <Text fontWeight="bold">R${item.order_total}</Text>
+        </Flex>
+      </Flex>
+    </Box>
+  )
+}
+
 const Dashboard: React.FC = () => {
   const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -72,14 +107,13 @@ const Dashboard: React.FC = () => {
   if (!pedidos.data) {
     ;<p>Carregando...</p>
   }
-  console.log(pedidos.data)
 
   return (
     <AdminGate>
       <Head>
         <title>Dashboard - @aaafuria</title>
       </Head>
-      <Flex backgroundColor="gray.500">
+      <Flex backgroundColor="green.600">
         <Image
           alt="logo_branco"
           src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/logo_dark.png"
@@ -127,7 +161,7 @@ const Dashboard: React.FC = () => {
         </Flex>
       </Flex>
       <Box w="100%" h="2px" backgroundColor="green.300" />
-      <Flex backgroundColor="gray.500" d={['flex', 'none']} p={2}>
+      <Flex backgroundColor="green.600" d={['flex', 'none']} p={2}>
         <Button
           ref={btnRef}
           as={Button}
@@ -191,7 +225,7 @@ const Dashboard: React.FC = () => {
           minW="180px"
           borderRightWidth={2}
           borderColor="green.300"
-          backgroundColor="gray.500"
+          backgroundColor="green.600"
         >
           <Text textAlign="center" mb={16}>
             A.A.A. Fúria
@@ -237,41 +271,13 @@ const Dashboard: React.FC = () => {
                 overflow="scroll"
               >
                 <Stack spacing={4}>
-                  {pedidos.data?.map((item) => (
-                    <Flex
+                  {pedidos.data?.map((item): any => (
+                    <MeuPedidoCard
                       key={item.pk}
-                      flexGrow={1}
-                      borderBottom="1px"
-                      borderColor="#ededed"
-                      borderRadius="sm"
-                    >
-                      <Flex align="center" p={2}>
-                        {item.pk}
-                      </Flex>
-                      <Flex align="center" p={2} minW="100px" overflow="hidden">
-                        {item.user.sócio.nome_completo}
-                      </Flex>
-                      <Flex flexGrow={1} p={2} minW="90px" flexDir="column">
-                        {item.items.map((i) => (
-                          <Text key={i.pk}>
-                            {i.quantity}x {i.item}
-                          </Text>
-                        ))}
-                      </Flex>
-                      <Flex alignItems="center" p={2}>
-                        R${item.order_total}
-                      </Flex>
-                      <Flex alignItems="center" p={2}>
-                        {new Date(item.ordered_date).toLocaleDateString()}
-                      </Flex>
-
-                      <Flex alignItems="center" p={2}>
-                        {item.payment.gateway}
-                      </Flex>
-                      <Flex alignItems="center" p={2}>
-                        {item.status}
-                      </Flex>
-                    </Flex>
+                      data={new Date(item.ordered_date).toLocaleDateString()}
+                      item={item}
+                      user={item.user}
+                    />
                   ))}
                 </Stack>
               </Flex>
