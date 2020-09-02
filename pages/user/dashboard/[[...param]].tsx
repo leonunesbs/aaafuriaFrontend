@@ -57,7 +57,14 @@ function MenuButton({ children, ...rest }) {
 
 function MeuPedidoCard({ data, item, user, ...rest }) {
   return (
-    <Box key={item.pk} p={5} shadow="md" borderWidth="1px" {...rest}>
+    <Box
+      key={item.pk}
+      p={5}
+      shadow="md"
+      borderWidth="1px"
+      borderRadius="sm"
+      {...rest}
+    >
       <Heading fontSize="xl">{data}</Heading>
       <Flex align="center" mt={2}>
         <Badge
