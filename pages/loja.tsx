@@ -24,6 +24,7 @@ import Footer from '../components/Footer'
 function Loja() {
   const router = useRouter()
   const toast = useToast()
+  const [produtos, setProdutos] = useState([])
 
   const [isSócio, setIsSócio] = useState(false)
 
@@ -31,6 +32,10 @@ function Loja() {
   const handleTamanho = (event: any) => setTamanho(event.target.value)
 
   const { data }: any = useFetch('product-list/')
+
+  useEffect(() => {
+    setProdutos(data && data)
+  })
 
   useEffect(() => {
     isAuthenticated()
@@ -95,9 +100,9 @@ function Loja() {
       >
         Loja
       </Heading>
-      <Skeleton isLoaded={data} h="480px">
+      <Skeleton isLoaded={data} minH="480px">
         <Flex mx={2} mb={16} justify="center" flexWrap="wrap">
-          {data?.map((item) => (
+          {produtos?.map((item) => (
             <Flex
               key={item.pk}
               flexDir="column"
