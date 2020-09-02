@@ -101,6 +101,8 @@ const Dashboard: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
 
+  const [page, setPage] = useState(1)
+
   const handleLogout = () => {
     logout()
     router.push('/login')
@@ -109,7 +111,7 @@ const Dashboard: React.FC = () => {
     !isAuthenticated() && router.push('/login')
   })
 
-  const pedidos: any = useFetch('meus-pedidos/')
+  const pedidos: any = useFetch(`meus-pedidos/?page=${page}`)
 
   if (!pedidos.data) {
     ;<p>Carregando...</p>
@@ -204,6 +206,7 @@ const Dashboard: React.FC = () => {
                   Meus pedidos
                 </MenuButton>
                 <MenuButton
+                  isDisabled
                   isActive={router.query.param == 'perfil' && true}
                   onClick={() => {
                     router.push('[[...param]]', 'perfil')
@@ -274,7 +277,7 @@ const Dashboard: React.FC = () => {
                 overflowX="scroll"
               >
                 <Stack spacing={4}>
-                  {pedidos.data?.map((item): any => (
+                  {pedidos.data?.results.map((item): any => (
                     <MeuPedidoCard
                       key={item.pk}
                       data={new Date(item.ordered_date).toLocaleDateString()}
@@ -283,6 +286,33 @@ const Dashboard: React.FC = () => {
                     />
                   ))}
                 </Stack>
+              </Flex>
+              <Flex>
+                <Flex justifyContent="flex-start" w="45%">
+                  {pedidos.data?.previous && (
+                    <Text
+                      m={2}
+                      cursor="pointer"
+                      onClick={() => setPage(page - 1)}
+                    >
+                      {'<'} Anterior
+                    </Text>
+                  )}
+                </Flex>
+                <Flex justifyContent="center">
+                  <Text m={2}>{page}</Text>
+                </Flex>
+                <Flex justifyContent="flex-end" w="45%">
+                  {pedidos.data?.next && (
+                    <Text
+                      m={2}
+                      cursor="pointer"
+                      onClick={() => setPage(page + 1)}
+                    >
+                      Próxima {'>'}
+                    </Text>
+                  )}
+                </Flex>
               </Flex>
             </>
           )}

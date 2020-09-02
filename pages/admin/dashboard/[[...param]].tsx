@@ -19,6 +19,7 @@ import {
   DrawerFooter,
   Divider,
   Badge,
+  Link,
 } from '@chakra-ui/core'
 import { AiOutlineHome } from 'react-icons/ai'
 import { FiLogOut } from 'react-icons/fi'
@@ -101,6 +102,8 @@ const Dashboard: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
 
+  const [page, setPage] = useState(1)
+
   const handleLogout = () => {
     logout()
     router.push('/login')
@@ -109,7 +112,7 @@ const Dashboard: React.FC = () => {
     !isAuthenticated() && router.push('/login')
   })
 
-  const pedidos: any = useFetch('pedidos-admin/')
+  const pedidos: any = useFetch(`pedidos-admin/?page=${page}`)
 
   if (!pedidos.data) {
     ;<p>Carregando...</p>
@@ -278,7 +281,7 @@ const Dashboard: React.FC = () => {
                 overflow="scroll"
               >
                 <Stack spacing={4}>
-                  {pedidos.data?.map((item): any => (
+                  {pedidos.data?.results.map((item): any => (
                     <MeuPedidoCard
                       key={item.pk}
                       data={new Date(item.ordered_date).toLocaleDateString()}
@@ -287,6 +290,33 @@ const Dashboard: React.FC = () => {
                     />
                   ))}
                 </Stack>
+              </Flex>
+              <Flex>
+                <Flex justifyContent="flex-start" w="45%">
+                  {pedidos.data?.previous && (
+                    <Text
+                      m={2}
+                      cursor="pointer"
+                      onClick={() => setPage(page - 1)}
+                    >
+                      {'<'} Anterior
+                    </Text>
+                  )}
+                </Flex>
+                <Flex>
+                  <Text m={2}>{page}</Text>
+                </Flex>
+                <Flex justifyContent="flex-end" w="45%">
+                  {pedidos.data?.next && (
+                    <Text
+                      m={2}
+                      cursor="pointer"
+                      onClick={() => setPage(page + 1)}
+                    >
+                      Próxima {'>'}
+                    </Text>
+                  )}
+                </Flex>
               </Flex>
             </>
           )}
