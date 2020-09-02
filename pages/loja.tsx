@@ -95,8 +95,8 @@ function Loja() {
       >
         Loja
       </Heading>
-      <Flex mx={2} mb={16} justify="center" flexWrap="wrap">
-        <Skeleton isLoaded={data} m={6} h="480px">
+      <Skeleton isLoaded={data} m={6} h="480px">
+        <Flex mx={2} mb={16} justify="center" flexWrap="wrap">
           {data?.map((item) => (
             <Flex
               key={item.pk}
@@ -196,8 +196,8 @@ function Loja() {
               </Button>
             </Flex>
           ))}
-        </Skeleton>
-      </Flex>
+        </Flex>
+      </Skeleton>
       <Footer />
     </>
   )
