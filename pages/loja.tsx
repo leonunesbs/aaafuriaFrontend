@@ -44,19 +44,19 @@ function Loja() {
     }
   }, [])
 
-  if (!data) {
-    return (
-      <Flex
-        color="green.300"
-        h="100vh"
-        w="100%"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Spinner size="xl" />
-      </Flex>
-    )
-  }
+  // if (!data) {
+  //   return (
+  //     <Flex
+  //       color="green.300"
+  //       h="100vh"
+  //       w="100%"
+  //       alignItems="center"
+  //       justifyContent="center"
+  //     >
+  //       <Spinner size="xl" />
+  //     </Flex>
+  //   )
+  // }
 
   async function handleAddToCart(pk: number) {
     if (isAuthenticated()) {
