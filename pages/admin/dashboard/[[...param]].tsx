@@ -29,6 +29,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { useFetch } from '../../../hooks/useFetch'
 import Head from 'next/head'
 import AdminGate from '../_adminGate'
+import { MdAttachMoney } from 'react-icons/md'
 
 function MenuButton({ children, ...rest }) {
   return (
@@ -246,6 +247,14 @@ const Dashboard: React.FC = () => {
           >
             <Box as={BsListCheck} mr={2} size={5} />
             Pedidos
+          </MenuButton>
+          <MenuButton
+            isDisabled
+            isActive={router.query.param == 'pedidos' && true}
+            onClick={() => router.push('[[...param]]', 'pedidos')}
+          >
+            <Box as={MdAttachMoney} mr={2} size={5} />
+            Financeiro
           </MenuButton>
           <MenuButton isDisabled>
             {
