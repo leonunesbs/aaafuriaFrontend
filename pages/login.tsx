@@ -60,6 +60,8 @@ export default function Login() {
   const [birth, setBirth] = useState('')
   const handleBirth = (event: any) => setBirth(event.target.value)
 
+  const [isSócio, setIsSócio] = useState()
+
   const [email, setEmail] = useState('')
   const handleEmail = (event: any) => setEmail(event.target.value)
 
@@ -101,6 +103,7 @@ export default function Login() {
       setEmail(response.data.email)
       setTurma(response.data.turma)
       setBirth(response.data.data_de_nascimento)
+      setIsSócio(response.data.is_socio)
     }
     setLoading(false)
 
@@ -128,6 +131,7 @@ export default function Login() {
       senha: senha,
       senha_again: senhaAgain,
       data_de_nascimento: birth,
+      is_sócio: isSócio,
     })
 
     if (response.ok) {
