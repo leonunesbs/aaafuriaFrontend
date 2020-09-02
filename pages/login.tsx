@@ -46,9 +46,9 @@ export default function Login() {
   const [error, setError] = useState(null)
 
   // Login
-  const [matriculaLogin, setMatriculaLogin] = useState('')
-  const handleMatriculaLogin = (event: any) =>
-    setMatriculaLogin(event.target.value)
+  const [matrículaLogin, setMatrículaLogin] = useState('')
+  const handleMatrículaLogin = (event: any) =>
+    setMatrículaLogin(event.target.value)
   const [senhaLogin, setSenhaLogin] = useState('')
   const handleSenhaLogin = (event: any) => setSenhaLogin(event.target.value)
   // FIM LOGIN
@@ -65,8 +65,8 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const handleEmail = (event: any) => setEmail(event.target.value)
 
-  const [matricula, setMatricula] = useState('')
-  const handleMatricula = (event: any) => setMatricula(event.target.value)
+  const [matrícula, setMatrícula] = useState('')
+  const handleMatrícula = (event: any) => setMatrícula(event.target.value)
 
   const [turma, setTurma] = useState('')
   const handleTurma = (event: any) => setTurma(event.target.value)
@@ -82,19 +82,19 @@ export default function Login() {
   const [digitando, setDigitando] = useState(true)
 
   useEffect(() => {
-    if (matricula.length == 8) setDigitando(false)
+    if (matrícula.length == 8) setDigitando(false)
     else setDigitando(true)
-  }, [matricula])
+  }, [matrícula])
 
   useEffect(() => {
-    if (matricula.length == 8) setDigitando(false)
+    if (matrícula.length == 8) setDigitando(false)
     else setDigitando(true)
   }, [])
 
   const handleLoadData = async () => {
     setLoading(true)
     const response: any = await api.get(
-      `https://aaafuria.herokuapp.com/api/get-socio-data/${matricula}`
+      `https://aaafuria.herokuapp.com/api/get-socio-data/${matrícula}`
     )
     if (response.data) {
       setNome(
@@ -126,7 +126,7 @@ export default function Login() {
     const response: any = await api.post('cadastro/', {
       nome: nome,
       email: email,
-      matricula: matricula,
+      matrícula: matrícula,
       turma: turma,
       senha: senha,
       senha_again: senhaAgain,
@@ -156,7 +156,7 @@ export default function Login() {
   async function handleLogin() {
     setLoadingLogin(true)
     setErrorLogin(null)
-    const response: any = await authenticate(matriculaLogin, senhaLogin)
+    const response: any = await authenticate(matrículaLogin, senhaLogin)
     if (response.ok) {
       router.push('/')
     } else {
@@ -222,8 +222,8 @@ export default function Login() {
               children={<Box as={MdPerson} size={5} color="gray.300" />}
             />
             <Input
-              value={matriculaLogin}
-              onChange={handleMatriculaLogin}
+              value={matrículaLogin}
+              onChange={handleMatrículaLogin}
               placeholder="Matrícula"
               height="45px"
               borderRadius="sm"
@@ -306,22 +306,22 @@ export default function Login() {
                   p={4}
                 >
                   <FormControl flexGrow={1}>
-                    <FormLabel htmlFor="matricula" fontSize={['sm', 'md']}>
+                    <FormLabel htmlFor="matrícula" fontSize={['sm', 'md']}>
                       Matrícula
                     </FormLabel>
 
                     <InputGroup size="md">
                       <Input
                         type="text"
-                        id="matricula"
-                        aria-describedby="matricula"
+                        id="matrícula"
+                        aria-describedby="matrícula"
                         focusBorderColor="green.300"
                         borderRadius="sm"
                         _hover={{ borderColor: 'green.300' }}
                         isRequired
                         maxLength={8}
-                        value={matricula}
-                        onChange={handleMatricula}
+                        value={matrícula}
+                        onChange={handleMatrícula}
                         isDisabled={loading ? true : false}
                       />
                       <InputRightElement width={['4.25rem', '4.75rem']} mr={2}>
