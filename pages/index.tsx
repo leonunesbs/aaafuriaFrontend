@@ -17,10 +17,6 @@ export default function Home() {
           name="description"
           content="Página inicial da plataforma de Sócios @aaafuria"
         ></meta>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
       </Head>
       <Header />
       <Flex
