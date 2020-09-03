@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default const SiteMap: React.FC = () => {
+const SiteMap: React.FC = () => {
     return (
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
@@ -19,3 +19,5 @@ export default const SiteMap: React.FC = () => {
 </urlset>
     )
 }
+
+export default SiteMap
