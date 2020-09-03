@@ -97,7 +97,6 @@ class MyDocument extends Document<DocumentProps> {
             href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
             rel="preload"
             as="font"
-            type="font/lato"
             crossOrigin="anonymous"
           />
         </Head>
