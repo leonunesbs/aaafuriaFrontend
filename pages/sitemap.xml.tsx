@@ -3,10 +3,10 @@ import React from 'react'
 const SiteMap: React.FC = () => {
     return (
     <>
-    {'
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://aaafuria.com.br</loc>
+        {'
+            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+                <url>
+                 <loc>https://aaafuria.com.br</loc>
     </url>
     <url>
         <loc>
@@ -19,7 +19,7 @@ const SiteMap: React.FC = () => {
     </loc>
     </url>
 </urlset>
-}'
+'}
 </>
     )
 }
