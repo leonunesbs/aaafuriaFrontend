@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 
 import {
   Heading,
@@ -27,6 +26,7 @@ import {
   NumberInput,
   NumberInputField,
   useToast,
+  Link,
 } from '@chakra-ui/core'
 
 import { MdPerson, MdLock } from 'react-icons/md'
@@ -186,7 +186,10 @@ export default function Login() {
       <Head>
         <title>Login - @aaafuria</title>
       </Head>
-      <meta name="viewport"               content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      />
       <Flex
         flexWrap="wrap"
         height="100vh"
@@ -199,13 +202,15 @@ export default function Login() {
           width={['250px', '50%', '50%', '480px']}
           alignItems="flex-start"
         >
-          <Image
-            src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/logo_light.svg"
-            alt="logo_light"
-            height="90px"
-            onClick={() => router.push('/')}
-            cursor="pointer"
-          />
+          <Link href="/">
+            <Image
+              src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/logo_light.svg"
+              alt="logo_light"
+              height="90px"
+              cursor="pointer"
+            />
+          </Link>
+
           <Heading
             fontSize={['lg', '2xl', '3xl']}
             marginTop={15}
