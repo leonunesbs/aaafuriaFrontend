@@ -52,8 +52,8 @@ const CARD_ELEMENT_OPTIONS = {
 
 const Checkout: React.FC = () => {
   const router = useRouter()
-  const stripe = useStripe()
-  const elements = useElements()
+  // const stripe = useStripe()
+  // const elements = useElements()
   const toast = useToast()
 
   const [digitando, setDigitando] = useState(true)
