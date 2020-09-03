@@ -94,10 +94,13 @@ class MyDocument extends Document<DocumentProps> {
           <meta name="theme-color" content="#e9e9e9" />
           <link rel="manifest" href="/manifest.json" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
             rel="preload"
-            as="font"
-            crossOrigin="anonymous"
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+            as="style"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
           />
         </Head>
         <body>
