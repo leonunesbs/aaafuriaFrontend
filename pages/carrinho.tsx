@@ -23,6 +23,10 @@ interface Item {
   carrinho: any
 }
 
+function CustomButton({ children, ...rest }) {
+  return <Button {...rest}>{children}</Button>
+}
+
 const Carrinho: React.FC = () => {
   const toast = useToast()
   const router = useRouter()
@@ -186,20 +190,20 @@ const Carrinho: React.FC = () => {
           </Flex>
         </Flex>
         <Flex w="95%" mt={6} justifyContent="flex-end" alignSelf="center">
-          <Link href="/loja">
-            <Button
-              h="45px"
-              borderRadius="sm"
-              backgroundColor="gray.500"
-              color="#fff"
-              _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
-              fontSize={['xs', 'sm', 'base']}
-            >
-              Continuar comprando
-            </Button>
-          </Link>
+          <CustomButton
+            as="a"
+            href="/loja"
+            h="45px"
+            borderRadius="sm"
+            backgroundColor="gray.500"
+            color="#fff"
+            _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
+            fontSize={['xs', 'sm', 'base']}
+          >
+            Continuar comprando
+          </CustomButton>
 
-          <Button
+          <CustomButton
             h="45px"
             ml={2}
             backgroundColor="green.300"
@@ -212,7 +216,7 @@ const Carrinho: React.FC = () => {
           >
             Finalizar pedido
             <Box as={AiOutlineArrowRight} size={6} />
-          </Button>
+          </CustomButton>
         </Flex>
       </Flex>
       <Footer />

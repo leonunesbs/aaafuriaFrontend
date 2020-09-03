@@ -9,11 +9,11 @@ const stripePromise = loadStripe(
 
 function MyApp({ Component, pageProps }) {
   return (
-    // <Elements stripe={stripePromise}>
-    <ThemeContainer>
-      <Component {...pageProps} />
-    </ThemeContainer>
-    // </Elements>
+    <Elements stripe={stripePromise}>
+      <ThemeContainer>
+        <Component {...pageProps} />
+      </ThemeContainer>
+    </Elements>
   )
 }
 

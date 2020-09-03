@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
-import Link from 'next/link'
 import {
   Image,
   Text,
-  Box,
+  Link,
   Flex,
   Button,
   Drawer,
@@ -15,6 +14,7 @@ import {
   DrawerFooter,
   useDisclosure,
   Divider,
+  Box,
 } from '@chakra-ui/core'
 
 import { isAuthenticated, logout } from '../config/auth'
@@ -102,6 +102,8 @@ const Header: React.FC = () => {
       >
         <Flex flexDir="column" w="20%" maxW="130px">
           <MenuButton
+            as="a"
+            href="#"
             backgroundColor="gray.600"
             color="#fff"
             p={1}
@@ -116,7 +118,10 @@ const Header: React.FC = () => {
           >
             Seja Sócio
           </MenuButton>
+
           <MenuButton
+            as="a"
+            href="/loja"
             backgroundColor="gray.600"
             color="#fff"
             p={1}
@@ -127,7 +132,6 @@ const Header: React.FC = () => {
             fontWeight={['thin', 'normal', 'bold']}
             _hover={{ backgroundColor: 'green.300' }}
             _active={{ backgroundColor: 'gray.700' }}
-            onClick={() => router.push('/loja')}
             leftIcon={AiOutlineShopping}
           >
             Loja
@@ -136,15 +140,13 @@ const Header: React.FC = () => {
 
         <Flex minW="150px" w="65%" justifyContent="center">
           <Link href="/">
-            <a>
-              <Image
-                alt="logo_branco"
-                src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/logo_dark.png"
-                alignSelf="center"
-                px={6}
-                py={4}
-              />
-            </a>
+            <Image
+              alt="logo_branco"
+              src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/logo_dark.png"
+              alignSelf="center"
+              px={6}
+              py={4}
+            />
           </Link>
         </Flex>
 
@@ -182,33 +184,39 @@ const Header: React.FC = () => {
                 {isAuth ? (
                   <>
                     <MenuButton
+                      as="a"
+                      href="/carrinho"
                       leftIcon={AiOutlineShoppingCart}
-                      onClick={() => router.push('/carrinho')}
                     >
                       Carrinho
                     </MenuButton>
+
                     <MenuButton
+                      as="a"
+                      href="/user/dashboard/pedidos"
                       leftIcon={BsListCheck}
-                      onClick={() => router.push('/user/dashboard/pedidos')}
                     >
                       Meus pedidos
                     </MenuButton>
 
                     <Divider />
                     <MenuButton
+                      as="a"
+                      href="/user/dashboard"
                       leftIcon={AiOutlineDashboard}
                       color="#fff"
                       backgroundColor="gray.500"
-                      onClick={() => router.push('/user/dashboard')}
                     >
                       Painel
                     </MenuButton>
+
                     {isStaff && (
                       <MenuButton
+                        as="a"
+                        href="/admin/dashboard"
                         leftIcon={AiOutlineDashboard}
                         color="#fff"
                         backgroundColor="gray.500"
-                        onClick={() => router.push('/admin/dashboard')}
                       >
                         Painel do Diretor
                       </MenuButton>
@@ -225,9 +233,10 @@ const Header: React.FC = () => {
                 ) : (
                   <>
                     <MenuButton
+                      as="a"
+                      href="/login"
                       color="#fff"
                       backgroundColor="gray.500"
-                      onClick={() => router.push('/login')}
                       leftIcon={FiLogIn}
                     >
                       Entrar
