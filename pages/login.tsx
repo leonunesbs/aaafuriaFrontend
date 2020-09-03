@@ -186,6 +186,7 @@ export default function Login() {
       <Head>
         <title>Login - @aaafuria</title>
       </Head>
+      <meta name="viewport"               content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <Flex
         flexWrap="wrap"
         height="100vh"
