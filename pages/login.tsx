@@ -128,7 +128,7 @@ export default function Login() {
   const handleSubmit = async () => {
     setError(null)
     setLoading(true)
-    const response: any = await api.post('cadastro/', {
+    const response: any = await api.post('core/api/cadastro/', {
       nome: nome,
       email: email,
       matrícula: matrícula,

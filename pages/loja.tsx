@@ -31,7 +31,7 @@ function Loja() {
   const [tamanho, setTamanho] = useState()
   const handleTamanho = (event: any) => setTamanho(event.target.value)
 
-  const { data }: any = useFetch('product-list/')
+  const { data }: any = useFetch('ecommerce/api/product-list/')
 
   useEffect(() => {
     setProdutos(data && data)
@@ -60,7 +60,7 @@ function Loja() {
 
   async function handleAddToCart(pk: number) {
     if (isAuthenticated()) {
-      const response: any = await api.post('add-to-cart/', {
+      const response: any = await api.post('ecommerce/api/add-to-cart/', {
         pk: pk,
         tamanho: tamanho,
       })

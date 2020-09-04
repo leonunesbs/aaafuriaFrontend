@@ -33,7 +33,7 @@ const Carrinho: React.FC = () => {
   const [produtos, setProdutos] = useState([])
   const [disabled, setDisabled] = useState(true)
 
-  const cart: { data: any } = useFetch('carrinho/', 10000)
+  const cart: { data: any } = useFetch('ecommerce/api/carrinho/', 10000)
 
   useEffect(() => {
     setProdutos(cart.data && cart.data.produtos)

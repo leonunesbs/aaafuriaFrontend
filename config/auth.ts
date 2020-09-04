@@ -2,7 +2,7 @@ import React from 'react'
 import api from '../services/api'
 
 export async function authenticate(username: string, password: string) {
-  const response = await api.post('login/', {
+  const response = await api.post('core/api/login/', {
     username: username,
     password: password,
   })
@@ -28,7 +28,7 @@ export function isAuthenticated() {
   }
 
   const isAuth = async () => {
-    const response: any = await api.post('is-authenticated/')
+    const response: any = await api.post('core/api/is-authenticated/')
 
     if (response.ok) {
       localStorage.setItem('isSócio', response.data.is_sócio)

@@ -61,7 +61,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     async function getStaff() {
-      const response = await api.get('is-staff/')
+      const response = await api.get('core/api/is-staff/')
       if (response.ok) {
         setIsStaff(true)
       }

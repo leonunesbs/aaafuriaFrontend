@@ -72,7 +72,7 @@ const Checkout: React.FC = () => {
   const [contaDestino, setContaDestino] = useState('')
   const handleContaDestino = (event: any) => setContaDestino(event.target.value)
 
-  const cart: { data: any } = useFetch('carrinho/')
+  const cart: { data: any } = useFetch('ecommerce/api/carrinho/')
 
   const [produtos, setProdutos]: any = useState([])
 
@@ -95,7 +95,7 @@ const Checkout: React.FC = () => {
   useEffect(() => {
     if (formaPagamento === 'ST') {
       const f = async () => {
-        const response: any = await api.get('/create-payment')
+        const response: any = await api.get('ecommerce/api/create-payment/')
         if (response.ok) {
           localStorage.setItem(
             'clientSecret',
@@ -148,7 +148,7 @@ const Checkout: React.FC = () => {
       data.append('gateway', formaPagamento)
       data.append('amount', valor)
       data.append('comprovante', comprovante)
-      const response: any = await api.post('checkout/', data)
+      const response: any = await api.post('ecommerce/api/checkout/', data)
 
       if (response.ok) {
         toast({
