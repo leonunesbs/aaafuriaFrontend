@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, FormEvent } from 'react'
 import { useRouter } from 'next/router'
 
+import InputMask from 'react-input-mask'
+
 import {
   Heading,
   Box,
@@ -35,6 +37,12 @@ import { authenticate, isAuthenticated } from '../config/auth'
 import Head from 'next/head'
 import api from '../services/api'
 
+const CelularInput = ({ children, value, onChange, ...rest }) => (
+  <InputMask mask="(99) 99999-9999" value={value} onChange={onChange} {...rest}>
+    {() => children}
+  </InputMask>
+)
+
 export default function Login() {
   const router = useRouter()
   const toast = useToast()
@@ -58,6 +66,9 @@ export default function Login() {
   // CADASTRO
   const [nome, setNome] = useState('')
   const handleNome = (event: any) => setNome(event.target.value.toUpperCase())
+
+  const [celular, setCelular] = useState('')
+  const handleCelular = (event: any) => setCelular(event.target.value)
 
   const [birth, setBirth] = useState('')
   const handleBirth = (event: any) => setBirth(event.target.value)
@@ -109,6 +120,7 @@ export default function Login() {
         response.data.nome_completo && response.data.nome_completo.toUpperCase()
       )
       setEmail(response.data.email)
+      setCelular(response.data.celular)
       setTurma(response.data.turma)
       setBirth(response.data.data_de_nascimento)
       setIsSócio(response.data.is_socio)
@@ -383,25 +395,50 @@ export default function Login() {
                           onChange={handleNome}
                         />
                       </FormControl>
+                      <FormControl flexGrow={1} isRequired>
+                        <FormLabel htmlFor="email" fontSize={['sm', 'md']}>
+                          Email
+                        </FormLabel>
+                        <Input
+                          type="email"
+                          id="email"
+                          aria-describedby="email"
+                          focusBorderColor="green.300"
+                          borderRadius="sm"
+                          _hover={{ borderColor: 'green.300' }}
+                          isDisabled={
+                            digitando ? true : false || loading ? true : false
+                          }
+                          value={email}
+                          onChange={handleEmail}
+                        />
+                      </FormControl>
 
                       <Flex flexWrap="wrap">
                         <FormControl flexGrow={1} isRequired>
-                          <FormLabel htmlFor="email" fontSize={['sm', 'md']}>
-                            Email
+                          <FormLabel htmlFor="celular" fontSize={['sm', 'md']}>
+                            Celular
                           </FormLabel>
-                          <Input
-                            type="email"
-                            id="email"
-                            aria-describedby="email"
-                            focusBorderColor="green.300"
-                            borderRadius="sm"
-                            _hover={{ borderColor: 'green.300' }}
-                            isDisabled={
-                              digitando ? true : false || loading ? true : false
-                            }
-                            value={email}
-                            onChange={handleEmail}
-                          />
+                          <CelularInput
+                            value={celular}
+                            onChange={handleCelular}
+                          >
+                            <Input
+                              type="text"
+                              id="celular"
+                              aria-describedby="celular"
+                              focusBorderColor="green.300"
+                              borderRadius="sm"
+                              _hover={{ borderColor: 'green.300' }}
+                              isDisabled={
+                                digitando
+                                  ? true
+                                  : false || loading
+                                  ? true
+                                  : false
+                              }
+                            />
+                          </CelularInput>
                         </FormControl>
                         <FormControl
                           flexGrow={1}
