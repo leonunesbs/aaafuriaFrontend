@@ -67,7 +67,7 @@ const Financeiro: React.FC = () => {
   })
 
   const handleNovaEntrada = async () => {
-    const response = await api.post('financeiro-entries/', {
+    const response = await api.post('core/api/financeiro-entries/', {
       fluxo: 'E',
       finalidade: finalidade,
       valor: valor,

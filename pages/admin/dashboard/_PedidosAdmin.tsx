@@ -53,7 +53,7 @@ function MeuPedidoCard({ data, item, user, ...rest }) {
 
 const Pedidos: React.FC = () => {
   const [page, setPage] = useState(1)
-  const pedidos: any = useFetch(`core/apipedidos-admin/?page=${page}`)
+  const pedidos: any = useFetch(`core/api/pedidos-admin/?page=${page}`)
 
   if (!pedidos.data) {
     ;<p>Carregando...</p>
