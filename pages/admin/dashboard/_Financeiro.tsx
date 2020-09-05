@@ -18,12 +18,11 @@ import {
   useDisclosure,
   FormControl,
   FormLabel,
-  Select,
   NumberInputField,
   NumberInput,
   Textarea,
 } from '@chakra-ui/core'
-import { ImArrowDown, ImArrowUp } from 'react-icons/im'
+import { ImArrowUp } from 'react-icons/im'
 import { useFetch } from '../../../hooks/useFetch'
 import api from '../../../services/api'
 
@@ -84,7 +83,7 @@ const Financeiro: React.FC = () => {
   }
 
   const handleNovaSaída = async () => {
-    const response = await api.post('financeiro-entries/', {
+    const response = await api.post('core/api/financeiro-entries/', {
       fluxo: 'S',
       finalidade: finalidade,
       valor: valor,

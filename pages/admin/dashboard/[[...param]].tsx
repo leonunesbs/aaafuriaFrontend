@@ -9,26 +9,14 @@ import {
   Stack,
   Tooltip,
   Heading,
-  useDisclosure,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
   Divider,
   Badge,
-  Link,
 } from '@chakra-ui/core'
 import { AiOutlineHome } from 'react-icons/ai'
 import { FiLogOut } from 'react-icons/fi'
 import { logout, isAuthenticated } from '../../../config/auth'
-import { BsListCheck } from 'react-icons/bs'
-import { GiHamburgerMenu } from 'react-icons/gi'
 import Head from 'next/head'
 import AdminGate from '../_adminGate'
-import { MdAttachMoney } from 'react-icons/md'
 import Pedidos from './_PedidosAdmin'
 import DrawerMenuAdmin from '../../../components/admin/DrawerMenuAdmin'
 import MenuAdmin from '../../../components/admin/MenuAdmin'

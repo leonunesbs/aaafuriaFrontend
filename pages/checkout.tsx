@@ -12,8 +12,6 @@ import {
   Text,
   FormHelperText,
   Input,
-  NumberInput,
-  NumberInputField,
   InputGroup,
   InputLeftElement,
   useToast,
@@ -28,7 +26,7 @@ import api from '../services/api'
 import Head from 'next/head'
 import Footer from '../components/Footer'
 
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+// import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import CardSection from '../components/CardElement'
 import { BsCreditCard } from 'react-icons/bs'
 

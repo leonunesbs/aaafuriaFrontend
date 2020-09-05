@@ -111,7 +111,7 @@ const Dashboard: React.FC = () => {
     !isAuthenticated() && router.push('/login')
   })
 
-  const pedidos: any = useFetch(`meus-pedidos/?page=${page}`)
+  const pedidos: any = useFetch(`ecommerce/api/meus-pedidos/?page=${page}`)
 
   if (!pedidos.data) {
     ;<p>Carregando...</p>
