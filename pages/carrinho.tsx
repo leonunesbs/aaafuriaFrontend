@@ -74,7 +74,7 @@ const Carrinho: React.FC = () => {
   }
 
   async function removeFromCart(pk: number) {
-    await api.post('remove-from-cart/', { pk: pk })
+    await api.post('ecommerce/api/remove-from-cart/', { pk: pk })
     produtos.forEach((element, index, array) => {
       if (element.pk == pk) {
         array.splice(index, 1)
