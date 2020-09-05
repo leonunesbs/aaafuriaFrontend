@@ -15,7 +15,7 @@ export default function Home() {
         <title>Início - @aaafuria</title>
         <meta
           name="description"
-          content="Página inicial da plataforma de Sócios @aaafuria"
+          content="Página inicial da plataforma de Sócios e Loja @aaafuria"
         ></meta>
       </Head>
       <Header />
@@ -41,12 +41,13 @@ export default function Home() {
             flexDir="column"
           >
             <Text
+              as="h1"
               color="#fff"
               fontSize={['2xl']}
               fontWeight="bold"
               lineHeight="45px"
             >
-              Venha fazer parte da maior do Nordeste!
+              Venha fazer parte da nossa História!
             </Text>
             <Button
               borderRadius="sm"
