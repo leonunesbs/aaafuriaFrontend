@@ -31,9 +31,9 @@ import api from '../../../services/api'
 const Financeiro: React.FC = () => {
   const [page, setPage] = useState(1)
 
-  const { data }: any = useFetch(`financeiro/?page=${page}`, 5000)
-  const lastIn: any = useFetch('financeiro-last-in/')
-  const lastOut: any = useFetch('financeiro-last-out/')
+  const { data }: any = useFetch(`core/api/financeiro/?page=${page}`, 5000)
+  const lastIn: any = useFetch('core/api/financeiro-last-in/')
+  const lastOut: any = useFetch('core/api/financeiro-last-out/')
 
   const entrada = useDisclosure()
   const saída = useDisclosure()

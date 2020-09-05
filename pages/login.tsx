@@ -171,8 +171,8 @@ export default function Login() {
       router.push('/')
     } else {
       setErrorLogin(response.data.error)
+      setLoadingLogin(false)
     }
-    setLoadingLogin(false)
   }
 
   useEffect(() => {
