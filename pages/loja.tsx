@@ -73,7 +73,7 @@ function Loja() {
         toast({
           position: 'bottom',
           title: 'Erro!',
-          description: `${response.data.error}. (${response.data.item})`,
+          description: `${response.data.error}`,
           status: 'error',
           duration: 3000,
           isClosable: true,
