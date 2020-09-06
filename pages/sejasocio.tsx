@@ -28,6 +28,7 @@ import {
 import { TiGroupOutline } from 'react-icons/ti'
 import Footer from '../components/Footer'
 import { useFetch } from '../hooks/useFetch'
+import api from '../services/api'
 
 const CelularInputMask = ({ children, value, onChange, ...rest }) => (
   <InputMask mask="(99) 99999-9999" value={value} onChange={onChange} {...rest}>
@@ -106,6 +107,18 @@ const SejaSócio: React.FC = () => {
     setBirth(data?.data_de_nascimento)
   }, [data])
 
+  const handleSejaSócio = () => {
+    const data = new FormData()
+    data.append('matrícula', matrícula)
+    data.append('turma', turma)
+    data.append('nome_completo', nome)
+    data.append('email', email)
+    data.append('celular', celular)
+    data.append('data_de_nascimento', birth)
+
+    const response = api.post('core/api/seja-socio/', data)
+  }
+
   return (
     <>
       <Head>
@@ -126,7 +139,7 @@ const SejaSócio: React.FC = () => {
         mt={16}
       >
         <Image
-          maxW={['100%', '40%', '60%']}
+          maxW={['100%', '60%']}
           maxH={['340px', '100%']}
           objectFit="cover"
           src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/sejasocio_bg.png"
