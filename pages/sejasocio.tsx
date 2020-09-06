@@ -13,6 +13,7 @@ import {
   Box,
   Button,
   Divider,
+  Skeleton,
 } from '@chakra-ui/core'
 import {
   AiOutlineUser,
@@ -105,12 +106,6 @@ const SejaSócio: React.FC = () => {
     setBirth(data?.data_de_nascimento)
   }, [data])
 
-  if (!data) {
-    return <p>ok</p>
-  }
-
-  console.log(data)
-
   return (
     <>
       <Head>
@@ -141,87 +136,89 @@ const SejaSócio: React.FC = () => {
             Seja Sócio
           </Heading>
           <form>
-            <CustomInput
-              // isDisabled
-              ident="matrícula"
-              type="text"
-              placeholder="Matrícula"
-              value={matrícula}
-              onChange={handleMatrícula}
-              leftIcon={<Box as={AiOutlineFieldNumber} />}
-            />
-            <CustomInput
-              // isDisabled
-              ident="turma"
-              type="text"
-              placeholder="Turma"
-              value={turma}
-              onChange={handleTurma}
-              leftIcon={<Box as={TiGroupOutline} />}
-            />
-            <CustomInput
-              // isDisabled
-              ident="nome"
-              type="text"
-              placeholder="Nome"
-              value={nome}
-              onChange={handleNome}
-              leftIcon={<Box as={AiOutlineUser} />}
-            />
-            <CpfInputMask value={cpf} onChange={handleCpf}>
+            <Skeleton isLoaded={data}>
               <CustomInput
-                ident="cpf"
+                // isDisabled
+                ident="matrícula"
                 type="text"
-                placeholder="CPF"
-                leftIcon={<Box as={AiOutlineIdcard} />}
+                placeholder="Matrícula"
+                value={matrícula}
+                onChange={handleMatrícula}
+                leftIcon={<Box as={AiOutlineFieldNumber} />}
               />
-            </CpfInputMask>
-            <CustomInput
-              // isDisabled
-              ident="nascimento"
-              type="date"
-              placeholder="Data de nascimento"
-              value={birth}
-              onChange={handleBirth}
-              leftIcon={<Box as={AiOutlineCalendar} />}
-            />
-
-            <CustomInput
-              // isDisabled
-              ident="email"
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={handleEmail}
-              leftIcon={<Box as={AiOutlineMail} />}
-            />
-            <CelularInputMask value={celular} onChange={handleCelular}>
               <CustomInput
-                ident="celular"
-                type="tel"
-                placeholder="Celular"
-                leftIcon={<Box as={AiOutlinePhone} />}
+                // isDisabled
+                ident="turma"
+                type="text"
+                placeholder="Turma"
+                value={turma}
+                onChange={handleTurma}
+                leftIcon={<Box as={TiGroupOutline} />}
               />
-            </CelularInputMask>
-            <CustomInput
-              ident="foto"
-              type="file"
-              placeholder="Foto"
-              value={foto}
-              onChange={handleFoto}
-              leftIcon={<Box as={AiOutlineCamera} />}
-            />
-            <Divider mt={4} />
-            <Button
-              type="submit"
-              w="100%"
-              borderRadius="sm"
-              backgroundColor="green.300"
-              color="#fff"
-              h="45px"
-            >
-              Finalizar
-            </Button>
+              <CustomInput
+                // isDisabled
+                ident="nome"
+                type="text"
+                placeholder="Nome"
+                value={nome}
+                onChange={handleNome}
+                leftIcon={<Box as={AiOutlineUser} />}
+              />
+              <CpfInputMask value={cpf} onChange={handleCpf}>
+                <CustomInput
+                  ident="cpf"
+                  type="text"
+                  placeholder="CPF"
+                  leftIcon={<Box as={AiOutlineIdcard} />}
+                />
+              </CpfInputMask>
+              <CustomInput
+                // isDisabled
+                ident="nascimento"
+                type="date"
+                placeholder="Data de nascimento"
+                value={birth}
+                onChange={handleBirth}
+                leftIcon={<Box as={AiOutlineCalendar} />}
+              />
+
+              <CustomInput
+                // isDisabled
+                ident="email"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleEmail}
+                leftIcon={<Box as={AiOutlineMail} />}
+              />
+              <CelularInputMask value={celular} onChange={handleCelular}>
+                <CustomInput
+                  ident="celular"
+                  type="tel"
+                  placeholder="Celular"
+                  leftIcon={<Box as={AiOutlinePhone} />}
+                />
+              </CelularInputMask>
+              <CustomInput
+                ident="foto"
+                type="file"
+                placeholder="Foto"
+                value={foto}
+                onChange={handleFoto}
+                leftIcon={<Box as={AiOutlineCamera} />}
+              />
+              <Divider mt={4} />
+              <Button
+                type="submit"
+                w="100%"
+                borderRadius="sm"
+                backgroundColor="green.300"
+                color="#fff"
+                h="45px"
+              >
+                Finalizar
+              </Button>
+            </Skeleton>
           </form>
         </Flex>
       </Flex>
