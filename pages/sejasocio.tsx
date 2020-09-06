@@ -132,6 +132,7 @@ const SejaSócio: React.FC = () => {
       >
         <Image
           maxW={['100%', '40%', '60%']}
+          maxH={['340px', '100%']}
           objectFit="cover"
           src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/sejasocio_bg.png"
         />
