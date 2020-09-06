@@ -248,7 +248,7 @@ export default function Login() {
           >
             <InputGroup>
               <InputLeftElement
-                children={<Box as={MdPerson} size={5} color="gray.300" />}
+                children={<Box as={MdPerson} size={5} color="green.600" />}
               />
               <Input
                 ref={firstFieldLogin}
@@ -263,7 +263,7 @@ export default function Login() {
             </InputGroup>
             <InputGroup marginTop={2}>
               <InputLeftElement
-                children={<Box as={MdLock} size={5} color="gray.300" />}
+                children={<Box as={MdLock} size={5} color="green.600" />}
               />
               <Input
                 value={senhaLogin}

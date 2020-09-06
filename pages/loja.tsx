@@ -83,7 +83,6 @@ function Loja() {
       alert('Você não está logado.')
     }
   }
-
   return (
     <>
       <Head>
