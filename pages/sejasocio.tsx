@@ -139,12 +139,12 @@ const SejaSócio: React.FC = () => {
         mt={16}
       >
         <Image
-          maxW={['100%', '60%']}
           maxH={['340px', '100%']}
+          w={['100%', '100%', '100%', '65%']}
           objectFit="cover"
           src="https://furiav2-assets.s3.sa-east-1.amazonaws.com/public/sejasocio_bg.png"
         />
-        <Flex flexDir="column" flexGrow={1} p={6}>
+        <Flex flexDir="column" flexGrow={1} p={6} justify="center">
           <Heading color="green.600" mb={6}>
             Seja Sócio
           </Heading>
