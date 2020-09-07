@@ -144,16 +144,17 @@ export default function Login() {
     event.preventDefault()
     setError(null)
     setLoading(true)
-    const response: any = await api.post('core/api/cadastro/', {
-      nome: nome,
-      email: email,
-      matrícula: matrícula,
-      turma: turma,
-      senha: senha,
-      senha_again: senhaAgain,
-      data_de_nascimento: birth,
-      is_sócio: isSócio,
-    })
+    const data = new FormData()
+    data.append('nome', nome)
+    data.append('email', email)
+    data.append('matrícula', matrícula)
+    data.append('turma', turma)
+    data.append('senha', senha)
+    data.append('senha_again', senhaAgain)
+    data.append('celular', celular)
+    data.append('data_de_nascimento', birth)
+    data.append('is_sócio', JSON.stringify(isSócio))
+    const response: any = await api.post('core/api/cadastro/', data)
 
     if (response.ok) {
       if (response.data.token) {
