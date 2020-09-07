@@ -8,10 +8,10 @@ export async function authenticate(username: string, password: string) {
   })
 
   if (response.ok) {
-    const { token, is_socio, user }: any = response.data
+    const { token, is_sócio, user }: any = response.data
     localStorage.setItem('Token', token)
     localStorage.setItem('User', JSON.stringify(user))
-    localStorage.setItem('isSócio', is_socio)
+    localStorage.setItem('isSócio', is_sócio)
     return response
   } else {
     localStorage.clear()
