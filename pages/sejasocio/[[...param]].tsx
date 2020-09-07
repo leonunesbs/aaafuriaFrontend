@@ -32,6 +32,7 @@ import api from '../../services/api'
 import Footer from '../../components/Footer'
 import { useRouter } from 'next/router'
 import CarteirinhaSVG from '../../components/CarteirinhaSVG'
+import { isAuthenticated } from '../../config/auth'
 
 const CelularInputMask = ({ children, value, onChange, ...rest }) => (
   <InputMask mask="(99) 99999-9999" value={value} onChange={onChange} {...rest}>
@@ -101,6 +102,10 @@ const SejaSócio: React.FC = () => {
   const handleFoto = (e: any) => setFoto(e.target.files[0])
 
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    !isAuthenticated() && router.push('/login')
+  })
 
   const handleSejaSócio = () => {
     const data = new FormData()
