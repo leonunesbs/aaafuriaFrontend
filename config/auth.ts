@@ -28,7 +28,7 @@ export function isAuthenticated() {
   }
 
   const isAuth = async () => {
-    const response: any = await api.post('core/api/is-authenticated/')
+    const response: any = await api.get('core/api/is-authenticated/')
 
     if (response.ok) {
       localStorage.setItem('isSócio', response.data.is_sócio)
@@ -46,5 +46,5 @@ export function isAuthenticated() {
 }
 
 export function logout() {
-  localStorage.clear()
+  return localStorage.clear()
 }
