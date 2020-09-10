@@ -37,12 +37,12 @@ function AssociaçõesCard({ item, router, ...rest }) {
   const onPauseClose = () => setPauseIsOpen(false)
   const pauseRef = useRef()
 
-  const toggleAssociação = async () => (
-    await api.get(`core/api/toggle-associacao/${item.pk}`),
-    isPauseOpen && onPauseClose(),
-    isValidadeOpen && onValidadeClose(),
+  const toggleAssociação = async () => {
+    await api.get(`core/api/toggle-associacao/${item.pk}`)
+    isPauseOpen && onPauseClose()
+    isValidadeOpen && onValidadeClose()
     await router.reload()
-  )
+  }
 
   return (
     <Box p={5} shadow="md" borderWidth="1px" borderRadius="sm" {...rest}>
