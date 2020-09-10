@@ -38,10 +38,14 @@ function AssociaçõesCard({ item, router, ...rest }) {
   const pauseRef = useRef()
 
   const toggleAssociação = async () => {
-    await api.get(`core/api/toggle-associacao/${item.pk}`)
-    isPauseOpen && onPauseClose()
-    isValidadeOpen && onValidadeClose()
-    await router.reload()
+    const response = await api.get(`core/api/toggle-associacao/${item.pk}/`)
+    if (response.ok) {
+      isPauseOpen && onPauseClose()
+      isValidadeOpen && onValidadeClose()
+      await router.reload()
+    } else {
+      alert('Algo deu errado')
+    }
   }
 
   return (
@@ -145,7 +149,7 @@ function AssociaçõesCard({ item, router, ...rest }) {
                         backgroundColor="red.500"
                         color="#fff"
                         borderRadius="sm"
-                        onClick={() => toggleAssociação()}
+                        onClick={toggleAssociação}
                         ml={3}
                       >
                         Pausar
@@ -198,7 +202,7 @@ function AssociaçõesCard({ item, router, ...rest }) {
                         backgroundColor="green.300"
                         color="#fff"
                         borderRadius="sm"
-                        onClick={() => toggleAssociação()}
+                        onClick={toggleAssociação}
                         ml={3}
                       >
                         Validar
