@@ -39,9 +39,9 @@ function AssociaçõesCard({ item, router, ...rest }) {
 
   const toggleAssociação = async () => (
     await api.get(`core/api/toggle-associacao/${item.pk}`),
-    await router.reload(),
     isPauseOpen && onPauseClose(),
-    isValidadeOpen && onValidadeClose()
+    isValidadeOpen && onValidadeClose(),
+    await router.reload(),
   )
 
   return (
