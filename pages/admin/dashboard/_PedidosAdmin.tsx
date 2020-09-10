@@ -7,8 +7,10 @@ import {
   Box,
   Badge,
   Divider,
+  Link,
 } from '@chakra-ui/core'
 import { useFetch } from '../../../hooks/useFetch'
+import { AiOutlineWhatsApp } from 'react-icons/ai'
 
 function MeuPedidoCard({ data, item, user, ...rest }) {
   return (
@@ -47,6 +49,18 @@ function MeuPedidoCard({ data, item, user, ...rest }) {
           <Text fontWeight="bold">R${item.order_total}</Text>
         </Flex>
       </Flex>
+      <Divider />
+      <Flex justify="flex-end">
+        <Link
+          isExternal
+          href={`https://api.whatsapp.com/send?phone=55${user.sócio.celular.replace(
+            /[^0-9]/g,
+            ''
+          )}`}
+        >
+          <Box as={AiOutlineWhatsApp} color="green.300" size={6} />
+        </Link>
+      </Flex>
     </Box>
   )
 }
@@ -81,7 +95,6 @@ const Pedidos: React.FC = () => {
         borderRadius="md"
         mt={6}
         p={4}
-        overflow="scroll"
       >
         <Stack spacing={4}>
           {pedidos.data?.results.map((item): any => (

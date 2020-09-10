@@ -1,8 +1,18 @@
 import React from 'react'
+import { url } from 'inspector'
 
 // import { Container } from './styles';
 
-const CarteirinhaSVG = ({ nome, matrícula, birth, turma, cpf }) => {
+const CarteirinhaSVG = ({
+  pk,
+  nome,
+  matrícula,
+  birth,
+  turma,
+  cpf,
+  foto,
+  categoria,
+}) => {
   return (
     <>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 98.45">
@@ -31,8 +41,8 @@ const CarteirinhaSVG = ({ nome, matrícula, birth, turma, cpf }) => {
               fill="#14783c"
             />
             <g id="logo">
-              <g clip-path="url(#clip-path)">
-                <g clip-path="url(#clip-path)">
+              <g clipPath="url(#clip-path)">
+                <g clipPath="url(#clip-path)">
                   <path
                     d="M138,51.85l0,.08,0-.08,0-.07.68-1.23a.08.08,0,0,1,0,0h.25v2h-.23V50.9l-.68,1.25c0,.05-.06.07-.1.07h0a.1.1,0,0,1-.1-.07l-.7-1.25s0,.05,0,.07V52.5H137v-2h.26l0,0,.69,1.23,0,.07"
                     transform="translate(-43.89 -27.31)"
@@ -224,98 +234,182 @@ const CarteirinhaSVG = ({ nome, matrícula, birth, turma, cpf }) => {
         </g>
         <g id="content">
           <g id="foto">
-            <g clip-path="url(#clip-path-3)">
+            <g clipPath="url(#clip-path-3)">
               <image
                 width="320"
                 height="320"
                 transform="translate(9.61 14.19) scale(0.12)"
-                href="#"
+                href={foto}
               />
             </g>
           </g>
           <g id="ident">
             <text
+              id="matrícula"
+              transform="translate(48.48 50.09)"
+              fontSize="4"
+              fill="#4d4d4a"
+              fontFamily="Lato-Regular, Lato"
+            >
+              18107053
+            </text>
+            <text
               id="nome"
               transform="translate(48.48 45.09)"
               fontSize="5"
               fill="#14783c"
-              fontWeight="bold"
+              fontFamily="Lato-Bold, Lato"
+              fontWeight="700"
             >
               {nome}
             </text>
-            <text
-              id="matrícula"
-              transform="translate(48.48 50.09)"
-              fontSize="4"
-              fill="#4a4d4d"
-            >
-              {matrícula}
-            </text>
           </g>
-          <g id="turma">
-            <text
-              id="title-2"
-              data-name="title"
-              transform="translate(9.11 59.68)"
-              fontSize="3.8"
-              fill="#4a4d4d"
-              fontWeight="thin"
-            >
-              Turma
-            </text>
-            <text
-              id="value-2"
-              data-name="value"
-              transform="translate(9.11 63.68)"
-              fontSize="3.8"
-              fill="#4a4d4d"
-            >
-              {turma}
-            </text>
+          <g id="info1">
+            <g id="divider">
+              <rect x="44.46" y="56.69" width="0.3" height="33" fill="#ccc" />
+            </g>
+            <g id="cpf">
+              <text
+                id="title"
+                transform="translate(9.11 84.75)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Light, Lato"
+                fontWeight="300"
+              >
+                CPF
+              </text>
+              <text
+                id="value"
+                transform="translate(9.11 88.75)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Regular, Lato"
+              >
+                {cpf}
+              </text>
+            </g>
+            <g id="data_de_nascimento">
+              <text
+                id="title-2"
+                data-name="title"
+                transform="translate(9.11 72.21)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Light, Lato"
+                fontWeight="300"
+              >
+                Data de nascimento
+              </text>
+              <text
+                id="value-2"
+                data-name="value"
+                transform="translate(9.11 76.21)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Regular, Lato"
+              >
+                {birth}
+              </text>
+            </g>
+            <g id="sócionum">
+              <text
+                id="title-3"
+                data-name="title"
+                transform="translate(9.11 59.68)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Light, Lato"
+                fontWeight="300"
+              >
+                Sócio Nº
+              </text>
+              <text
+                id="value-3"
+                data-name="value"
+                transform="translate(9.11 63.68)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Regular, Lato"
+              >
+                {pk}
+              </text>
+            </g>
           </g>
-          <g id="data_de_nascimento">
-            <text
-              id="title"
-              transform="translate(9.11 72.21)"
-              fontSize="3.8"
-              fill="#4a4d4d"
-              fontWeight="thin"
-            >
-              Data de nascimento
-            </text>
-            <text
-              id="value"
-              transform="translate(9.11 76.21)"
-              fontSize="3.8"
-              fill="#4a4d4d"
-            >
-              {new Date(birth).toLocaleDateString()}
-            </text>
-          </g>
-
-          <g id="CPF">
-            <text
-              id="title-3"
-              data-name="title"
-              transform="translate(9.11 84.75)"
-              fontSize="3.8"
-              fill="#4a4d4d"
-              fontWeight="thin"
-            >
-              CPF
-            </text>
-            <text
-              id="value-3"
-              data-name="value"
-              transform="translate(9.11 88.75)"
-              fontSize="3.8"
-              fill="#4a4d4d"
-            >
-              {cpf}
-            </text>
-          </g>
-          <g id="divider">
-            <rect x="44.46" y="56.69" width="0.3" height="33" fill="#ccc" />
+          <g id="info2">
+            <g id="divider-2" data-name="divider">
+              <rect x="85.11" y="56.69" width="0.3" height="33" fill="#ccc" />
+            </g>
+            <g id="validade">
+              <text
+                id="title-4"
+                data-name="title"
+                transform="translate(49.76 84.75)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Light, Lato"
+                fontWeight="300"
+              >
+                Válida até
+              </text>
+              <text
+                id="value-4"
+                data-name="value"
+                transform="translate(49.76 88.75)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Regular, Lato"
+              >
+                dd/mm/AAAA
+              </text>
+            </g>
+            <g id="categoria">
+              <text
+                id="title-5"
+                data-name="title"
+                transform="translate(49.76 72.21)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Light, Lato"
+                fontWeight="300"
+              >
+                Categoria
+              </text>
+              <text
+                id="value-5"
+                data-name="value"
+                transform="translate(49.76 76.21)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Regular, Lato"
+              >
+                {categoria == 'S' && 'SEMESTRAL'}
+                {categoria == 'A' && 'ANUAL'}
+              </text>
+            </g>
+            <g id="turma">
+              <text
+                id="title-6"
+                data-name="title"
+                transform="translate(49.76 59.68)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Light, Lato"
+                fontWeight="300"
+              >
+                Turma
+              </text>
+              <text
+                id="value-6"
+                data-name="value"
+                transform="translate(49.76 63.68)"
+                fontSize="3.5"
+                fill="#4d4d4a"
+                fontFamily="Lato-Regular, Lato"
+              >
+                {turma}
+              </text>
+            </g>
           </g>
         </g>
       </svg>

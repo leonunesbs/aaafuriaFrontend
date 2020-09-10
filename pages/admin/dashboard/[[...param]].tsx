@@ -21,47 +21,7 @@ import Pedidos from './_PedidosAdmin'
 import DrawerMenuAdmin from '../../../components/admin/DrawerMenuAdmin'
 import MenuAdmin from '../../../components/admin/MenuAdmin'
 import Financeiro from './_Financeiro'
-
-function MeuPedidoCard({ data, item, user, ...rest }) {
-  return (
-    <Box
-      key={item.pk}
-      p={5}
-      shadow="md"
-      borderWidth="1px"
-      borderRadius="sm"
-      {...rest}
-    >
-      <Heading fontSize="xl">{user.sócio.nome_completo}</Heading>
-      <Flex align="center" mt={2}>
-        <Badge
-          variantColor={
-            (item.status == 'AGUARDANDO' && 'gray') ||
-            (item.status == 'PROCESSANDO' && 'orange') ||
-            (item.status == 'CONCLUIDO' && 'green') ||
-            (item.status == 'CANCELADO' && 'red')
-          }
-        >
-          {item.status}
-        </Badge>
-      </Flex>
-
-      <Divider />
-      <Flex>
-        <Flex flexDir="column" w="70%" maxH="100px" flexWrap="wrap">
-          {item.items.map((i) => (
-            <Text key={i.pk}>
-              {i.quantity}x {i.item} {i.size && ` - ${i.size}`}
-            </Text>
-          ))}
-        </Flex>
-        <Flex flexDir="column" w="50%" alignItems="flex-end">
-          <Text fontWeight="bold">R${item.order_total}</Text>
-        </Flex>
-      </Flex>
-    </Box>
-  )
-}
+import Associações from './_Associações'
 
 const Dashboard: React.FC = () => {
   const router = useRouter()
@@ -140,6 +100,7 @@ const Dashboard: React.FC = () => {
         <Flex flexDir="column" flexGrow={1} minW="60%" p={4}>
           {router.query.param == 'pedidos' && <Pedidos />}
           {router.query.param == 'financeiro' && <Financeiro />}
+          {router.query.param == 'associacoes' && <Associações />}
         </Flex>
       </Flex>
     </AdminGate>

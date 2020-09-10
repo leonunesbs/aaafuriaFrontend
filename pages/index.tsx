@@ -6,6 +6,9 @@ import Header from '../components/Header'
 import Head from 'next/head'
 import Footer from '../components/Footer'
 
+function CTAButton({ children, ...rest }) {
+  return <Button {...rest}>{children}</Button>
+}
 export default function Home() {
   const router = useRouter()
 
@@ -49,17 +52,18 @@ export default function Home() {
             >
               Venha fazer parte da nossa História!
             </Text>
-            <Button
+            <CTAButton
+              as="a"
+              href="/sejasocio"
               borderRadius="sm"
               size="lg"
               mt={6}
               backgroundColor="green.300"
               color="#fff"
               _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
-              isDisabled
             >
               Seja Sócio
-            </Button>
+            </CTAButton>
           </Flex>
         </Flex>
       </Flex>

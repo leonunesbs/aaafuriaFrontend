@@ -15,7 +15,7 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { BsListCheck } from 'react-icons/bs'
 import { useRouter } from 'next/router'
-import { MdAttachMoney } from 'react-icons/md'
+import { MdAttachMoney, MdCardMembership } from 'react-icons/md'
 
 function MenuButton({ children, ...rest }) {
   return (
@@ -96,6 +96,16 @@ const DrawerMenuAdmin: React.FC = () => {
               >
                 <Box as={MdAttachMoney} mr={2} size={5} />
                 Fianceiro
+              </MenuButton>
+              <MenuButton
+                isActive={router.query.param == 'associacoes' && true}
+                onClick={() => {
+                  router.push('[[...param]]', 'associacoes')
+                  onClose()
+                }}
+              >
+                <Box as={MdCardMembership} mr={2} size={5} />
+                Associações
               </MenuButton>
             </Flex>
           </DrawerBody>

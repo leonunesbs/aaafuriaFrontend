@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Box, Text, Button } from '@chakra-ui/core'
 import { BsListCheck } from 'react-icons/bs'
-import { MdAttachMoney } from 'react-icons/md'
+import { MdAttachMoney, MdCardMembership } from 'react-icons/md'
 import { useRouter } from 'next/router'
 
 // import { Container } from './styles';
@@ -61,6 +61,15 @@ const MenuAdmin: React.FC = () => {
         >
           <Box as={MdAttachMoney} mr={2} size={5} />
           Financeiro
+        </MenuButton>
+        <MenuButton
+          isActive={router.query.param == 'associacoes' && true}
+          onClick={() => {
+            router.push('[[...param]]', 'associacoes')
+          }}
+        >
+          <Box as={MdCardMembership} mr={2} size={5} />
+          Associações
         </MenuButton>
         <MenuButton isDisabled>
           {

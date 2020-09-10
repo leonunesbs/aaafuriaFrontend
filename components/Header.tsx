@@ -103,7 +103,7 @@ const Header: React.FC = () => {
         <Flex flexDir="column" w="20%" maxW="130px">
           <MenuButton
             as="a"
-            href="#"
+            href="/sejasocio"
             backgroundColor="gray.600"
             color="#fff"
             p={1}
@@ -114,7 +114,6 @@ const Header: React.FC = () => {
             _hover={{ backgroundColor: 'green.300' }}
             _active={{ backgroundColor: 'gray.700' }}
             fontWeight={['thin', 'normal', 'bold']}
-            isDisabled
           >
             Seja Sócio
           </MenuButton>
