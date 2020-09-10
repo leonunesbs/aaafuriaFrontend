@@ -26,8 +26,9 @@ import {
   AiOutlineWhatsApp,
 } from 'react-icons/ai'
 import api from '../../../services/api'
+import { useRouter } from 'next/router'
 
-function AssociaçõesCard({ item, ...rest }) {
+function AssociaçõesCard({ item, router, ...rest }) {
   const [isValidadeOpen, setValidadeIsOpen] = useState(null)
   const onValidadeClose = () => setValidadeIsOpen(false)
   const validateRef = useRef()
@@ -39,7 +40,8 @@ function AssociaçõesCard({ item, ...rest }) {
   const toggleAssociação = async () => (
     await api.get(`core/api/toggle-associacao/${item.pk}`),
     isPauseOpen && onPauseClose(),
-    isValidadeOpen && onValidadeClose()
+    isValidadeOpen && onValidadeClose(),
+    router.reload()
   )
 
   return (
@@ -214,6 +216,7 @@ function AssociaçõesCard({ item, ...rest }) {
 }
 
 const Associações: React.FC = () => {
+  const router = useRouter()
   const [page, setPage] = useState(1)
   const associações: any = useFetch(
     `core/api/get-admin-associacao/?page=${page}`
@@ -245,7 +248,7 @@ const Associações: React.FC = () => {
       >
         <Stack spacing={4}>
           {associações.data?.results.map((item): any => (
-            <AssociaçõesCard key={item.pk} item={item} />
+            <AssociaçõesCard key={item.pk} router={router} item={item} />
           ))}
         </Stack>
       </Flex>
