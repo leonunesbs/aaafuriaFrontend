@@ -219,11 +219,6 @@ const Associações: React.FC = () => {
     `core/api/get-admin-associacao/?page=${page}`
   )
 
-  if (!associações.data) {
-    ;<p>Carregando...</p>
-  }
-
-  console.log(associações)
   return (
     <>
       <Heading
