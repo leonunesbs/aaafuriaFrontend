@@ -16,6 +16,8 @@ import {
   InputLeftElement,
   useToast,
   Stack,
+  NumberInput,
+  NumberInputField,
 } from '@chakra-ui/core'
 import { CgArrowsExchange } from 'react-icons/cg'
 import { AiOutlineArrowRight } from 'react-icons/ai'
@@ -285,13 +287,19 @@ const Checkout: React.FC = () => {
                       fontSize="1.2em"
                       children="$"
                     />
-                    <Input
-                      focusBorderColor="green.600"
-                      placeholder="Valor"
-                      borderRadius="sm"
-                      value={valor}
-                      onChange={handleValor}
-                    />
+                    <NumberInput>
+                      <NumberInputField
+                        type="number"
+                        placeholder="Valor"
+                        id="valor"
+                        focusBorderColor="green.300"
+                        borderRadius="sm"
+                        _hover={{ borderColor: 'green.300' }}
+                        maxLength={2}
+                        value={valor}
+                        onChange={handleValor}
+                      />
+                    </NumberInput>
                   </InputGroup>
                 </FormControl>
                 <FormControl mt={4} isRequired isDisabled={loading}>
