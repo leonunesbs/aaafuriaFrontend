@@ -58,18 +58,18 @@ const MenuAdmin: React.FC = () => {
           Associações
         </MenuButton>
         <MenuButton
-          isActive={router.query.param == 'pedidos' && true}
-          onClick={() => router.push('[[...param]]', 'pedidos')}
-        >
-          <Box as={BsListCheck} mr={2} size={5} />
-          Pedidos
-        </MenuButton>
-        <MenuButton
           isActive={router.query.param == 'financeiro' && true}
           onClick={() => router.push('[[...param]]', 'financeiro')}
         >
           <Box as={MdAttachMoney} mr={2} size={5} />
           Financeiro
+        </MenuButton>
+        <MenuButton
+          isActive={router.query.param == 'pedidos' && true}
+          onClick={() => router.push('[[...param]]', 'pedidos')}
+        >
+          <Box as={BsListCheck} mr={2} size={5} />
+          Pedidos
         </MenuButton>
       </Flex>
     </>
