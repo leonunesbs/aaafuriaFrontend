@@ -97,7 +97,13 @@ const Dashboard: React.FC = () => {
         {
           //content
         }
-        <Flex flexDir="column" flexGrow={1} minW="60%" p={4}>
+        <Flex
+          flexDir="column"
+          flexGrow={1}
+          minW="60%"
+          p={4}
+          backgroundColor="#fff"
+        >
           {router.query.param == 'pedidos' && <Pedidos />}
           {router.query.param == 'financeiro' && <Financeiro />}
           {router.query.param == 'associacoes' && <Associações />}

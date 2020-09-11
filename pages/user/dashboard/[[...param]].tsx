@@ -233,24 +233,22 @@ const Dashboard: React.FC = () => {
           borderColor="green.300"
           backgroundColor="gray.500"
         >
-          <Text textAlign="center" mb={16}>
-            A.A.A. Fúria
-          </Text>
           <MenuButton
+            mt={16}
             isActive={router.query.param == 'pedidos' && true}
             onClick={() => router.push('[[...param]]', 'pedidos')}
           >
             <Box as={BsListCheck} mr={2} size={5} />
             Meus pedidos
           </MenuButton>
-          <MenuButton isDisabled>
-            {
-              //<Box as={BsListCheck} mr={2} size={5} />
-            }
-            Em breve
-          </MenuButton>
         </Flex>
-        <Flex flexDir="column" flexGrow={1} minW="60%" p={4}>
+        <Flex
+          flexDir="column"
+          flexGrow={1}
+          minW="60%"
+          p={4}
+          backgroundColor="#fff"
+        >
           {router.query.param == 'pedidos' && (
             <>
               <Heading
