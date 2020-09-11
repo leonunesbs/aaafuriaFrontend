@@ -43,11 +43,18 @@ const MenuAdmin: React.FC = () => {
         d={['none', 'flex']}
         minW="180px"
         borderRightWidth={6}
-        boxShadow="0 0px 7px #000"
         borderColor="green.300"
         backgroundColor="green.600"
-        zIndex={-50}
       >
+        <MenuButton
+          isActive={router.query.param == 'associacoes' && true}
+          onClick={() => {
+            router.push('[[...param]]', 'associacoes')
+          }}
+        >
+          <Box as={MdCardMembership} mr={2} size={5} />
+          Associações
+        </MenuButton>
         <MenuButton
           mt={16}
           isActive={router.query.param == 'pedidos' && true}
@@ -62,15 +69,6 @@ const MenuAdmin: React.FC = () => {
         >
           <Box as={MdAttachMoney} mr={2} size={5} />
           Financeiro
-        </MenuButton>
-        <MenuButton
-          isActive={router.query.param == 'associacoes' && true}
-          onClick={() => {
-            router.push('[[...param]]', 'associacoes')
-          }}
-        >
-          <Box as={MdCardMembership} mr={2} size={5} />
-          Associações
         </MenuButton>
       </Flex>
     </>

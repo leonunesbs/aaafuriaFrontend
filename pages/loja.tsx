@@ -117,7 +117,7 @@ function Loja() {
             >
               <Image src={item.image} alt={item.item} maxW="380px" />
               <Flex p={2}>
-                <Flex flexDir="column" backgroundColor="green.300">
+                <Flex flexDir="column">
                   {isSócio && (
                     <Badge
                       borderRadius="sm"

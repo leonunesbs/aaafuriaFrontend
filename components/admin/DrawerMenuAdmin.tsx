@@ -78,6 +78,16 @@ const DrawerMenuAdmin: React.FC = () => {
           <DrawerBody>
             <Flex flexDir="column">
               <MenuButton
+                isActive={router.query.param == 'associacoes' && true}
+                onClick={() => {
+                  router.push('[[...param]]', 'associacoes')
+                  onClose()
+                }}
+              >
+                <Box as={MdCardMembership} mr={2} size={5} />
+                Associações
+              </MenuButton>
+              <MenuButton
                 isActive={router.query.param == 'pedidos' && true}
                 onClick={() => {
                   router.push('[[...param]]', 'pedidos')
@@ -96,16 +106,6 @@ const DrawerMenuAdmin: React.FC = () => {
               >
                 <Box as={MdAttachMoney} mr={2} size={5} />
                 Fianceiro
-              </MenuButton>
-              <MenuButton
-                isActive={router.query.param == 'associacoes' && true}
-                onClick={() => {
-                  router.push('[[...param]]', 'associacoes')
-                  onClose()
-                }}
-              >
-                <Box as={MdCardMembership} mr={2} size={5} />
-                Associações
               </MenuButton>
             </Flex>
           </DrawerBody>
