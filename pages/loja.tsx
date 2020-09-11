@@ -8,9 +8,7 @@ import {
   Badge,
   Flex,
   Button,
-  Spinner,
   Select,
-  Box,
   useToast,
   Skeleton,
 } from '@chakra-ui/core'
@@ -112,56 +110,53 @@ function Loja() {
               borderRadius="md"
               borderWidth="1px"
               flexGrow={1}
-              m={1}
-              w="20%"
               minW="200px"
               maxW="380px"
+              m={2}
               overflow="hidden"
             >
               <Image src={item.image} alt={item.item} maxW="380px" />
               <Flex p={2}>
-                <Flex flexDir="column" flexGrow={1}>
-                  <Box>
-                    {isSócio && (
-                      <Badge
-                        borderRadius="sm"
-                        px="2"
-                        variant="solid"
-                        backgroundColor="green.300"
-                      >
-                        SÓCIO ATIVO
-                      </Badge>
-                    )}
-
-                    <Text
-                      as="h4"
-                      fontWeight="semibold"
-                      lineHeight="tight"
-                      isTruncated
+                <Flex flexDir="column" backgroundColor="green.300">
+                  {isSócio && (
+                    <Badge
+                      borderRadius="sm"
+                      px="2"
+                      variant="solid"
+                      backgroundColor="green.300"
                     >
-                      {item.title}
-                    </Text>
-                    {isSócio ? (
-                      <Flex alignItems="baseline">
-                        <Text color="gray.400" textDecoration="line-through">
-                          R${item.price}
-                        </Text>
-                        <Text
-                          color="green.600"
-                          ml={1}
-                          fontSize="xl"
-                          fontWeight="bold"
-                        >
-                          R${item.socio_price}
-                        </Text>
-                      </Flex>
-                    ) : (
-                      <Text color="gray.500">R${item.price}</Text>
-                    )}
-                  </Box>
+                      SÓCIO ATIVO
+                    </Badge>
+                  )}
+
+                  <Text
+                    as="h4"
+                    fontWeight="semibold"
+                    lineHeight="tight"
+                    isTruncated
+                  >
+                    {item.title}
+                  </Text>
+                  {isSócio ? (
+                    <Flex alignItems="baseline">
+                      <Text color="gray.400" textDecoration="line-through">
+                        R${item.price}
+                      </Text>
+                      <Text
+                        color="green.600"
+                        ml={1}
+                        fontSize="xl"
+                        fontWeight="bold"
+                      >
+                        R${item.socio_price}
+                      </Text>
+                    </Flex>
+                  ) : (
+                    <Text color="gray.500">R${item.price}</Text>
+                  )}
                 </Flex>
                 <Flex flexDir="column" flexGrow={1} alignItems="flex-end">
-                  <Box>
+                  <Flex>
                     {item.has_variations && (
                       <Select
                         size="sm"
@@ -185,7 +180,7 @@ function Loja() {
                         <option value="EXGG">EXGG</option>
                       </Select>
                     )}
-                  </Box>
+                  </Flex>
                 </Flex>
               </Flex>
               <Button
