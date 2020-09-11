@@ -233,6 +233,7 @@ const SejaSócio: React.FC = () => {
         mb={16}
         overflow="hidden"
         flexWrap="wrap"
+        backgroundColor="#fff"
         mt={16}
       >
         <Image

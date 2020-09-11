@@ -107,6 +107,7 @@ const Carrinho: React.FC = () => {
           w="95%"
           mx="25%"
           alignSelf="center"
+          backgroundColor="#fff"
           borderColor="#ededed"
           borderWidth={1}
           flexDir="column"

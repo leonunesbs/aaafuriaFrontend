@@ -113,6 +113,7 @@ function Loja() {
               flexDir="column"
               borderRadius="md"
               borderWidth="1px"
+              backgroundColor="#fff"
               flexGrow={1}
               minW="200px"
               maxW="380px"
