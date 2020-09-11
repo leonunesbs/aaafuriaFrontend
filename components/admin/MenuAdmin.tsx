@@ -15,6 +15,7 @@ function MenuButton({ children, ...rest }) {
       mb={1}
       _hover={{ backgroundColor: 'gray.500', color: '#fff' }}
       _active={{ backgroundColor: 'green.300', color: 'gray.600' }}
+      _focus={{}}
       {...rest}
     >
       <Flex
