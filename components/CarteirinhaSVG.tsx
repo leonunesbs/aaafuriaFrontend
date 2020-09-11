@@ -1,5 +1,4 @@
 import React from 'react'
-import { url } from 'inspector'
 
 // import { Container } from './styles';
 
