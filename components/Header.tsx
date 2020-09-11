@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import {
   Image,
-  Text,
   Link,
   Flex,
   Button,
@@ -91,7 +90,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <>
+    <Flex flexDir="column" boxShadow="0 0 14px 2px #9aca3c" zIndex={1000}>
       <Flex
         backgroundColor="gray.500"
         alignItems="center"
@@ -251,7 +250,7 @@ const Header: React.FC = () => {
       </Flex>
       <Box w="100%" h="2px" backgroundColor="green.300" />
       <Box w="100%" h="8px" backgroundColor="gray.500" />
-    </>
+    </Flex>
   )
 }
 
