@@ -1,7 +1,4 @@
-import { useRouter } from 'next/router'
-
-import { Heading, Link, Flex, Button, Text, Box } from '@chakra-ui/core'
-import { logout } from '../config/auth'
+import { Heading, Link, Flex, Button, Text } from '@chakra-ui/core'
 import Header from '../components/Header'
 import Head from 'next/head'
 import Footer from '../components/Footer'
@@ -10,8 +7,6 @@ function CTAButton({ children, ...rest }) {
   return <Button {...rest}>{children}</Button>
 }
 export default function Home() {
-  const router = useRouter()
-
   return (
     <>
       <Head>
