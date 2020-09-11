@@ -1,7 +1,7 @@
 import { create, ApisauceInstance } from 'apisauce'
 
 const api: ApisauceInstance = create({
-  baseURL: 'http://localhost:8000/',
+  baseURL: 'https://aaafuriav2.herokuapp.com/',
 })
 
 api.addAsyncRequestTransform((request) => async () => {
