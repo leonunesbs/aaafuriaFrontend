@@ -47,6 +47,7 @@ const MenuAdmin: React.FC = () => {
         backgroundColor="green.600"
       >
         <MenuButton
+          mt={16}
           isActive={router.query.param == 'associacoes' && true}
           onClick={() => {
             router.push('[[...param]]', 'associacoes')
@@ -56,7 +57,6 @@ const MenuAdmin: React.FC = () => {
           Associações
         </MenuButton>
         <MenuButton
-          mt={16}
           isActive={router.query.param == 'pedidos' && true}
           onClick={() => router.push('[[...param]]', 'pedidos')}
         >
