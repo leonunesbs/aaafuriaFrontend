@@ -311,6 +311,7 @@ const Checkout: React.FC = () => {
           flexGrow={[1, 0]}
           minW="25%"
           borderColor="#ededed"
+          backgroundColor="#fff"
           borderWidth={1}
           flexDir="column"
           borderRadius="md"
