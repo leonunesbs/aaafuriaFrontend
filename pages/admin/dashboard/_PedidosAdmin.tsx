@@ -8,11 +8,13 @@ import {
   Badge,
   Divider,
   Link,
+  Tooltip,
 } from '@chakra-ui/core'
 import { useFetch } from '../../../hooks/useFetch'
 import { AiOutlineWhatsApp } from 'react-icons/ai'
+import { CgNotes } from 'react-icons/cg'
 
-function MeuPedidoCard({ data, item, user, ...rest }) {
+function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
   return (
     <Box
       key={item.pk}
@@ -51,15 +53,32 @@ function MeuPedidoCard({ data, item, user, ...rest }) {
       </Flex>
       <Divider />
       <Flex justify="flex-end">
-        <Link
-          isExternal
-          href={`https://api.whatsapp.com/send?phone=55${user.sócio.celular.replace(
-            /[^0-9]/g,
-            ''
-          )}`}
+        <Tooltip
+          label="Ver comprovante"
+          aria-label="Ver comprovante"
+          hasArrow
+          placement="top"
         >
-          <Box as={AiOutlineWhatsApp} color="green.300" size={6} />
-        </Link>
+          <Link isExternal href={comprovante} mr={4}>
+            <Box as={CgNotes} color="green.300" size={6} />
+          </Link>
+        </Tooltip>
+        <Tooltip
+          label="Contactar Whatsapp"
+          aria-label="Contactar Whatsapp"
+          hasArrow
+          placement="top"
+        >
+          <Link
+            isExternal
+            href={`https://api.whatsapp.com/send?phone=55${user.sócio.celular.replace(
+              /[^0-9]/g,
+              ''
+            )}`}
+          >
+            <Box as={AiOutlineWhatsApp} color="green.300" size={6} />
+          </Link>
+        </Tooltip>
       </Flex>
     </Box>
   )
@@ -72,6 +91,8 @@ const Pedidos: React.FC = () => {
   if (!pedidos.data) {
     ;<p>Carregando...</p>
   }
+
+  console.log(pedidos.data)
   return (
     <>
       <Heading
@@ -102,6 +123,7 @@ const Pedidos: React.FC = () => {
               key={item.pk}
               data={new Date(item.ordered_date).toLocaleDateString()}
               item={item}
+              comprovante={item.payment.comprovante}
               user={item.user}
             />
           ))}

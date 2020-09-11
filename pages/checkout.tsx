@@ -282,15 +282,9 @@ const Checkout: React.FC = () => {
                 <FormControl mt={4} isRequired isDisabled={loading}>
                   <FormLabel htmlFor="valor">Valor</FormLabel>
                   <InputGroup>
-                    <InputLeftElement
-                      color="gray.300"
-                      fontSize="1.2em"
-                      children="$"
-                    />
                     <NumberInput>
                       <NumberInputField
                         type="number"
-                        placeholder="Valor"
                         id="valor"
                         focusBorderColor="green.300"
                         borderRadius="sm"
