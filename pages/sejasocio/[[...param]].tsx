@@ -222,8 +222,8 @@ const SejaSócio: React.FC = () => {
         <title>Seja Sócio - @aaafuria</title>
         <meta
           name="description"
-          content="Seja Sócio da @aaafuria, a maior do Piauí!"
-        ></meta>
+          content="Seja Sócio da A.A.A. Fúria! Venha fazer parte da nossa História."
+        />
       </Head>
       <Header />
       <Flex
