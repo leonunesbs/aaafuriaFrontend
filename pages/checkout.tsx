@@ -193,6 +193,7 @@ const Checkout: React.FC = () => {
         <Flex
           flexGrow={1}
           borderColor="#ededed"
+          backgroundColor="#fff"
           borderWidth={1}
           flexDir="column"
           borderRadius="md"
