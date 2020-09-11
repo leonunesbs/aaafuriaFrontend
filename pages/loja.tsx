@@ -89,6 +89,10 @@ function Loja() {
     <>
       <Head>
         <title>Loja - @aaafuria</title>
+        <meta
+          name="description"
+          content="Loja de Produtos Oficiais @aaafuria"
+        />
       </Head>
       <Header />
       <Heading
