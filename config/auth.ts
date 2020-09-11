@@ -1,4 +1,3 @@
-import React from 'react'
 import api from '../services/api'
 
 export async function authenticate(username: string, password: string) {
@@ -14,7 +13,7 @@ export async function authenticate(username: string, password: string) {
     localStorage.setItem('isSócio', is_sócio)
     return response
   } else {
-    localStorage.clear()
+    logout()
     return response
   }
 }
@@ -23,7 +22,7 @@ export function isAuthenticated() {
   const token = localStorage.getItem('Token')
 
   if (!token) {
-    localStorage.clear()
+    logout()
     return false
   }
 
@@ -34,7 +33,7 @@ export function isAuthenticated() {
       localStorage.setItem('isSócio', response.data.is_sócio)
       return true
     } else {
-      localStorage.clear()
+      logout()
       return false
     }
   }
@@ -46,5 +45,7 @@ export function isAuthenticated() {
 }
 
 export function logout() {
-  return localStorage.clear()
+  const response = api.delete('core/api/logout/')
+  localStorage.clear()
+  return response
 }
