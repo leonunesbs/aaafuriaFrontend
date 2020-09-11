@@ -8,11 +8,12 @@ import { useRouter } from 'next/router'
 function MenuButton({ children, ...rest }) {
   return (
     <Button
-      borderRadius="sm"
-      backgroundColor="gray.600"
+      borderRadius={0}
+      backgroundColor="green.800"
+      shadow="sm"
       color="green.300"
-      m={1}
-      _hover={{ backgroundColor: 'gray.300', color: 'green.600' }}
+      mb={1}
+      _hover={{ backgroundColor: 'gray.500', color: '#fff' }}
       _active={{ backgroundColor: 'green.300', color: 'gray.600' }}
       {...rest}
     >
@@ -37,18 +38,18 @@ const MenuAdmin: React.FC = () => {
     <>
       <Flex
         flexDir="column"
-        h="100vh"
+        minH="100vh"
         w="18%"
         d={['none', 'flex']}
         minW="180px"
-        borderRightWidth={2}
+        borderRightWidth={6}
+        boxShadow="0 0px 7px #000"
         borderColor="green.300"
         backgroundColor="green.600"
+        zIndex={-50}
       >
-        <Text textAlign="center" mb={16}>
-          A.A.A. Fúria
-        </Text>
         <MenuButton
+          mt={16}
           isActive={router.query.param == 'pedidos' && true}
           onClick={() => router.push('[[...param]]', 'pedidos')}
         >
@@ -70,12 +71,6 @@ const MenuAdmin: React.FC = () => {
         >
           <Box as={MdCardMembership} mr={2} size={5} />
           Associações
-        </MenuButton>
-        <MenuButton isDisabled>
-          {
-            //<Box as={BsListCheck} mr={2} size={5} />
-          }
-          Em breve
         </MenuButton>
       </Flex>
     </>
