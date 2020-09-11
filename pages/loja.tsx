@@ -28,8 +28,12 @@ function Loja() {
 
   const [isSócio, setIsSócio] = useState(false)
 
-  const [tamanho, setTamanho] = useState()
-  const handleTamanho = (event: any) => setTamanho(event.target.value)
+  const [tamanho, setTamanho]: any = useState({})
+  const handleTamanho = (event: any, pk: any) =>
+    setTamanho({
+      pk: pk,
+      value: event.target.value,
+    })
 
   const { data }: any = useFetch('ecommerce/api/product-list/')
 
@@ -58,11 +62,11 @@ function Loja() {
   //   )
   // }
 
-  async function handleAddToCart(pk: number) {
+  async function handleAddToCart(pk: number, value?: string) {
     if (isAuthenticated()) {
       const response: any = await api.post('ecommerce/api/add-to-cart/', {
         pk: pk,
-        tamanho: tamanho,
+        tamanho: value,
       })
       if (response.ok) {
         router.push({
@@ -164,8 +168,8 @@ function Loja() {
                         borderRadius="sm"
                         focusBorderColor="green.300"
                         placeholder="Tamanho"
-                        value={tamanho}
-                        onChange={handleTamanho}
+                        value={tamanho.pk == item.pk && tamanho.value}
+                        onChange={(event) => handleTamanho(event, item.pk)}
                       >
                         <option value="PPBL">PP BL</option>
                         <option value="PBL">P BL</option>
@@ -192,7 +196,9 @@ function Loja() {
                 color="#FFF"
                 _hover={{ backgroundColor: 'green.600', color: 'gray.300' }}
                 fontSize={['sm', 'md']}
-                onClick={() => handleAddToCart(item.pk)}
+                onClick={() =>
+                  handleAddToCart(tamanho.pk || item.pk, tamanho.value)
+                }
               >
                 {isAuthenticated()
                   ? 'Adicionar ao carrinho'
