@@ -45,6 +45,9 @@ function Loja() {
       setIsSócio(true)
     }
   }, [])
+  useEffect(() => {
+    !isAuthenticated() && router.push('/login')
+  }, [])
 
   // if (!data) {
   //   return (

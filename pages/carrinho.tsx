@@ -39,7 +39,7 @@ const Carrinho: React.FC = () => {
   })
   useEffect(() => {
     !isAuthenticated() && router.push('/login')
-  })
+  }, [])
 
   useEffect(() => {
     if (router.query.message) {
