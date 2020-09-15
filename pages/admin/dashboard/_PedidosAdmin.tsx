@@ -9,12 +9,37 @@ import {
   Divider,
   Link,
   Tooltip,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  MenuGroup,
 } from '@chakra-ui/core'
 import { useFetch } from '../../../hooks/useFetch'
 import { AiOutlineWhatsApp } from 'react-icons/ai'
 import { CgNotes } from 'react-icons/cg'
+import api from '../../../services/api'
+import { useRouter } from 'next/router'
 
 function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
+  const router = useRouter()
+  const [status, setStatus] = useState(item.status)
+
+  const handleStatus = async (s: string) => {
+    setStatus(s)
+
+    const response: any = await api.post('core/api/status-pedido-admin/', {
+      pk: item.pk,
+      status:
+        (s == 'AGUARDANDO' && 'AG') ||
+        (s == 'PROCESSANDO' && 'PR') ||
+        (s == 'CONLUÍDO' && 'CC') ||
+        (s == 'CANCELADO' && 'XX'),
+    })
+    if (!response.ok) {
+      router.reload()
+    }
+  }
   return (
     <Box
       key={item.pk}
@@ -26,16 +51,32 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
     >
       <Heading fontSize="xl">{user.sócio.nome_completo}</Heading>
       <Flex align="center" mt={2}>
-        <Badge
-          variantColor={
-            (item.status == 'AGUARDANDO' && 'gray') ||
-            (item.status == 'PROCESSANDO' && 'orange') ||
-            (item.status == 'CONCLUIDO' && 'green') ||
-            (item.status == 'CANCELADO' && 'red')
-          }
-        >
-          {item.status}
-        </Badge>
+        <Menu>
+          <MenuButton
+            as={Badge}
+            variantColor={
+              (status == 'AGUARDANDO' && 'gray') ||
+              (status == 'PROCESSANDO' && 'orange') ||
+              (status == 'CONLUÍDO' && 'green') ||
+              (status == 'CANCELADO' && 'red')
+            }
+          >
+            {status}
+          </MenuButton>
+          <MenuList>
+            <MenuGroup title="Status">
+              <MenuItem onClick={() => handleStatus('AGUARDANDO')}>
+                AGUARDANDO
+              </MenuItem>
+              <MenuItem onClick={() => handleStatus('PROCESSANDO')}>
+                PROCESSANDO
+              </MenuItem>
+              <MenuItem onClick={() => handleStatus('CONLUÍDO')}>
+                CONCLUIDO
+              </MenuItem>
+            </MenuGroup>
+          </MenuList>
+        </Menu>
       </Flex>
 
       <Divider />
@@ -91,8 +132,6 @@ const Pedidos: React.FC = () => {
   if (!pedidos.data) {
     ;<p>Carregando...</p>
   }
-
-  console.log(pedidos.data)
   return (
     <>
       <Heading
