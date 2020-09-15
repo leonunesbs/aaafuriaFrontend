@@ -51,7 +51,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
         (s == 'CONLUÍDO' && 'CC') ||
         (s == 'CANCELADO' && 'XX'),
     })
-    if (!response.ok) {
+    if (response.ok) {
       setStatus(s)
     } else {
       router.reload()
