@@ -14,9 +14,16 @@ import {
   MenuItem,
   MenuList,
   MenuGroup,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Button,
 } from '@chakra-ui/core'
 import { useFetch } from '../../../hooks/useFetch'
-import { AiOutlineWhatsApp } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineWhatsApp } from 'react-icons/ai'
 import { CgNotes } from 'react-icons/cg'
 import api from '../../../services/api'
 import { useRouter } from 'next/router'
@@ -28,6 +35,10 @@ const CustomMenuButton = ({ children, ...rest }) => (
 function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
   const router = useRouter()
   const [status, setStatus] = useState(item.status)
+
+  const [isOpen, setIsOpen] = useState(null)
+  const onClose = () => setIsOpen(false)
+  const cancelRef = React.useRef()
 
   const handleStatus = async (s: string) => {
     setStatus(s)
@@ -55,32 +66,36 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
     >
       <Heading fontSize="xl">{user.sócio.nome_completo}</Heading>
       <Flex align="center" mt={2}>
-        <Menu>
-          <CustomMenuButton
-            as={Badge}
-            variantColor={
-              (status == 'AGUARDANDO' && 'gray') ||
-              (status == 'PROCESSANDO' && 'orange') ||
-              (status == 'CONLUÍDO' && 'green') ||
-              (status == 'CANCELADO' && 'red')
-            }
-          >
-            {status}
-          </CustomMenuButton>
-          <MenuList>
-            <MenuGroup title="Status">
-              <MenuItem onClick={() => handleStatus('AGUARDANDO')}>
-                AGUARDANDO
-              </MenuItem>
-              <MenuItem onClick={() => handleStatus('PROCESSANDO')}>
-                PROCESSANDO
-              </MenuItem>
-              <MenuItem onClick={() => handleStatus('CONLUÍDO')}>
-                CONCLUIDO
-              </MenuItem>
-            </MenuGroup>
-          </MenuList>
-        </Menu>
+        {status == 'CANCELADO' ? (
+          <Badge variantColor="red">CANCELADO</Badge>
+        ) : (
+          <Menu>
+            <CustomMenuButton
+              as={Badge}
+              variantColor={
+                (status == 'AGUARDANDO' && 'gray') ||
+                (status == 'PROCESSANDO' && 'orange') ||
+                (status == 'CONLUÍDO' && 'green') ||
+                (status == 'CANCELADO' && 'red')
+              }
+            >
+              {status}
+            </CustomMenuButton>
+            <MenuList>
+              <MenuGroup title="Status">
+                <MenuItem onClick={() => handleStatus('AGUARDANDO')}>
+                  AGUARDANDO
+                </MenuItem>
+                <MenuItem onClick={() => handleStatus('PROCESSANDO')}>
+                  PROCESSANDO
+                </MenuItem>
+                <MenuItem onClick={() => handleStatus('CONLUÍDO')}>
+                  CONCLUIDO
+                </MenuItem>
+              </MenuGroup>
+            </MenuList>
+          </Menu>
+        )}
       </Flex>
 
       <Divider />
@@ -124,6 +139,56 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
             <Box as={AiOutlineWhatsApp} color="green.300" size={6} />
           </Link>
         </Tooltip>
+        <Tooltip
+          label="Cancelar pedido"
+          aria-label="Cancelar pedido"
+          hasArrow
+          placement="top"
+        >
+          <Flex>
+            <Box
+              as={AiOutlineClose}
+              color="red.500"
+              cursor="pointer"
+              size={6}
+              onClick={() => setIsOpen(true)}
+            />
+          </Flex>
+        </Tooltip>
+        <AlertDialog
+          isOpen={isOpen}
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+        >
+          <AlertDialogOverlay />
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Cancelar pedido
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              Tem certeza que deseja cancelar o pedido ID: {item.pk} de{' '}
+              {user.sócio.nome_completo}? Esta ação não poderá ser desfeita.
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose} borderRadius="sm">
+                Voltar
+              </Button>
+              <Button
+                variantColor="red"
+                onClick={() => {
+                  onClose()
+                  handleStatus('CANCELADO')
+                }}
+                ml={3}
+                borderRadius="sm"
+              >
+                Cancelar
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </Flex>
     </Box>
   )
