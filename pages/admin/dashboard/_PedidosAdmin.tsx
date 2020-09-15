@@ -118,8 +118,9 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
           aria-label="Ver comprovante"
           hasArrow
           placement="top"
+          ml={4}
         >
-          <Link isExternal href={comprovante} mr={4}>
+          <Link isExternal href={comprovante}>
             <Box as={CgNotes} color="green.300" size={6} />
           </Link>
         </Tooltip>
@@ -128,6 +129,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
           aria-label="Contactar Whatsapp"
           hasArrow
           placement="top"
+          ml={4}
         >
           <Link
             isExternal
@@ -135,7 +137,6 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
               /[^0-9]/g,
               ''
             )}`}
-            mr={4}
           >
             <Box as={AiOutlineWhatsApp} color="green.300" size={6} />
           </Link>
@@ -145,6 +146,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
           aria-label="Cancelar pedido"
           hasArrow
           placement="top"
+          ml={4}
         >
           <Flex>
             <Box
