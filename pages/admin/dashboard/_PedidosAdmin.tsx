@@ -120,7 +120,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
           placement="top"
           ml={4}
         >
-          <Link isExternal href={comprovante}>
+          <Link href={comprovante}>
             <Box as={CgNotes} color="green.300" size={6} />
           </Link>
         </Tooltip>

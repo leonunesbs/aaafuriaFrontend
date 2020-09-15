@@ -102,7 +102,7 @@ function AssociaçõesCard({ item, router, ...rest }) {
             hasArrow
             placement="top"
           >
-            <Link isExternal href={item.comprovante} mr={4}>
+            <Link href={item.comprovante} mr={4}>
               <Box as={CgNotes} color="green.600" size={6} />
             </Link>
           </Tooltip>
