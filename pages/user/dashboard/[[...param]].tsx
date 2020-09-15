@@ -71,7 +71,7 @@ function MeuPedidoCard({ data, item, user, ...rest }) {
           variantColor={
             (item.status == 'AGUARDANDO' && 'gray') ||
             (item.status == 'PROCESSANDO' && 'orange') ||
-            (item.status == 'CONCLUIDO' && 'green') ||
+            (item.status == 'CONCLUÍDO' && 'green') ||
             (item.status == 'CANCELADO' && 'red')
           }
         >

@@ -21,6 +21,10 @@ import { CgNotes } from 'react-icons/cg'
 import api from '../../../services/api'
 import { useRouter } from 'next/router'
 
+const CustomMenuButton = ({ children, ...rest }) => (
+  <MenuButton {...rest}>{children}</MenuButton>
+)
+
 function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
   const router = useRouter()
   const [status, setStatus] = useState(item.status)
@@ -52,7 +56,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
       <Heading fontSize="xl">{user.sócio.nome_completo}</Heading>
       <Flex align="center" mt={2}>
         <Menu>
-          <MenuButton
+          <CustomMenuButton
             as={Badge}
             variantColor={
               (status == 'AGUARDANDO' && 'gray') ||
@@ -62,7 +66,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
             }
           >
             {status}
-          </MenuButton>
+          </CustomMenuButton>
           <MenuList>
             <MenuGroup title="Status">
               <MenuItem onClick={() => handleStatus('AGUARDANDO')}>
