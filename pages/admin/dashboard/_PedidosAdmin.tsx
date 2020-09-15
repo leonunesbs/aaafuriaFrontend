@@ -41,7 +41,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
   const cancelRef = React.useRef()
 
   const handleStatus = async (s: string) => {
-    setStatus(s)
+    setStatus('...')
 
     const response: any = await api.post('core/api/status-pedido-admin/', {
       pk: item.pk,
@@ -52,6 +52,8 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
         (s == 'CANCELADO' && 'XX'),
     })
     if (!response.ok) {
+      setStatus(s)
+    } else {
       router.reload()
     }
   }
