@@ -51,11 +51,10 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
         (s == 'CONLUÍDO' && 'CC') ||
         (s == 'CANCELADO' && 'XX'),
     })
-    if (response.ok) {
-      setStatus(s)
-    } else {
+    if (!response.ok) {
       router.reload()
     }
+    setStatus(s)
   }
   return (
     <Box
