@@ -135,6 +135,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
               /[^0-9]/g,
               ''
             )}`}
+            mr={4}
           >
             <Box as={AiOutlineWhatsApp} color="green.300" size={6} />
           </Link>
