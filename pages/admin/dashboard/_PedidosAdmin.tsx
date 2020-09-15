@@ -122,7 +122,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
         >
           <Flex ml={4}>
             <Link href={comprovante}>
-              <Box as={CgNotes} color="green.300" size={6} />
+              <Box as={CgNotes} color="green.600" size={6} />
             </Link>
           </Flex>
         </Tooltip>
@@ -140,7 +140,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
                 ''
               )}`}
             >
-              <Box as={AiOutlineWhatsApp} color="green.300" size={6} />
+              <Box as={AiOutlineWhatsApp} color="green.600" size={6} />
             </Link>
           </Flex>
         </Tooltip>
