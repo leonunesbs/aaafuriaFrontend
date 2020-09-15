@@ -120,35 +120,37 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
           placement="top"
           ml={4}
         >
-          <Link href={comprovante}>
-            <Box as={CgNotes} color="green.300" size={6} />
-          </Link>
+          <Flex ml={4}>
+            <Link href={comprovante}>
+              <Box as={CgNotes} color="green.300" size={6} />
+            </Link>
+          </Flex>
         </Tooltip>
         <Tooltip
           label="Contactar Whatsapp"
           aria-label="Contactar Whatsapp"
           hasArrow
           placement="top"
-          ml={4}
         >
-          <Link
-            isExternal
-            href={`https://api.whatsapp.com/send?phone=55${user.sócio.celular.replace(
-              /[^0-9]/g,
-              ''
-            )}`}
-          >
-            <Box as={AiOutlineWhatsApp} color="green.300" size={6} />
-          </Link>
+          <Flex ml={4}>
+            <Link
+              isExternal
+              href={`https://api.whatsapp.com/send?phone=55${user.sócio.celular.replace(
+                /[^0-9]/g,
+                ''
+              )}`}
+            >
+              <Box as={AiOutlineWhatsApp} color="green.300" size={6} />
+            </Link>
+          </Flex>
         </Tooltip>
         <Tooltip
           label="Cancelar pedido"
           aria-label="Cancelar pedido"
           hasArrow
           placement="top"
-          ml={4}
         >
-          <Flex>
+          <Flex ml={4}>
             <Box
               as={AiOutlineClose}
               color="red.500"
