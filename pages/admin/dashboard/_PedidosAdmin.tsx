@@ -52,6 +52,7 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
         (s == 'CANCELADO' && 'XX'),
     })
     if (!response.ok) {
+      alert('Erro')
       router.reload()
     }
     setStatus(s)
