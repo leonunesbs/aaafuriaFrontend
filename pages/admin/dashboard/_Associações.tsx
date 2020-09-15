@@ -63,7 +63,7 @@ function AssociaçõesCard({ item, router, ...rest }) {
         </Badge>
       )}
       <Text fontWeight="thin" fontSize="sm" lineHeight="1.3" mt={1}>
-        Matrícula {item.sócio.matrícula}
+        Matrícula: {item.sócio.matrícula}
       </Text>
       <Text fontWeight="thin" fontSize="sm" lineHeight="1.3">
         Turma: {item.sócio.turma}
