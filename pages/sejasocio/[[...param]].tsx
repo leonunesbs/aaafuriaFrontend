@@ -255,6 +255,7 @@ const SejaSócio: React.FC = () => {
                 h="45px"
                 w="100%"
                 onClick={handleStart}
+                isDisabled
               >
                 Começar
               </Button>
