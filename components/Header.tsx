@@ -80,7 +80,7 @@ const Header: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    const u = localStorage.getItem('User')
+    const u = localStorage.getItem('aaafuria:User')
     setUser(JSON.parse(u))
   }, [])
 

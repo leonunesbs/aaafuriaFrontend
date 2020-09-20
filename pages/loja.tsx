@@ -41,7 +41,7 @@ function Loja() {
 
   useEffect(() => {
     isAuthenticated()
-    if (localStorage.getItem('isSócio') === 'true') {
+    if (localStorage.getItem('aaafuria:isSócio') === 'true') {
       setIsSócio(true)
     }
   }, [])

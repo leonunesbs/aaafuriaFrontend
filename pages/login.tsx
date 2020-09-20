@@ -158,7 +158,7 @@ export default function Login() {
 
     if (response.ok) {
       if (response.data.token) {
-        localStorage.setItem('Token', response.data.token)
+        localStorage.setItem('aaafuria:Token', response.data.token)
       }
       toast({
         position: 'bottom',

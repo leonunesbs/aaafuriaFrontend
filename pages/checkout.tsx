@@ -98,7 +98,7 @@ const Checkout: React.FC = () => {
         const response: any = await api.get('ecommerce/api/create-payment/')
         if (response.ok) {
           localStorage.setItem(
-            'clientSecret',
+            'aaafuria:clientSecret',
             JSON.stringify(response.data.clientSecret).slice(1, -1)
           )
         }
@@ -116,7 +116,7 @@ const Checkout: React.FC = () => {
       //   return
       // }
       // const result = await stripe.confirmCardPayment(
-      //   `${localStorage.getItem('clientSecret')}`,
+      //   `${localStorage.getItem('aaafuria:clientSecret')}`,
       //   {
       //     payment_method: {
       //       card: elements.getElement(CardElement),

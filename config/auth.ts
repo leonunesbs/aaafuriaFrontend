@@ -8,9 +8,9 @@ export async function authenticate(username: string, password: string) {
 
   if (response.ok) {
     const { token, is_sócio, user }: any = response.data
-    localStorage.setItem('Token', token)
-    localStorage.setItem('User', JSON.stringify(user))
-    localStorage.setItem('isSócio', is_sócio)
+    localStorage.setItem('aaafuria:Token', token)
+    localStorage.setItem('aaafuria:User', JSON.stringify(user))
+    localStorage.setItem('aaafuria:isSócio', is_sócio)
     return response
   } else {
     logout()
@@ -19,7 +19,7 @@ export async function authenticate(username: string, password: string) {
 }
 
 export function isAuthenticated() {
-  const token = localStorage.getItem('Token')
+  const token = localStorage.getItem('aaafuria:Token')
 
   if (!token) {
     logout()
@@ -30,7 +30,7 @@ export function isAuthenticated() {
     const response: any = await api.get('core/api/is-authenticated/')
 
     if (response.ok) {
-      localStorage.setItem('isSócio', response.data.is_sócio)
+      localStorage.setItem('aaafuria:isSócio', response.data.is_sócio)
       return true
     } else {
       logout()
