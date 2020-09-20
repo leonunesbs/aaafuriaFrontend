@@ -123,7 +123,7 @@ function Loja() {
               m={2}
               overflow="hidden"
             >
-              <Image src={item.image} alt={item.item} maxW="380px" />
+              <Image d="block" src={item.image} alt={item.item} maxW="380px" />
               <Flex p={2}>
                 <Flex flexDir="column">
                   {isSócio && (

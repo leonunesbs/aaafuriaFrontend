@@ -5,7 +5,7 @@ const api: ApisauceInstance = create({
 })
 
 api.addAsyncRequestTransform((request) => async () => {
-  const token = localStorage.getItem('Token')
+  const token = localStorage.getItem('aaafuria:Token')
 
   if (token) {
     request.headers['Authorization'] = `Token ${token}`
