@@ -23,7 +23,7 @@ import {
 } from '@chakra-ui/core'
 import { AiOutlineHome } from 'react-icons/ai'
 import { FiLogOut } from 'react-icons/fi'
-import { logout, isAuthenticated } from '../../../config/auth'
+import { logout, isAuthenticated } from '../../../services/auth'
 import { BsListCheck } from 'react-icons/bs'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useFetch } from '../../../hooks/useFetch'

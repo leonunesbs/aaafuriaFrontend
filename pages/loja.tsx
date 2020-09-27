@@ -15,7 +15,7 @@ import {
 import { useFetch } from '../hooks/useFetch'
 import api from '../services/api'
 import { useRouter } from 'next/router'
-import { isAuthenticated } from '../config/auth'
+import { isAuthenticated } from '../services/auth'
 import Head from 'next/head'
 import Footer from '../components/Footer'
 

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import { Heading, Flex, Image, Link } from '@chakra-ui/core'
 
-import { isAuthenticated, logout } from '../../config/auth'
+import { isAuthenticated, logout } from '../../services/auth'
 import Head from 'next/head'
 
 import LoginBox from '../../components/login/LoginBox'

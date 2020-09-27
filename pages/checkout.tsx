@@ -22,7 +22,7 @@ import {
 import { CgArrowsExchange } from 'react-icons/cg'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { useFetch } from '../hooks/useFetch'
-import { isAuthenticated } from '../config/auth'
+import { isAuthenticated } from '../services/auth'
 import { useRouter } from 'next/router'
 import api from '../services/api'
 import Head from 'next/head'

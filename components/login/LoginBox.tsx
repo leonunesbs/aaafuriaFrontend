@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import React, { useState, useEffect, useRef } from 'react'
 import { FiLogIn } from 'react-icons/fi'
 import { MdPerson, MdLock } from 'react-icons/md'
-import { authenticate } from '../../config/auth'
+import { authenticate } from '../../services/auth'
 import CadastroDrawer from './CadastroDrawer'
 import GeneralInput from '../GeneralInput'
 

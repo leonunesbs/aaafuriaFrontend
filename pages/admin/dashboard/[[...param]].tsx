@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/core'
 import { AiOutlineHome } from 'react-icons/ai'
 import { FiLogOut } from 'react-icons/fi'
-import { logout, isAuthenticated } from '../../../config/auth'
+import { logout, isAuthenticated } from '../../../services/auth'
 import Head from 'next/head'
 import AdminGate from '../_adminGate'
 import Pedidos from './_PedidosAdmin'

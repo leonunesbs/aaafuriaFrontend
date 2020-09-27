@@ -16,7 +16,7 @@ import {
   Box,
 } from '@chakra-ui/core'
 
-import { isAuthenticated, logout } from '../config/auth'
+import { isAuthenticated, logout } from '../services/auth'
 import { useRouter } from 'next/router'
 
 import { GiHamburgerMenu } from 'react-icons/gi'
