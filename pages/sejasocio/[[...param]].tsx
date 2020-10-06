@@ -155,7 +155,9 @@ const SejaSócio: React.FC = () => {
     data.append('data_de_nascimento', birth)
     data.append('categoria', categoria)
     data.append('foto', foto)
-    const responseSejaSócio: any = await api.post('core/api/seja-socio/', data)
+    const responseSejaSócio: any = await api
+      .create()
+      .post('core/api/seja-socio/', data)
     if (responseSejaSócio.ok) {
       setMatrícula(responseSejaSócio.data.matrícula)
       setTurma(responseSejaSócio.data.turma)
@@ -169,15 +171,15 @@ const SejaSócio: React.FC = () => {
       setCategoria(categoria)
       router.push('[[...param]]', 'review')
 
-      const responseAssociaçãoCategoria: any = await api.get(
-        `core/api/get-associacao-category/${categoria}/`
-      )
+      const responseAssociaçãoCategoria: any = await api
+        .create()
+        .get(`core/api/associacao/`, { categoria: categoria })
+      console.log(responseAssociaçãoCategoria.data)
       if (responseAssociaçãoCategoria.ok) {
         setValores({
           primeira: responseAssociaçãoCategoria.data.primeira,
           reassociação: responseAssociaçãoCategoria.data.reassociação,
         })
-        console.log(responseAssociaçãoCategoria.data)
       }
     } else {
       setError(responseSejaSócio.data.error)
@@ -188,7 +190,7 @@ const SejaSócio: React.FC = () => {
   const handleStart = async () => {
     setLoading(true)
     router.push('[[...param]]', 'start')
-    const response: any = await api.get('core/api/seja-socio/')
+    const response: any = await api.create().get('core/api/seja-socio/')
     if (response.ok) {
       setMatrícula(response.data.matrícula)
       setTurma(response.data.turma)
@@ -210,7 +212,7 @@ const SejaSócio: React.FC = () => {
     data.append('comprovante', comprovante)
     data.append('categoria', categoria)
     data.append('conta_destino', contaDestino)
-    const response: any = await api.post('core/api/create-associacao/', data)
+    const response: any = await api.create().post('core/api/associacao/', data)
     if (response.ok) {
       router.reload()
     }

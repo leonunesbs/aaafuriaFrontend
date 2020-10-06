@@ -95,7 +95,9 @@ const Checkout: React.FC = () => {
   useEffect(() => {
     if (formaPagamento === 'ST') {
       const f = async () => {
-        const response: any = await api.get('ecommerce/api/create-payment/')
+        const response: any = await api
+          .create()
+          .get('ecommerce/api/create-payment/')
         if (response.ok) {
           localStorage.setItem(
             'aaafuria:clientSecret',
@@ -148,7 +150,9 @@ const Checkout: React.FC = () => {
       data.append('gateway', formaPagamento)
       data.append('amount', valor)
       data.append('comprovante', comprovante)
-      const response: any = await api.post('ecommerce/api/checkout/', data)
+      const response: any = await api
+        .create()
+        .post('ecommerce/api/checkout/', data)
 
       if (response.ok) {
         toast({

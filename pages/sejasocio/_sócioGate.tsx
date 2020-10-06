@@ -6,8 +6,8 @@ const SócioGate: React.FC = ({ children }) => {
   const router = useRouter()
   useEffect(() => {
     async function isSócio() {
-      const response = await api.get('core/api/get-user-associacao/')
-      if (response.ok) {
+      const response = await api.create().get('core/api/associacao/')
+      if (response.ok && response.status == 200) {
         alert('Olá, já possuimos sua ficha de associação.')
         return router.push('/loja')
       }

@@ -9,7 +9,7 @@ export function useFetch(url: string, interval?: number) {
   const { data, error } = useSWR(
     url,
     async (url) => {
-      const response = await api.get(url)
+      const response = await api.create().instance.get(url)
 
       return response.data
     },

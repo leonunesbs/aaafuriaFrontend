@@ -1,7 +1,7 @@
 import api from './api'
 
 export async function authenticate(username: string, password: string) {
-  const response = await api.post('core/api/login/', {
+  const response = await api.create().post('core/api/login/', {
     username: username,
     password: password,
   })
@@ -27,7 +27,7 @@ export function isAuthenticated() {
   }
 
   const isAuth = async () => {
-    const response: any = await api.get('core/api/is-authenticated/')
+    const response: any = await api.create().get('core/api/is-authenticated/')
 
     if (response.ok) {
       localStorage.setItem('aaafuria:isSócio', response.data.is_sócio)
@@ -45,7 +45,7 @@ export function isAuthenticated() {
 }
 
 export function logout() {
-  const response = api.delete('core/api/logout/')
+  const response = api.create().delete('core/api/logout/')
   localStorage.clear()
   return response
 }

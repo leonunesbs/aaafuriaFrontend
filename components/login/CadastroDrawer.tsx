@@ -44,11 +44,13 @@ const CadastroDrawer: React.FC<Props> = ({ isOpen, btnRef }) => {
 
   const handleLoadData = async () => {
     setLoading(true)
-    const response: any = await api.get(
-      `https://aaafuria.herokuapp.com/api/get-socio-data/${cadastroFormRef.current.getFieldValue(
-        'matrícula'
-      )}`
-    )
+    const response: any = await api
+      .create()
+      .get(
+        `https://aaafuria.herokuapp.com/api/get-socio-data/${cadastroFormRef.current.getFieldValue(
+          'matrícula'
+        )}`
+      )
     if (response.ok) {
       setIsSócio(response.data.is_socio)
       cadastroFormRef.current.setData({
@@ -86,7 +88,7 @@ const CadastroDrawer: React.FC<Props> = ({ isOpen, btnRef }) => {
     setLoading(true)
     setError(null)
 
-    const response: any = await api.post('core/api/cadastro/', {
+    const response: any = await api.create().post('core/api/cadastro/', {
       nome: data.nome,
       email: data.email,
       matrícula: data.matrícula,

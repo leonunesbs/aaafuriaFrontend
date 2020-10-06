@@ -26,8 +26,6 @@ import { ImArrowUp } from 'react-icons/im'
 import { useFetch } from '../../../hooks/useFetch'
 import api from '../../../services/api'
 
-// import { Container } from './styles';
-
 const Financeiro: React.FC = () => {
   const [page, setPage] = useState(1)
 
@@ -67,7 +65,7 @@ const Financeiro: React.FC = () => {
   })
 
   const handleNovaEntrada = async () => {
-    const response = await api.post('core/api/financeiro-entries/', {
+    const response = await api.create().post('core/api/financeiro-entries/', {
       fluxo: 'E',
       finalidade: finalidade,
       valor: valor,
@@ -83,7 +81,7 @@ const Financeiro: React.FC = () => {
   }
 
   const handleNovaSaída = async () => {
-    const response = await api.post('core/api/financeiro-entries/', {
+    const response = await api.create().post('core/api/financeiro-entries/', {
       fluxo: 'S',
       finalidade: finalidade,
       valor: valor,

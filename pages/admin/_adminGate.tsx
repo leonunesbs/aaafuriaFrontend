@@ -6,13 +6,15 @@ const AdminGate: React.FC = ({ children }) => {
   const router = useRouter()
   useEffect(() => {
     async function isStaff() {
-      const response = await api.get('core/api/is-staff/')
-      if (!response.ok) {
+      const response: any = await api.create().get('core/api/authentication/')
+      const { is_staff: isAdmin } = response.data
+
+      if (!(response.ok && isAdmin)) {
         return router.push('/')
       }
     }
     isStaff()
-  })
+  }, [])
 
   return <>{children}</>
 }

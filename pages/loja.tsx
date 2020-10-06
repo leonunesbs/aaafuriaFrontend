@@ -65,10 +65,12 @@ function Loja() {
 
   async function handleAddToCart(pk: number, value?: string) {
     if (isAuthenticated()) {
-      const response: any = await api.post('ecommerce/api/add-to-cart/', {
-        pk: pk,
-        tamanho: value,
-      })
+      const response: any = await api
+        .create()
+        .post('ecommerce/api/add-to-cart/', {
+          pk: pk,
+          tamanho: value,
+        })
       if (response.ok) {
         router.push({
           pathname: 'carrinho/',

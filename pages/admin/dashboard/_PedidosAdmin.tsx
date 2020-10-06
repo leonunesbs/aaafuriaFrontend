@@ -43,14 +43,16 @@ function MeuPedidoCard({ data, item, user, comprovante, ...rest }) {
   const handleStatus = async (s: string) => {
     setStatus('...')
 
-    const response: any = await api.post('core/api/status-pedido-admin/', {
-      pk: item.pk,
-      status:
-        (s == 'AGUARDANDO' && 'AG') ||
-        (s == 'PROCESSANDO' && 'PR') ||
-        (s == 'CONLUÍDO' && 'CC') ||
-        (s == 'CANCELADO' && 'XX'),
-    })
+    const response: any = await api
+      .create()
+      .post('core/api/status-pedido-admin/', {
+        pk: item.pk,
+        status:
+          (s == 'AGUARDANDO' && 'AG') ||
+          (s == 'PROCESSANDO' && 'PR') ||
+          (s == 'CONLUÍDO' && 'CC') ||
+          (s == 'CANCELADO' && 'XX'),
+      })
     if (!response.ok) {
       alert('Erro')
       router.reload()

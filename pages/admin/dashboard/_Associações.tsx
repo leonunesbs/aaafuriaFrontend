@@ -38,7 +38,9 @@ function AssociaçõesCard({ item, router, ...rest }) {
   const pauseRef = useRef()
 
   const toggleAssociação = async () => {
-    const response = await api.get(`core/api/toggle-associacao/${item.pk}/`)
+    const response = await api
+      .create()
+      .get(`core/api/toggle-associacao/${item.pk}/`)
     if (response.ok) {
       isPauseOpen && onPauseClose()
       isValidadeOpen && onValidadeClose()

@@ -59,16 +59,10 @@ const Header: React.FC = () => {
   const [isAuth, setIsAuth] = useState(null)
 
   useEffect(() => {
-    async function getStaff() {
-      const response = await api.get('core/api/is-staff/')
-      if (response.ok) {
-        setIsStaff(true)
-      }
-    }
-    getStaff()
-  }, [])
-
-  useEffect(() => {
+    setIsStaff(
+      (localStorage.getItem('aaafuria:isAdmin') === 'true' && true) ||
+        (localStorage.getItem('aaafuria:isAdmin') === 'false' && false)
+    )
     async function auth() {
       if (isAuthenticated()) {
         return setIsAuth(true)
