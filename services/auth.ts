@@ -1,7 +1,7 @@
 import api from './api'
 
 export async function authenticate(username: string, password: string) {
-  const response = await api.create().post('core/api/login/', {
+  const response = await api.create().post('core/api/authentication/', {
     username: username,
     password: password,
   })
@@ -45,7 +45,7 @@ export function isAuthenticated() {
 }
 
 export function logout() {
-  const response = api.create().delete('core/api/logout/')
+  const response = api.create().delete('core/api/authentication/')
   localStorage.clear()
   return response
 }
