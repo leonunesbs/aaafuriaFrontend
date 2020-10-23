@@ -1,6 +1,6 @@
 import { create, ApisauceInstance } from 'apisauce'
 
-const url = 'http://127.0.0.1:8000/'
+const url = 'https://aaafuriav2.herokuapp.com/'
 
 const api = {
   create() {
