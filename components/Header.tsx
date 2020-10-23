@@ -27,7 +27,6 @@ import {
   AiOutlineShoppingCart,
   AiOutlineDashboard,
 } from 'react-icons/ai'
-import api from '../services/api'
 
 function MenuButton({ children, ...rest }) {
   return (
@@ -61,7 +60,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     setIsStaff(
       (localStorage.getItem('aaafuria:isAdmin') === 'true' && true) ||
-        (localStorage.getItem('aaafuria:isAdmin') === 'false' && false)
+      (localStorage.getItem('aaafuria:isAdmin') === 'false' && false)
     )
     async function auth() {
       if (isAuthenticated()) {
@@ -169,8 +168,8 @@ const Header: React.FC = () => {
               {user ? (
                 <DrawerHeader>Olá, {user.username}!</DrawerHeader>
               ) : (
-                <DrawerHeader>Olá!</DrawerHeader>
-              )}
+                  <DrawerHeader>Olá!</DrawerHeader>
+                )}
 
               <DrawerBody>
                 {isAuth ? (
@@ -223,18 +222,18 @@ const Header: React.FC = () => {
                     </MenuButton>
                   </>
                 ) : (
-                  <>
-                    <MenuButton
-                      as="a"
-                      href="/login"
-                      color="#fff"
-                      backgroundColor="gray.500"
-                      leftIcon={FiLogIn}
-                    >
-                      Entrar
+                    <>
+                      <MenuButton
+                        as="a"
+                        href="/login"
+                        color="#fff"
+                        backgroundColor="gray.500"
+                        leftIcon={FiLogIn}
+                      >
+                        Entrar
                     </MenuButton>
-                  </>
-                )}
+                    </>
+                  )}
               </DrawerBody>
 
               <DrawerFooter>@aaafuria</DrawerFooter>

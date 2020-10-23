@@ -162,8 +162,8 @@ function Loja() {
                       </Text>
                     </Flex>
                   ) : (
-                    <Text color="gray.500">R${item.price}</Text>
-                  )}
+                      <Text color="gray.500">R${item.price}</Text>
+                    )}
                 </Flex>
                 <Flex flexDir="column" flexGrow={1} alignItems="flex-end">
                   <Flex>

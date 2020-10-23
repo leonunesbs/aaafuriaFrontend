@@ -1,9 +1,11 @@
 import { create, ApisauceInstance } from 'apisauce'
 
+const url = 'http://127.0.0.1:8000/'
+
 const api = {
   create() {
     const instance: ApisauceInstance = create({
-      baseURL: 'https://aaafuriav2.herokuapp.com/',
+      baseURL: url,
     })
 
     instance.addAsyncRequestTransform((request) => async () => {
@@ -18,7 +20,7 @@ const api = {
   },
   create_bypassed() {
     const instance: ApisauceInstance = create({
-      baseURL: 'https://aaafuriav2.herokuapp.com/',
+      baseURL: url,
     })
 
     return instance
