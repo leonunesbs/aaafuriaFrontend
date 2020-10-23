@@ -4,7 +4,7 @@ const url = 'https://aaafuriav2.herokuapp.com/'
 
 const api = {
   create() {
-    const instance: ApisauceInstance = create({
+    const instance: any = create({
       baseURL: url,
     })
 
@@ -19,7 +19,7 @@ const api = {
     return instance
   },
   create_bypassed() {
-    const instance: ApisauceInstance = create({
+    const instance: any = create({
       baseURL: url,
     })
 
